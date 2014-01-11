@@ -1,0 +1,7 @@
+#include "Hardware.h"
+
+Victor* Hardware::DriveFL = NULL;
+void Hardware::InitHardware()
+{
+	DriveFL = new Victor(1);
+}

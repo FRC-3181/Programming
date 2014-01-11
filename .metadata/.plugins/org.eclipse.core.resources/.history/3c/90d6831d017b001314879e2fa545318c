@@ -1,0 +1,6 @@
+namespace Hardware{
+SpeedController *driveFL=new Victor(1);
+SpeedController *driveFR=new Victor(2);
+SpeedController *driveBL=new Victor(3);
+SpeedController *driveBR=new Victor(4);
+}

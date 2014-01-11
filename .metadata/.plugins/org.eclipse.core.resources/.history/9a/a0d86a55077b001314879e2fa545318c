@@ -1,0 +1,11 @@
+#include "WPILib.h"
+#ifndef __HARDWARE__
+#define __HARDWARE__
+
+class Hardware{
+public:
+	static Victor *driveFL=new Victor(1);
+	
+	//static void InitHardware();
+};
+#endif

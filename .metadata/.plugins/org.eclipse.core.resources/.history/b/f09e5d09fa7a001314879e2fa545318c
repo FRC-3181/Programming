@@ -1,0 +1,13 @@
+#include "WPILib.h"
+
+class Hardware{
+public:
+	static Victor *driveFL;
+	static Victor *driveFR;
+	static Victor *driveBL;
+	static Victor *driveBR;
+};
+Victor *driveFL=new Victor(1);
+Victor *driveFR=new Victor(2);
+Victor *driveBL=new Victor(3);
+Victor *driveBR=new Victor(4);

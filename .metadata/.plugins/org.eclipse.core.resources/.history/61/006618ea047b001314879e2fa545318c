@@ -1,0 +1,5 @@
+#include "Hardware.h"
+using namespace Hardware;
+	void initHardware(){
+		
+	}

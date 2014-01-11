@@ -1,0 +1,17 @@
+#include "WPILib.h"
+#ifndef __HARDWARE__
+#define __HARDWARE__
+
+class Hardware{
+public:
+ 	static Victor *driveFL;
+ 	static Victor *driveFR;
+ 	static Victor *driveBL;
+ 	static Victor *driveBR;
+};
+Victor *Hardware::driveFL=new Victor(1);
+Victor *Hardware::driveFR=new Victor(2);
+Victor *Hardware::driveBL=new Victor(3);
+Victor *Hardware::driveBR=new Victor(4);
+
+#endif

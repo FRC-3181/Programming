@@ -1,0 +1,11 @@
+#include "Hardware.h"
+
+Victor* Hardware::DriveFL = NULL;
+Victor* Hardware::DriveBL = NULL;
+Victor* Hardware::DriveFR = NULL;
+Victor* Hardware::DriveBR = NULL;
+
+void Hardware::Init()
+{
+	DriveFL = new Victor(1);
+}

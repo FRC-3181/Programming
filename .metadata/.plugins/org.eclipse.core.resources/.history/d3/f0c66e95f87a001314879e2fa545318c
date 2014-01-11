@@ -1,0 +1,12 @@
+#include "WPILib.h"
+
+class Hardware{
+	static Talon *driveFL;
+	static Talon *driveFR;
+	static Talon *driveBL;
+	static Talon *driveBR;
+};
+Talon *driveFL=new Talon(1);
+Talon *driveFR=new Talon(2);
+Talon *driveBL=new Talon(3);
+Talon *driveBR=new Talon(4);

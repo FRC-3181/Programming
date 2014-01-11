@@ -1,0 +1,12 @@
+#include "WPILib.h"
+#ifndef __HARDWARE__
+#define __HARDWARE__
+
+namespace Hardware{
+extern Victor *driveFL;
+extern Victor *driveFR;
+extern Victor *driveBL;
+extern Victor *driveBR;
+}
+
+#endif

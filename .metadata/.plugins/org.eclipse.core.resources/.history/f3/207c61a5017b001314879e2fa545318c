@@ -1,0 +1,12 @@
+#include "WPILib.h"
+#ifndef __HARDWARE__
+#define __HARDWARE__
+
+namespace Hardware{
+extern SpeedController *driveFL;
+extern SpeedController *driveFR;
+extern SpeedController *driveBL;
+extern SpeedController *driveBR;
+}
+
+#endif

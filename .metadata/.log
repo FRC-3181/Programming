@@ -6919,3 +6919,12 @@ java.io.FileNotFoundException
 	at org.eclipse.cdt.internal.ui.text.c.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:149)
 	at org.eclipse.cdt.internal.ui.text.c.hover.CEditorTextHoverProxy.getHoverInfo2(CEditorTextHoverProxy.java:86)
 	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:166)
+
+!ENTRY edu.wpi.FIRSTDownloader 4 0 2014-01-11 15:00:05.918
+!MESSAGE Unable to connect to robot using IP: 10.31.81.2:21
+
+!ENTRY edu.wpi.FIRSTDownloader 4 0 2014-01-11 16:21:17.788
+!MESSAGE Unable to connect to robot using IP: 10.31.81.2:21
+
+!ENTRY edu.wpi.FIRSTDownloader 4 0 2014-01-11 16:28:45.049
+!MESSAGE Unable to delete the UserProgram from the robot.

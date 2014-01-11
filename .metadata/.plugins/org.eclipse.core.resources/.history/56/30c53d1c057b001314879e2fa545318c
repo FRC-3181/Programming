@@ -1,0 +1,10 @@
+#include "WPILib.h"
+#ifndef __HARDWARE__
+#define __HARDWARE__
+
+namespace Hardware{
+	Victor *Hardware::driveFL;
+	void initHardware();
+}
+
+#endif
