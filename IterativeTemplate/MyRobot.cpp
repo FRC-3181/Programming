@@ -1,5 +1,7 @@
 #include "WPILib.h"
 #include "Hardware.h"
+#include "Controls.h"
+#include "DriveSystem.h"
 /**
  * This is a demo program showing the use of the RobotBase class.
  * The IterativeRobot class is the base of a robot application that will automatically call your
@@ -9,6 +11,7 @@
 class RobotDemo : public IterativeRobot
 {
 public:
+	DriveSystem *driveSys;
 	RobotDemo()
 	{
 		this->SetPeriod(0); 	//Set update period to sync with robot control packets (20ms nominal)
@@ -23,6 +26,8 @@ public:
 	void RobotDemo::RobotInit()
 	{
 		Hardware::Init();
+		Controls::Init();
+		driveSys=new DriveSystem();
 
 	}
 	
@@ -54,6 +59,7 @@ public:
 	*/
 	void RobotDemo::AutonomousInit()
 	{
+		Controls::isAutonomous=true;
 	}
 	
 	/**
@@ -64,6 +70,7 @@ public:
 	*/
 	void RobotDemo::AutonomousPeriodic()
 	{
+	
 	}
 	
 	/**
@@ -74,6 +81,7 @@ public:
 	*/
 	void RobotDemo::TeleopInit()
 	{
+		Controls::isAutonomous=false;
 	}
 	
 	/**
@@ -84,10 +92,15 @@ public:
 	*/
 	void RobotDemo::TeleopPeriodic()
 	{
-		Hardware::DriveFL->Set(1);
-		Hardware::DriveBL->Set(1);
-		Hardware::DriveFR->Set(1);
-		Hardware::DriveBR->Set(1);
+		if(true){
+			Hardware::DriveFL->Set(1);
+			Hardware::DriveBL->Set(1);
+			Hardware::DriveFR->Set(1);
+			Hardware::DriveBR->Set(1);
+		}
+		else{
+			driveSys->drive();
+		}
 	}
 	
 	/**
@@ -98,7 +111,7 @@ public:
 	*/
 	void RobotDemo::TestInit()
 	{
-		
+		Controls::isAutonomous=false;
 	}
 	
 	/**
@@ -109,6 +122,7 @@ public:
 	*/
 	void RobotDemo::TestPeriodic()
 	{
+		
 	}
 	
 };
