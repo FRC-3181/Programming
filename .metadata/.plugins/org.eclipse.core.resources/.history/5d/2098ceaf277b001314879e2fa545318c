@@ -92,15 +92,13 @@ public:
 	*/
 	void RobotDemo::TeleopPeriodic()
 	{
-		if(true)
-		{
+		if(true){
 			Hardware::DriveFL->Set(1);
 			Hardware::DriveBL->Set(1);
 			Hardware::DriveFR->Set(1);
 			Hardware::DriveBR->Set(1);
 		}
-		else
-		{
+		else{
 			driveSys->drive();
 		}
 	}
