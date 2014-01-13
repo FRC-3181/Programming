@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXFileReference section */
+		CD3CBBD41884B41700D647CC /* Shooter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Shooter.h; path = ../IterativeTemplate/Shooter.h; sourceTree = "<group>"; };
+		CD3CBBD51884B41700D647CC /* Shooter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Shooter.cpp; path = ../IterativeTemplate/Shooter.cpp; sourceTree = "<group>"; };
+		CD3CBBD61884B41700D647CC /* BallCollector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BallCollector.h; path = ../IterativeTemplate/BallCollector.h; sourceTree = "<group>"; };
+		CD3CBBD71884B41700D647CC /* BallCollector.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = BallCollector.cpp; path = ../IterativeTemplate/BallCollector.cpp; sourceTree = "<group>"; };
+		CD3CBBD81884B41700D647CC /* AutonomousDriver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AutonomousDriver.h; path = ../IterativeTemplate/AutonomousDriver.h; sourceTree = "<group>"; };
+		CD3CBBD91884B41700D647CC /* AutonomousDriver.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AutonomousDriver.cpp; path = ../IterativeTemplate/AutonomousDriver.cpp; sourceTree = "<group>"; };
 		E713C0551882156B00B078CB /* Controls.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Controls.cpp; path = ../IterativeTemplate/Controls.cpp; sourceTree = "<group>"; };
 		E713C0561882156B00B078CB /* Controls.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Controls.h; path = ../IterativeTemplate/Controls.h; sourceTree = "<group>"; };
 		E713C0571882156B00B078CB /* DriveSystem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DriveSystem.cpp; path = ../IterativeTemplate/DriveSystem.cpp; sourceTree = "<group>"; };
@@ -27,6 +33,12 @@
 				E713C0591882156B00B078CB /* Hardware.cpp */,
 				E713C05A1882156B00B078CB /* Hardware.h */,
 				E713C05B1882156B00B078CB /* MyRobot.cpp */,
+				CD3CBBD41884B41700D647CC /* Shooter.h */,
+				CD3CBBD51884B41700D647CC /* Shooter.cpp */,
+				CD3CBBD61884B41700D647CC /* BallCollector.h */,
+				CD3CBBD71884B41700D647CC /* BallCollector.cpp */,
+				CD3CBBD81884B41700D647CC /* AutonomousDriver.h */,
+				CD3CBBD91884B41700D647CC /* AutonomousDriver.cpp */,
 			);
 			sourceTree = "<group>";
 		};
