@@ -2,7 +2,8 @@
 #include "Controls.h"
 #include "Hardware.h"
 #include <math.h>
-void DriveSystem::drive(){
+void DriveSystem::drive()
+{
 	//Get Control Values
 	double x=Controls::GetDriveX();
 	double y=Controls::GetDriveY();

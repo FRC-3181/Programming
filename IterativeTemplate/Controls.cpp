@@ -10,12 +10,15 @@ void Controls::Init()
 	auxStick=new Joystick(2);
 	isAutonomous=true;
 }
-double Controls::GetDriveX(){
+double Controls::GetDriveX()
+{
 	return driveStick->GetX();
 }
-double Controls::GetDriveY(){
+double Controls::GetDriveY()
+{
 	return driveStick->GetY();
 }
-double Controls::GetDriveR(){
+double Controls::GetDriveR()
+{
 	return driveStick->GetTwist();
 }
