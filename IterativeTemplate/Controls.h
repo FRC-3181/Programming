@@ -1,4 +1,5 @@
 #include "WPILib.h"
+#include "AutonomousDriver.h"
 #ifndef __CONTROL__
 #define __CONTROL__
 
@@ -13,5 +14,6 @@ public:
 private:
 	static Joystick *driveStick;
 	static Joystick *auxStick;
+	static AutonomousDriver *autoDriver;
 };
 #endif
