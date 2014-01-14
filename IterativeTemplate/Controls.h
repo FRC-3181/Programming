@@ -15,5 +15,6 @@ private:
 	static Joystick *driveStick;
 	static Joystick *auxStick;
 	static AutonomousDriver *autoDriver;
+	static double GetDriveThrottle();
 };
 #endif

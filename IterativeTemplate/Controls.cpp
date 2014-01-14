@@ -14,13 +14,17 @@ void Controls::Init()
 }
 double Controls::GetDriveX()
 {
-	return driveStick->GetX();
+	return isAutonomous?autoDriver->GetDriveX():Controls::GetDriveThrottle()*driveStick->GetX();
 }
 double Controls::GetDriveY()
 {
-	return driveStick->GetY();
+	return isAutonomous?autoDriver->GetDriveY():Controls::GetDriveThrottle()*driveStick->GetY();
 }
 double Controls::GetDriveR()
 {
-	return driveStick->GetTwist();
+	return isAutonomous?autoDriver->GetDriveR():Controls::GetDriveThrottle()*driveStick->GetTwist();
+}
+double Controls::GetDriveThrottle()
+{
+	return (driveStick->GetThrottle+1)/2;
 }
