@@ -40,20 +40,14 @@ void Shooter::shoot()
 					Hardware::ShooterMotor->Set(0.05);
 				}
 			}break;
-			case shooting:{//firing at target
-				shootAtTarget();
-			}break;
-			case shootOverTruss:{//firing over truss
-				shootOverTruss();
+			case shooting:
+			case shootOverTruss:{//fire
+				runShootMotor();
 			}break;
 		}
 }
-void Shooter::shootOverTruss{
+void Shooter::runShootMotor{
 	switch (fState){
-		case starting:{
-			Hardware::ShooterMotor->Set(0.05);
-			fState=firing;
-		}break;
 		case firing:{
 			bool hasHitRelease=false;//TODO: Use encoder to determine this
 			if(hasHitRelease){
@@ -62,7 +56,8 @@ void Shooter::shootOverTruss{
 				waitStart=0;//Replace with current time
 			}
 			else{
-				if(Hardware::ShooterMotor->Get()>=targetSpeed)Hardware::ShooterMotor->Set(targetSpeed);
+				double maxSpeed=aimState==shooting?targetSpeed:trussSpeed;
+				if(Hardware::ShooterMotor->Get()>=maxSpeed)Hardware::ShooterMotor->Set(maxSpeed);
 				else Hardware::ShooterMotor->Set(Hardware::ShooterMotor->Get()+0.05);
 			}
 		}break;
@@ -70,44 +65,7 @@ void Shooter::shootOverTruss{
 			double time=0;//Replace with current time
 			if(time-waitStart>waitTime){
 				fState=recovering;
-			}
-		}break;
-		case recovering:{
-			bool hasHitStop=false;//TODO: Use encoder to determine this
-			if(hasHitStop){
-				Hardware::ShooterMotor->Set(0);
-				fState=off;
-				aState=notAimed;
-			}
-			else{
-				if(Hardware::ShooterMotor->Get()<=recoverSpeed)Hardware::ShooterMotor->Set(recoverSpeed);
-				else Hardware::ShooterMotor->Set(Hardware::ShooterMotor->Get()-0.05);
-			}
-		}break;
-	}
-}
-void Shooter::shootAtTarget{
-	switch (fState){
-		case off:{
-			Hardware::ShooterMotor->Set(0);
-		}break;
-		case firing:{
-			bool hasHitRelease=false;//TODO: Use encoder to determine this
-			if(hasHitRelease){
-				Hardware::ShooterMotor->Set(0);
-				fState=waiting;
-				waitStart=0;//Replace with current time
-			}
-			else{
-				if(Hardware::ShooterMotor->Get()>=targetSpeed)Hardware::ShooterMotor->Set(targetSpeed);
-				else Hardware::ShooterMotor->Set(Hardware::ShooterMotor->Get()+0.05);
-			}
-		}break;
-		case waiting:{
-			double time=0;//Replace with current time
-			if(time-waitStart>waitTime){
-				fState=recovering;
-				Controls::EndAiming();
+				if(aimState==shooting)Controls::EndAiming();
 			}
 		}break;
 		case recovering:{

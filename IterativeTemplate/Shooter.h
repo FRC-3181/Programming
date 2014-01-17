@@ -21,8 +21,7 @@ public:
 	Shooter();
 	void shoot();
 private:
-	void shootOverTruss();
-	void shootAtTarget();
+	void runShootMotor();
 	double	waitStart;
 	aimState aState;
 	fireState fState;
