@@ -25,11 +25,11 @@ double Controls::GetDriveX()
 }
 double Controls::GetDriveY()
 {
-	return isAutonomous?autoDriver->GetDriveY():GetDriveThrottle()*driveStick->GetY();
+	return isAiming?0:(isAutonomous?autoDriver->GetDriveY():GetDriveThrottle()*driveStick->GetY());
 }
 double Controls::GetDriveR()
 {
-	return isAutonomous?autoDriver->GetDriveR():GetDriveThrottle()*driveStick->GetTwist();
+	return isAiming?0:(isAutonomous?autoDriver->GetDriveR():GetDriveThrottle()*driveStick->GetTwist());
 }
 double Controls::GetDriveThrottle()
 {
