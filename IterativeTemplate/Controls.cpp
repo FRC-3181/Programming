@@ -35,7 +35,7 @@ double Controls::GetDriveThrottle()
 {
 	return (driveStick->GetThrottle+1)/2;
 }
-bool Controls::GetShootForTarget()
+bool Controls::GetShootAtTarget()
 {
 	return isAutonomous?autoDriver->GetShoot():auxStick->GetRawButton(targetButton);
 }
@@ -47,7 +47,7 @@ bool Controls::GetAiming()
 {
 	if(isAiming)return true;
 	if(isAutonomous?autoDriver->ShouldStartAiming():auxStick->GetRawButton(aimButton)){
-		isAiming=YES;
+		isAiming=true;
 		return false;
 	}
 	return false;

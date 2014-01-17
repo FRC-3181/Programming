@@ -12,7 +12,7 @@ public:
 	static double GetDriveY();
 	static double GetDriveR();
 	static bool GetShootOverTruss();
-	static bool GetShootForTarget();
+	static bool GetShootAtTarget();
 	static bool GetAiming();
 	static void EndAiming();
 	
@@ -22,5 +22,7 @@ private:
 	static AutonomousDriver *autoDriver;
 	static double GetDriveThrottle();
 	static bool isAiming;
+	static bool canCancelAim;
+
 };
 #endif
