@@ -8,6 +8,10 @@ void DriveSystem::drive()
 	double x=Controls::GetDriveX();
 	double y=Controls::GetDriveY();
 	double r=Controls::GetDriveR();
+	if(Controls::GetAiming()){
+		y=0;
+		r=0;
+	}
 	//Do Some Math
 	double scale=fabs(x)+fabs(y)+fabs(r);
 	scale=(scale>1)?1/scale:1;

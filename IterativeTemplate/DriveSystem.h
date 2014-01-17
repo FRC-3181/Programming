@@ -1,6 +1,6 @@
 #include "WPILib.h"
 #ifndef __DRIVE__
-#define __DRIVE
+#define __DRIVE__
 
 class DriveSystem
 {

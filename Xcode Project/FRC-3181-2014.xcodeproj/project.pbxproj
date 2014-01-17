@@ -26,12 +26,12 @@
 		E713C04E1882154D00B078CB = {
 			isa = PBXGroup;
 			children = (
-				E713C0551882156B00B078CB /* Controls.cpp */,
 				E713C0561882156B00B078CB /* Controls.h */,
-				E713C0571882156B00B078CB /* DriveSystem.cpp */,
+				E713C0551882156B00B078CB /* Controls.cpp */,
 				E713C0581882156B00B078CB /* DriveSystem.h */,
-				E713C0591882156B00B078CB /* Hardware.cpp */,
+				E713C0571882156B00B078CB /* DriveSystem.cpp */,
 				E713C05A1882156B00B078CB /* Hardware.h */,
+				E713C0591882156B00B078CB /* Hardware.cpp */,
 				E713C05B1882156B00B078CB /* MyRobot.cpp */,
 				CD3CBBD41884B41700D647CC /* Shooter.h */,
 				CD3CBBD51884B41700D647CC /* Shooter.cpp */,

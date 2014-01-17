@@ -9,5 +9,7 @@ public:
 	double GetDriveX();
 	double GetDriveY();
 	double GetDriveR();
+	bool ShouldShoot();
+	bool ShouldStartAiming();
 };
 #endif

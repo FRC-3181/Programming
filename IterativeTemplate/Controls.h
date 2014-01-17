@@ -11,10 +11,16 @@ public:
 	static double GetDriveX();
 	static double GetDriveY();
 	static double GetDriveR();
+	static bool GetShootOverTruss();
+	static bool GetShootForTarget();
+	static bool GetAiming();
+	static void EndAiming();
+	
 private:
 	static Joystick *driveStick;
 	static Joystick *auxStick;
 	static AutonomousDriver *autoDriver;
 	static double GetDriveThrottle();
+	static bool isAiming;
 };
 #endif

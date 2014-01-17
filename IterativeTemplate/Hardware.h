@@ -9,6 +9,8 @@ public:
 	static SpeedController *DriveBL;
 	static SpeedController *DriveFR;
 	static SpeedController *DriveBR;
+	static SpeedController *ShooterMotor;
+
 	
 	static void Init();
 };

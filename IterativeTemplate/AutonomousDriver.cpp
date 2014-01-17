@@ -16,3 +16,9 @@ double AutonomousDriver::GetDriveR()
 {
 	return 0;
 }
+bool AutonomousDriver::ShouldShoot(){
+	return false;
+}
+bool AutonomousDriver::ShouldStartAiming(){
+	return false;
+}
