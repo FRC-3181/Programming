@@ -20,9 +20,9 @@ void Shooter::shoot()
 			case notAimed:{//Not Aiming, shoot over truss or aim are options
 				if(Controls::GetAiming()){
 					aState=aiming;
-					aimShooter();//replace with whatever we are using to aim
+					//TODO: Start aiming the shooter
 				}
-				else if(Controls::GetShootOverTruss){
+				else if(Controls::GetShootOverTruss()){
 					aState=trussShooting;
 					fState=firing;
 					Hardware::ShooterMotor->Set(0.05);
@@ -41,12 +41,12 @@ void Shooter::shoot()
 				}
 			}break;
 			case shooting:
-			case shootOverTruss:{//fire
+			case trussShooting:{//fire
 				runShootMotor();
 			}break;
 		}
 }
-void Shooter::runShootMotor{
+void Shooter::runShootMotor(){
 	switch (fState){
 		case firing:{
 			bool hasHitRelease=false;//TODO: Use encoder to determine this
@@ -56,7 +56,7 @@ void Shooter::runShootMotor{
 				waitStart=0;//Replace with current time
 			}
 			else{
-				double maxSpeed=aimState==shooting?targetSpeed:trussSpeed;
+				double maxSpeed=((aState==shooting)?targetSpeed:trussSpeed);
 				if(Hardware::ShooterMotor->Get()>=maxSpeed)Hardware::ShooterMotor->Set(maxSpeed);
 				else Hardware::ShooterMotor->Set(Hardware::ShooterMotor->Get()+0.05);
 			}
@@ -65,7 +65,7 @@ void Shooter::runShootMotor{
 			double time=0;//Replace with current time
 			if(time-waitStart>waitTime){
 				fState=recovering;
-				if(aimState==shooting)Controls::EndAiming();
+				if(aState==shooting)Controls::EndAiming();
 			}
 		}break;
 		case recovering:{
@@ -77,15 +77,19 @@ void Shooter::runShootMotor{
 			}
 			else{
 				if(Hardware::ShooterMotor->Get()<=recoverSpeed)Hardware::ShooterMotor->Set(recoverSpeed);
-				elseHardware::ShooterMotor->Set(Hardware::ShooterMotor->Get()-0.05);
+				else Hardware::ShooterMotor->Set(Hardware::ShooterMotor->Get()-0.05);
 			}
 		}break;
+		case off:
+			Hardware::ShooterMotor->Set(0);
+			break;
 	}
 	
 }
+/*
 void startAiming(Shooter *shooter){
 	//Place Holder for now
 	//...
 	//When done:
 	//shooter->aimState=aimed
-}
+}*/
