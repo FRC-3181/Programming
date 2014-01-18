@@ -34,7 +34,10 @@ void Shooter::shoot()
 				}
 			}break;
 			case aimed:{//Ready to fire
-				if(Controls::GetShootAtTarget()){
+				if(!Controls::GetAiming()){
+					aState=notAimed;
+				}
+				else if(Controls::GetShootAtTarget()){
 					aState=shooting;
 					fState=firing;
 					Hardware::ShooterMotor->Set(0.05);
