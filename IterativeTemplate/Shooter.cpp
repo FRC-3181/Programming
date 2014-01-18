@@ -1,6 +1,7 @@
 #include "Shooter.h"
 #include "Controls.h"
 #include "Hardware.h"
+#include "DriveSystem.h"
 #include <math.h>
 
 const double targetSpeed=1;
@@ -18,7 +19,7 @@ void Shooter::shoot()
 	//Shooter Code goes here
 		switch (aState) {
 			case notAimed:{//Not Aiming, shoot over truss or aim are options
-				if(Controls::GetAiming()){
+				if(Controls::GetAiming()&&fabs(DriveSystem::gyroAngle())<0.1745){//Aiming Mode and Robot pointed at target
 					aState=aiming;
 					//TODO: Start aiming the shooter
 				}

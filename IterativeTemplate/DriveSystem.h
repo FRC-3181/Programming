@@ -6,5 +6,8 @@ class DriveSystem
 {
 public:
 	void drive();
+	static bool pointedAtTarget();
+private:
+	static double gyroAngle();
 };
 #endif

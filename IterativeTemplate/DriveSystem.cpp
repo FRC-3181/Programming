@@ -2,12 +2,23 @@
 #include "Controls.h"
 #include "Hardware.h"
 #include <math.h>
+
+const double corSpeed=0.3;
 void DriveSystem::drive()
 {
 	//Get Control Values
 	double x=Controls::GetDriveX();
 	double y=Controls::GetDriveY();
 	double r=Controls::GetDriveR();
+	//Rotate to Face target if aiming
+	if(Controls::GetAiming()&&fabs(DriveSystem::gyroAngle())>=0.1745){
+		r=-corSpeed*DriveSystem::gyroAngle();
+		x=0;
+	}
+	//Rotate Axes
+	double xTemp=x, yTemp=y, angle=DriveSystem::gyroAngle();
+	x=sqrt(pow(xTemp*cos(angle),2)+pow(yTemp*sin(angle),2));
+	y=sqrt(pow(yTemp*cos(angle),2)-pow(xTemp*sin(angle),2));
 	//Do Some Math
 	double scale=fabs(x)+fabs(y)+fabs(r);
 	scale=(scale>1)?1/scale:1;
@@ -20,4 +31,12 @@ void DriveSystem::drive()
 	Hardware::DriveFR->Set(scale*fr);
 	Hardware::DriveBL->Set(scale*bl);
 	Hardware::DriveBR->Set(scale*br);
+}
+double DriveSystem::gyroAngle()
+{
+	double angle=gyro->GetAngle();
+	while (angle>180) angle-=360;
+	while (angle<-180) angle+=360;
+	angle*=0.01745;//Convert from degrees to radians
+	return angle;
 }
