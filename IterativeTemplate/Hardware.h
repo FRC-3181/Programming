@@ -10,8 +10,8 @@ public:
 	static SpeedController *DriveFR;
 	static SpeedController *DriveBR;
 	static SpeedController *ShooterMotor;
-	static Gyro * gyro;
-	static Encoder * encoder;
+	static Gyro * DriveGyro;
+	static Encoder * someEncoder;//Don't know what this is (Robbie)
 	
 	static void Init();
 };

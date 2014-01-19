@@ -5,7 +5,7 @@ SpeedController* Hardware::DriveBL = NULL;
 SpeedController* Hardware::DriveFR = NULL;
 SpeedController* Hardware::DriveBR = NULL;
 SpeedController* Hardware::ShooterMotor = NULL;
-Gyro *Hardware::gyro = NULL;
+Gyro *Hardware::DriveGyro = NULL;
 Encoder * Hardware::encoder = NULL;
 
 void Hardware::Init()
@@ -15,7 +15,7 @@ void Hardware::Init()
 	DriveBL = new Talon(3);
 	DriveFL = new Talon(4);
 	ShooterMotor = new Talon(5);
-	gyro = new Gyro(1);
+	DriveGyro = new Gyro(1);
 	encoder = new Encoder(1, 2);
 	//testing commit from github for windows
 }

@@ -19,23 +19,30 @@ void Shooter::shoot()
 	//Shooter Code goes here
 		switch (aState) {
 			case notAimed:{//Not Aiming, shoot over truss or aim are options
-				if(Controls::GetAiming()&&fabs(DriveSystem::gyroAngle())<0.1745){//Aiming Mode and Robot pointed at target
-					aState=aiming;
-					//TODO: Start aiming the shooter
+				if(Controls::IsTargetMode()){
+					Controls::SetFireLED(false);
+					if(fabs(DriveSystem::gyroAngle())<0.1745){//Aiming Mode and Robot pointed at target
+						aState=aiming;
+						//TODO: Start aiming the shooter
+					}
 				}
-				else if(Controls::GetShootOverTruss()){
-					aState=trussShooting;
-					fState=firing;
-					Hardware::ShooterMotor->Set(0.05);
+				else if(Controls::IsTrussMode()){
+					Controls::SetFireLED(true);
+					if(Controls::GetFireButton()){
+						aState=trussShooting;
+						fState=firing;
+						Hardware::ShooterMotor->Set(0.05);
+					}
 				}
+				else Controls::SetFireLED(false);
 			}break;
 			case aiming:{//Determining Distance to target
-				if(!Controls::GetAiming()){
+				if(!Controls::IsTargetMode()){
 					aState=notAimed;
 				}
 			}break;
 			case aimed:{//Ready to fire
-				if(!Controls::GetAiming()){
+				if(!Controls::IsTargetMode()){
 					aState=notAimed;
 				}
 				else if(Controls::GetShootAtTarget()){

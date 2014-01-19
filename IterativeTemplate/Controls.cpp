@@ -1,24 +1,25 @@
 #include "Controls.h"
 
 Joystick *Controls::driveStick=NULL;
-Joystick *Controls::auxStick=NULL;
+DriverSationEnhancedIO *Controls::auxIO=NULL;
 bool Controls::isAutonomous=false;
-bool Controls::isAiming=false;
+TargetMode Controls::tMode=0;
 
 AutonomousDriver *Controls::autoDriver=NULL;
 
-const int trussButton=0;
-const int targetButton=0;
-const int aimButton=0;
-
+const int targetModePort=0;
+const int trussModePort=0;
+const int FireButtonPort=0;
+const int LEDPort=0;
 
 void Controls::Init()
 {
 	driveStick=new Joystick(1);
-	auxStick=new Joystick(2);
+	auxIO=DriverSation::GetInstance->GetEnhancedIO();
 	isAutonomous=true;
 	autoDriver=new AutonomousDriver();
 }
+//Drive Stuff
 double Controls::GetDriveX()
 {
 	return isAutonomous?autoDriver->GetDriveX():GetDriveThrottle()*driveStick->GetX();
@@ -35,26 +36,23 @@ double Controls::GetDriveThrottle()
 {
 	return (driveStick->GetThrottle+1)/2;
 }
-bool Controls::GetShootAtTarget()
+//Shooter
+bool Controls::IsTargetMode()
 {
-	return isAutonomous?autoDriver->GetShoot():auxStick->GetRawButton(targetButton);
+	return isAutonomous?autoDriver->ShouldStartAiming():auxIO->GetDigital(targetModePort);
 }
-bool Controls::GetShootOverTruss()
+bool Controls::IsTrussMode()
 {
-	return auxStick->GetRawButton(trussButton);
+	return auxIO->GetDigital(trussModePort);
 }
-bool Controls::GetAiming()
+bool Controls::GetFireButton()
 {
-	if(isAiming)return true;
-	if(isAutonomous?autoDriver->ShouldStartAiming():auxStick->GetRawButton(aimButton)){
-		isAiming=true;
-		return false;
-	}
-	return false;
+	return isAutonomous?autoDriver->GetShoot():auxIO->GetDigital(FireButtonPort);
+
 }
-void Controls::EndAiming()
+void Controls::SetFireLED(bool val)
 {
-	isAiming=false;
+	auxIO->SetDigitalOutput(LEDPort,val);
 }
 
 
