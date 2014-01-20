@@ -4,6 +4,13 @@
 #include <math.h>
 
 const double corSpeed=0.3;
+
+const double kFL=-1;
+const double kFR=1;
+const double kBL=-1;
+const double kBR=1;
+
+
 void DriveSystem::drive()
 {
 	//Get Control Values
@@ -27,10 +34,10 @@ void DriveSystem::drive()
 	double bl=y+x-r;
 	double br=y-x+r;
 	//Set Motor Values
-	Hardware::DriveFL->Set(scale*fl);
-	Hardware::DriveFR->Set(scale*fr);
-	Hardware::DriveBL->Set(scale*bl);
-	Hardware::DriveBR->Set(scale*br);
+	Hardware::DriveFL->Set(kFL*scale*fl);
+	Hardware::DriveFR->Set(kFR*scale*fr);
+	Hardware::DriveBL->Set(kBL*scale*bl);
+	Hardware::DriveBR->Set(kBR*scale*br);
 }
 double DriveSystem::gyroAngle()
 {
