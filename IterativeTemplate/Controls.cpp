@@ -38,6 +38,10 @@ double Controls::GetDriveR()//Rotation value for driving
 	//If autonomous, ask the Autonomous driver. Otherwise get the throttle-adjusted Rotation value from the Joystick
 	return isAiming?0:(isAutonomous?autoDriver->GetDriveR():GetDriveThrottle()*driveStick->GetTwist());
 }
+double Controls::GetGyroReset()
+{
+	return driveStick->GetRawButton(6);
+}
 double Controls::GetDriveThrottle()//Throttle for drivng
 {
 	//Get Throttle returns -1 for full up and 1 for full down, convert this to 1 for full up and 0 for full down

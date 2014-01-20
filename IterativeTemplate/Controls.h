@@ -13,6 +13,7 @@ public:
 	static double GetDriveX(); //X value for driving
 	static double GetDriveY(); //Y value for driving
 	static double GetDriveR(); //Rotation for driving
+	static bool GetGyroReset();//Reset Gyro?
 	//Shooter
 	static bool GetFireButton(); //Driver pressed the button to shoot at the target
 	static bool IsTrussMode(); //Driver pressed the button to shoot over the truss

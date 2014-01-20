@@ -83,6 +83,7 @@ public:
 	void RobotDemo::TeleopInit()
 	{
 		Controls::isAutonomous=false;
+		Hardware::DriveGyro->Reset();
 	}
 	
 	/**

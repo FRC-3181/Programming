@@ -27,8 +27,8 @@ void DriveSystem::drive()
 	}
 	//Rotate Axes
 	double xTemp=x, yTemp=y, angle=DriveSystem::gyroAngle();//Get the angle for the gyro and copy the x and y values
-	x=xTemp*cos(angle)+yTemp*sin(angle);//x=x0*cos(theta)+y0*sin(theta)
-	y=yTemp*cos(angle)-xTemp*sin(angle);//y=y0*cos(theta)-x0*sin(theta)
+	x=xTemp*cos(angle)-yTemp*sin(angle);//x=x0*cos(theta)+y0*sin(theta)
+	y=yTemp*cos(angle)+xTemp*sin(angle);//y=y0*cos(theta)-x0*sin(theta)
 	//Do Some Math to determine wheel values
 	double scale=fabs(x)+fabs(y)+fabs(r);//Scale back wheels if the joystick values are to high
 	scale=(scale>1)?1/scale:1;
@@ -44,10 +44,10 @@ void DriveSystem::drive()
 }
 double DriveSystem::gyroAngle()//Get the angle we have turned
 {
-	double angle=Hardware::DriveGyro->GetAngle();//Read the gyro angle
+	if(Controls::GetGyroReset())Hardware::DriveGyro->Reset();
+	int angle=(int)Hardware::DriveGyro->GetAngle();//Read the gyro angle
 	//Get it in desired range
-	while (angle>180) angle-=360;
-	while (angle<-180) angle+=360;
-	angle*=0.01745;//Convert from degrees to radians
-	return angle;
+	angle%=360;
+	//Convert from degrees to radians
+	return double(angle)*-3.14159/180.0;
 }
