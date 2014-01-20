@@ -8,6 +8,7 @@ class Controls
 public:
 	static void Init(); //Sets up Joysticks, etc.
 	static bool isAutonomous; //Is the Robot is in autonomous mode
+	static AutonomousDriver *autoDriver;//Fake driver for autnomous Mode
 	//Drive System
 	static double GetDriveX(); //X value for driving
 	static double GetDriveY(); //Y value for driving
@@ -21,10 +22,8 @@ public:
 private:
 	static double GetDriveThrottle();//Amount drive Values are throttled
 	//Controls for the driver
-	static Joystick *driveStick;
-	static DriverSationEnhancedIO *auxIO;
-	//Fake driver for autnomous Mode
-	static AutonomousDriver *autoDriver;
+	static Joystick *driveStick;//Joystick
+	static DriverSationEnhancedIO *auxIO;//Cypress Module
 
 };
 #endif

@@ -19,80 +19,81 @@ void Shooter::shoot()
 	//Shooter Code goes here
 		switch (aState) {
 			case notAimed:{//Not Aiming, shoot over truss or aim are options
-				if(Controls::IsTargetMode()){
-					Controls::SetFireLED(false);
-					if(fabs(DriveSystem::gyroAngle())<0.1745){//Aiming Mode and Robot pointed at target
-						aState=aiming;
+				if(Controls::IsTargetMode()){//If the controls are in target mode
+					Controls::SetFireLED(false);//Turn of the LED
+					if(fabs(DriveSystem::gyroAngle())<0.1745){//If we the robot  ispointed at target
+						aState=aiming;//We are now in the aiming state
 						//TODO: Start aiming the shooter
 					}
 				}
-				else if(Controls::IsTrussMode()){
-					Controls::SetFireLED(true);
-					if(Controls::GetFireButton()){
-						aState=trussShooting;
-						fState=firing;
-						Hardware::ShooterMotor->Set(0.05);
+				else if(Controls::IsTrussMode()){//If the controls are in truss mode
+					Controls::SetFireLED(true);//Turn the LED on
+					if(Controls::GetFireButton()){//If the fire button is prressed
+						aState=trussShooting;//We are in the truss shooting state
+						fState=firing;//The firing state is releasing the ball
+						Hardware::ShooterMotor->Set(0.05);//Start the motor
 					}
 				}
-				else Controls::SetFireLED(false);
+				else Controls::SetFireLED(false);//Turn the LED off
 			}break;
 			case aiming:{//Determining Distance to target
-				if(!Controls::IsTargetMode()){
-					aState=notAimed;
+				if(!Controls::IsTargetMode()){//If we switched out of target mode
+					aState=notAimed;//we are back to the not aiming state
 				}
 			}break;
 			case aimed:{//Ready to fire
-				if(!Controls::IsTargetMode()){
-					aState=notAimed;
+				if(!Controls::IsTargetMode()){//If we switched out of target mode
+					aState=notAimed;//we are back to the not aiming state
 				}
-				else if(Controls::GetShootAtTarget()){
-					aState=shooting;
-					fState=firing;
-					Hardware::ShooterMotor->Set(0.05);
+				else if(Controls::GetFireButton()){//If the button is pressed
+					aState=shooting;//State is shooting at target
+					fState=firing;//Fire state is releasing the ball
+					Controls::SetFireLED(false);//Turn the LED off
+					Hardware::ShooterMotor->Set(0.05);//Start the motor
 				}
 			}break;
 			case shooting:
-			case trussShooting:{//fire
-				runShootMotor();
+			case trussShooting:{
+				runShootMotor();//Run the shot execution code
 			}break;
 		}
 }
-void Shooter::runShootMotor(){
+void Shooter::runShootMotor(){//Execute the shot
 	switch (fState){
 		case firing:{
-			bool hasHitRelease=false;//TODO: Use encoder to determine this
-			if(hasHitRelease){
-				Hardware::ShooterMotor->Set(0);
-				fState=waiting;
-				waitStart=0;//Replace with current time
+			bool hasHitRelease=false;//Have we hit the release point?      TODO: Use encoder to determine this
+			if(hasHitRelease){//If we have hit the relase point
+				Hardware::ShooterMotor->Set(0);//Turn the motor off
+				fState=waiting;//we now need to wait  a bit
+				waitStart=0;//Time we entered the waiting state      TODO:Replace with current time
 			}
 			else{
-				double maxSpeed=((aState==shooting)?targetSpeed:trussSpeed);
-				if(Hardware::ShooterMotor->Get()>=maxSpeed)Hardware::ShooterMotor->Set(maxSpeed);
-				else Hardware::ShooterMotor->Set(Hardware::ShooterMotor->Get()+0.05);
+				double maxSpeed=((aState==shooting)?targetSpeed:trussSpeed);//Don't go to fast
+				if(Hardware::ShooterMotor->Get()>=maxSpeed)Hardware::ShooterMotor->Set(maxSpeed);//If we are at top speed, stay there
+				else Hardware::ShooterMotor->Set(Hardware::ShooterMotor->Get()+0.05);//If not, go up a bit
 			}
 		}break;
 		case waiting:{
-			double time=0;//Replace with current time
-			if(time-waitStart>waitTime){
-				fState=recovering;
-				if(aState==shooting)Controls::EndAiming();
+			double time=0;//TODO: Replace with current time
+			if(time-waitStart>waitTime){//If we waited long enough
+				fState=recovering;//Enter the recovering state
 			}
 		}break;
 		case recovering:{
-			bool hasHitStop=false;//TODO: Use encoder to determine this
-			if(hasHitStop){
-				Hardware::ShooterMotor->Set(0);
-				fState=off;
+			bool hasHitStop=false;//Have we come back down all the way?    TODO: Use encoder to determine this
+			if(hasHitStop){//If we have come all the way down
+				Hardware::ShooterMotor->Set(0);//Turn off the motor
+				fState=off; //we are done shooting
 				aState=notAimed;
 			}
 			else{
+				//If we are not at top speed, increase the speed a bit. If we are, stay there
 				if(Hardware::ShooterMotor->Get()<=recoverSpeed)Hardware::ShooterMotor->Set(recoverSpeed);
 				else Hardware::ShooterMotor->Set(Hardware::ShooterMotor->Get()-0.05);
 			}
 		}break;
 		case off:
-			Hardware::ShooterMotor->Set(0);
+			Hardware::ShooterMotor->Set(0);//Turn the motor off
 			break;
 	}
 	

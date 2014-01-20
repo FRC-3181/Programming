@@ -5,7 +5,7 @@
 class DriveSystem
 {
 public:
-	void drive();
-	static double gyroAngle();
+	void drive(); //Adjust the wheel values to whatever the controls request
+	static double gyroAngle();//Deterimine the angle that we have turned
 };
 #endif

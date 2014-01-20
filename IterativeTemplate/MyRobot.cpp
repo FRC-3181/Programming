@@ -70,7 +70,8 @@ public:
 	*/
 	void RobotDemo::AutonomousPeriodic()
 	{
-	
+		Controls::autoDriver->drive();
+		driveSys->drive();
 	}
 	
 	/**
@@ -92,17 +93,7 @@ public:
 	*/
 	void RobotDemo::TeleopPeriodic()
 	{
-		if(true)
-		{
-			Hardware::DriveFL->Set(1);
-			Hardware::DriveBL->Set(1);
-			Hardware::DriveFR->Set(1);
-			Hardware::DriveBR->Set(1);
-		}
-		else
-		{
-			driveSys->drive();
-		}
+		driveSys->drive();//Tell Drive System to drive robot
 	}
 	
 	/**
