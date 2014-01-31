@@ -11,6 +11,7 @@ AutonomousDriver *Controls::autoDriver=NULL;
 const int targetModePort=0; //Button for target mode
 const int trussModePort=0; //button for truss mode
 const int FireButtonPort=0; //Button to launch the ball
+const int CollectButtonPort=0; //Button to launch the ball
 const int LEDPort=0; //LED to light up button for launching
 
 void Controls::Init()
@@ -47,7 +48,7 @@ double Controls::GetDriveThrottle()//Throttle for drivng
 	//Get Throttle returns -1 for full up and 1 for full down, convert this to 1 for full up and 0 for full down
 	return (1-driveStick->GetThrottle)/2;
 }
-//Shooter
+//Shooter and collector
 bool Controls::IsTargetMode()//Has the driver activated target mode
 {
 	//If we are in autonomous, ask the auto driver if we should prepare to fire
@@ -64,7 +65,11 @@ bool Controls::GetFireButton()//Has the driver pressed the fire button
 	//If we have are in Autonomous, ask the auto driver if we should fire
 	//If we are in teleop, check the fire button
 	return isAutonomous?autoDriver->GetShoot():auxIO->GetDigital(FireButtonPort);
-
+}
+bool Controls::GetCollectorButton()//Has the driver pressed the collect button
+{
+	//check the button
+	return auxIO->GetDigital(CollectButtonPort);
 }
 void Controls::SetFireLED(bool val)//Turn the Fire button LED on or off
 {

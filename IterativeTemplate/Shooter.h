@@ -21,8 +21,8 @@ public:
 	Shooter();//Initialize the shoooter
 	void shoot();//determine if we need to shoot
 private:
+	Timer *waitTimer; //Wait between release and recover
 	void runShootMotor(); //execute a shot
-	double	waitStart; //time when we released the ball
 	aimState aState; //Aiming state
 	fireState fState; //shooting state
 };

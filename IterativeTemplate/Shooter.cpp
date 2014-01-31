@@ -12,6 +12,7 @@ const double waitTime=0;
 Shooter::Shooter(){
 	aState=notAimed;
 	fState=off;
+	waitTimer=new Timer();
 }
 
 void Shooter::shoot()
@@ -65,7 +66,9 @@ void Shooter::runShootMotor(){//Execute the shot
 			if(hasHitRelease){//If we have hit the relase point
 				Hardware::ShooterMotor->Set(0);//Turn the motor off
 				fState=waiting;//we now need to wait  a bit
-				waitStart=0;//Time we entered the waiting state      TODO:Replace with current time
+				//Start the timer
+				waitTimer->Reset();
+				waitTimer->Start();
 			}
 			else{
 				double maxSpeed=((aState==shooting)?targetSpeed:trussSpeed);//Don't go to fast
@@ -74,8 +77,8 @@ void Shooter::runShootMotor(){//Execute the shot
 			}
 		}break;
 		case waiting:{
-			double time=0;//TODO: Replace with current time
-			if(time-waitStart>waitTime){//If we waited long enough
+			if(waitTimer->HasPeriodPassed(waitTime)){//If we waited long enough
+				waitTimer->Stop();
 				fState=recovering;//Enter the recovering state
 			}
 		}break;

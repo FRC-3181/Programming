@@ -2,6 +2,8 @@
 #include "Hardware.h"
 #include "Controls.h"
 #include "DriveSystem.h"
+#include "Shooter.h"
+#include "BallCollector.h"
 /**
  * This is a demo program showing the use of the RobotBase class.
  * The IterativeRobot class is the base of a robot application that will automatically call your
@@ -12,6 +14,8 @@ class RobotDemo : public IterativeRobot
 {
 public:
 	DriveSystem *driveSys;
+	Shooter *shooter;
+	BallCollector *collector;
 	RobotDemo()
 	{
 		this->SetPeriod(0); 	//Set update period to sync with robot control packets (20ms nominal)
@@ -28,6 +32,8 @@ public:
 		Hardware::Init();
 		Controls::Init();
 		driveSys=new DriveSystem();
+		shooter=new Shooter();
+		collector=new BallCollector();
 
 	}
 	
@@ -72,6 +78,7 @@ public:
 	{
 		Controls::autoDriver->drive();
 		driveSys->drive();
+		shooter->shoot();
 	}
 	
 	/**
@@ -95,6 +102,8 @@ public:
 	void RobotDemo::TeleopPeriodic()
 	{
 		driveSys->drive();//Tell Drive System to drive robot
+		shooter->shoot();
+		collector->collect();
 	}
 	
 	/**

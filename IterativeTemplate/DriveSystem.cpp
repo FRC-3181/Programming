@@ -7,9 +7,9 @@
 const double corSpeed=0.3;
 
 //Constants to adjust the speeds of the motors based on resistance
-const double kFL=-1;
+const double kFL=1;
 const double kFR=1;
-const double kBL=-1;
+const double kBL=1;
 const double kBR=1;
 
 
