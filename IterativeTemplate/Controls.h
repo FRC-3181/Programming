@@ -27,7 +27,7 @@ private:
 	static double GetDriveThrottle();//Amount drive Values are throttled
 	//Controls for the driver
 	static Joystick *driveStick;//Joystick
-	static DriverSationEnhancedIO *auxIO;//Cypress Module
+//	static DriverSationEnhancedIO *auxIO;//Cypress Module
 
 };
 #endif
