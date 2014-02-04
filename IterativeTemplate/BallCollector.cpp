@@ -9,7 +9,8 @@ const double downSpeed=-0.5;
 const double spinSpeed=0.5;
 const double waitTime=0;
 const double finishTime=0;
-
+const double lowPot=0;
+const double highPot=1;
 
 BallCollector::BallCollector(){
 	state=off;
@@ -17,10 +18,15 @@ BallCollector::BallCollector(){
 }
 
 void BallCollector::collect(){//Pick up the ball
-	switch (fState){
+	switch (state){
 		case off:
 			if(Controls::GetCollectorButton()){
-				Hardware::CollectorSpin->Set(spinSpeed);
+				Hardware::CollectorSpin->Set(1);
+				Hardware::CollectorRaise->Set(-0.05);
+				state=lowering;
+			}
+			else if(Controls::GetRejectButton()){
+				Hardware::CollectorSpin->Set(-1);
 				Hardware::CollectorRaise->Set(-0.05);
 				state=lowering;
 			}
@@ -32,8 +38,7 @@ void BallCollector::collect(){//Pick up the ball
 			break;
 
 		case lowering:{
-			bool hasHitRelease=false;//Have we hit the stopping point?      TODO: Use encoder to determine this
-			if(hasHitRelease){//If we have hit the relase point
+			if(Hardware::collectPot->Get()<=lowPot){//If we have hit the relase point
 				Hardware::CollectorRaise->Set(0);//Turn the motor off
 				state=waiting;//we now need to wait  a bit
 				//Start the timer
@@ -43,9 +48,6 @@ void BallCollector::collect(){//Pick up the ball
 			else{
 				if(Hardware::CollectorRaise->Get()<=downSpeed)Hardware::CollectorRaise->Set(downSpeed);//If we are at top speed, stay there
 				else Hardware::CollectorRaise->Set(Hardware::CollectorRaise->Get()-0.05);//If not, go up a bit
-				
-				if(Hardware::CollectorSpin->Get()>=spinSpeed)Hardware::CollectorSpin->Set(spinSpeed);//If we are at top speed, stay there
-				else Hardware::CollectorSpin->Set(Hardware::CollectorSpin->Get()+0.05);//If not, go up a bit
 			}
 		}break;
 		case waiting:{
@@ -55,8 +57,7 @@ void BallCollector::collect(){//Pick up the ball
 			}
 		}break;
 		case raising:{
-			bool hasHitRelease=false;//Have we hit the stopping point?      TODO: Use encoder to determine this
-			if(hasHitRelease){//If we have hit the relase point
+			if(Hardware::collectPot->Get()>=highPot){//If we have hit the relase point
 				Hardware::CollectorRaise->Set(0);//Turn the motor off
 				state=finishing;//we now need to wait  a bit
 				//Start the timer

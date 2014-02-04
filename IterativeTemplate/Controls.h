@@ -16,6 +16,7 @@ public:
 	static bool GetGyroReset();//Reset Gyro?
 	//Shooter  and Collector
 	static bool GetCollectorButton();//Driver pressed button to pick up a ball.
+	static bool GetRejectButton();//Driver pressed button to pick up a ball.
 	static bool GetFireButton(); //Driver pressed the button to shoot at the target
 	static bool IsTrussMode(); //Driver pressed the button to shoot over the truss
 	static bool IsTargetMode(); //Robot is in Aiming/Shooting Mode

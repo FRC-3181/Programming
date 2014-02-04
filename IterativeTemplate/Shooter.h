@@ -25,6 +25,7 @@ private:
 	void runShootMotor(); //execute a shot
 	aimState aState; //Aiming state
 	fireState fState; //shooting state
+	double shotSpeed;
 };
 
 #endif

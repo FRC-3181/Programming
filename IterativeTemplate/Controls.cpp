@@ -12,6 +12,8 @@ const int targetModePort=0; //Button for target mode
 const int trussModePort=0; //button for truss mode
 const int FireButtonPort=0; //Button to launch the ball
 const int CollectButtonPort=0; //Button to launch the ball
+const int RejectButtonPort=0; //Button to launch the ball
+
 const int LEDPort=0; //LED to light up button for launching
 
 void Controls::Init()
@@ -70,6 +72,11 @@ bool Controls::GetCollectorButton()//Has the driver pressed the collect button
 {
 	//check the button
 	return auxIO->GetDigital(CollectButtonPort);
+}
+bool Controls::GetRejectButton()//Has the driver pressed the collect button
+{
+	//check the button
+	return auxIO->GetDigital(RejectButtonPort);
 }
 void Controls::SetFireLED(bool val)//Turn the Fire button LED on or off
 {
