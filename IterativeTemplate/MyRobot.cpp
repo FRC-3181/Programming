@@ -102,8 +102,8 @@ public:
 	void RobotDemo::TeleopPeriodic()
 	{
 		driveSys->drive();//Tell Drive System to drive robot
-		shooter->shoot();
-		collector->collect();
+		shooter->shoot(); //Tell shooter to shoot if needed
+		collector->collect(); //Tell Collector to collect
 	}
 	
 	/**

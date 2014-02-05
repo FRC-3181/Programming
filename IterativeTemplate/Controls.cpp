@@ -2,30 +2,15 @@
 
 //Set up stuff
 Joystick *Controls::driveStick=NULL;
-//DriverSationEnhancedIO *Controls::auxIO=NULL;
 bool Controls::isAutonomous=false;
-TargetMode Controls::tMode=0;
 
 AutonomousDriver *Controls::autoDriver=NULL;
 
 const int gyroResetButton=6;
-const int trussModeButton=3;
-const int targetMoeButton=4;
-const int collectButton=2;
-const int rejectButton=5;
-/*
-const int targetModePort=0; //Button for target mode
-const int trussModePort=0; //button for truss mode
-const int FireButtonPort=0; //Button to launch the ball
-const int CollectButtonPort=0; //Button to launch the ball
-const int RejectButtonPort=0; //Button to launch the ball
 
-const int LEDPort=0; //LED to light up button for launching
-*/
 void Controls::Init()
 {
 	driveStick=new Joystick(1); //Drive Joystick
-//	auxIO=DriverSation::GetInstance->GetEnhancedIO(); //Cypress Module
 	isAutonomous=true;
 	autoDriver=new AutonomousDriver();
 }
@@ -57,44 +42,21 @@ double Controls::GetDriveThrottle()//Throttle for drivng
 	return (1-driveStick->GetThrottle)/2;
 }
 //Shooter and collector
-bool Controls::IsTargetMode()//Has the driver activated target mode
-{
-	//If we are in autonomous, ask the auto driver if we should prepare to fire
-	//If we are in Teleop, check the input
-	return isAutonomous?autoDriver->ShouldStartAiming():driveStick->GetRawButton(targetMoeButton);
-}
-bool Controls::IsTrussMode()//Has the driver activated truss mode
-{
-	//check the input
-	return driveStick->GetRawButton(trussModeButton);
-}
 bool Controls::GetFireButton()//Has the driver pressed the fire button
 {
 	//If we have are in Autonomous, ask the auto driver if we should fire
 	//If we are in teleop, check the fire button
-	if (isAutonomous?autoDriver->GetShoot():driveStick->GetTrigger()) {
-		DriverSationLCD::GetInstance()->PrintfLine(kUser_Line1,"");
-		DriverSationLCD::GetInstance()->UpdateLCD();
-		return true;
-	}
-	return false;
+	return isAutonomous?autoDriver->GetShoot():driveStick->GetTrigger();
 }
-bool Controls::GetCollectorButton()//Has the driver pressed the collect button
+int Controls::GetCollectorSpin()//Should we spin the collector?
 {
 	//check the button
-	return driveStick->GetRawButton(collectButton);
+	return driveStick->GetRawAxis(5);
 }
-bool Controls::GetRejectButton()//Has the driver pressed the collect button
+int Controls::GetCollectorRaise()//Should we raise the collector?
 {
 	//check the button
-	return driveStick->GetRawButton(rejectButton);
-}
-void Controls::SetFireLED(bool val)//Turn the Fire button LED on or off
-{
-	DriverSationLCD::GetInstance()->PrintfLine(kUser_Line1,"READY TO FIRE");
-	DriverSationLCD::GetInstance()->UpdateLCD();
-	//auxIO->SetDigitalOutput(LEDPort,val);
-	
+	return driveStick->GetRawAxis(6);
 }
 
 

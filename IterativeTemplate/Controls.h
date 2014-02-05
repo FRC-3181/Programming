@@ -15,19 +15,15 @@ public:
 	static double GetDriveR(); //Rotation for driving
 	static bool GetGyroReset();//Reset Gyro?
 	//Shooter  and Collector
-	static bool GetCollectorButton();//Driver pressed button to pick up a ball.
-	static bool GetRejectButton();//Driver pressed button to pick up a ball.
+	static int GetCollectorSpin();//Driver pressed buttons spin collector
+	static int GetCollectorRaise();//Driver pressed buttons to raise and lower collector
 	static bool GetFireButton(); //Driver pressed the button to shoot at the target
-	static bool IsTrussMode(); //Driver pressed the button to shoot over the truss
-	static bool IsTargetMode(); //Robot is in Aiming/Shooting Mode
-	static void SetFireLED(bool); //Turn Fire LED off
 
 	
 private:
 	static double GetDriveThrottle();//Amount drive Values are throttled
 	//Controls for the driver
 	static Joystick *driveStick;//Joystick
-//	static DriverSationEnhancedIO *auxIO;//Cypress Module
 
 };
 #endif

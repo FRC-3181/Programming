@@ -7,12 +7,12 @@ SpeedController* Hardware::DriveFR = NULL;
 SpeedController* Hardware::DriveBR = NULL;
 SpeedController* Hardware::ShooterLeft = NULL;
 SpeedController* Hardware::ShooterRight = NULL;
-SpeedController* Hardware::CollectorSpin = NULL;
+SpeedController* Hardware::CollectorSpinL = NULL;
+SpeedController* Hardware::CollectorSpinR = NULL;
 SpeedController* Hardware::CollectorRaise = NULL;
 
 Gyro *Hardware::DriveGyro = NULL;
-AnalogPotentiometer * Hardware::shotPot = NULL;
-AnalogPotentiometer * Hardware::collectPot = NULL;
+AnalogChannel * Hardware::shotPot = NULL;
 
 
 void Hardware::Init()
@@ -21,13 +21,12 @@ void Hardware::Init()
 	DriveBR = new Talon(3);
 	DriveBL = new Talon(4);
 	DriveFL = new Talon(1);
-	ShooterLeft = new Talon(7);
-	ShooterRight = new Talon(8);
-	CollectorSpin = new Victor(5);
-	CollectorRaise = new Victor(6);
+	ShooterLeft = new Talon(5);
+	ShooterRight = new Talon(6);
+	CollectorSpin = new Victor(7);
+	CollectorSpin = new Victor(8);
+	CollectorRaise = new Victor(9);
 
 	DriveGyro = new Gyro(1);
 	shotPot = new AnalogChannel(2);
-	collectPot = new AnalogChannel(3);
-
 }
