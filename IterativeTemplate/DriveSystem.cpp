@@ -13,39 +13,56 @@ const double kBL=1;
 const double kBR=1;
 
 
+DriveSystem::DriveSystem(SpeedController* frontLeft,SpeedController* frontRight,SpeedController* backLeft,SpeedController* backRight,Gyro* gyro){
+	m_fl=frontLeft;
+	m_fr=frontRight;
+	m_bl=backLeft;
+	m_br=backRight;
+	rotGyro=gyro;
+}
+
+
 void DriveSystem::drive()
 {
 	//Get Control Values
 	double x=Controls::GetDriveX();
 	double y=Controls::GetDriveY();
 	double r=Controls::GetDriveR();
-	//Rotate to Face target if aiming
-	if(Controls::IsTargetMode()&&fabs(DriveSystem::gyroAngle())>=0.1745){//If we are in target mode and not close enough to forward
-		r=-corSpeed*DriveSystem::gyroAngle();//Change the R value
-		x=0;//If we are correcting we should not translate
-		y=0;
-	}
-	//Rotate Axes
-	double xTemp=x, yTemp=y, angle=DriveSystem::gyroAngle();//Get the angle for the gyro and copy the x and y values
-	x=xTemp*cos(angle)-yTemp*sin(angle);//x=x0*cos(theta)+y0*sin(theta)
-	y=yTemp*cos(angle)+xTemp*sin(angle);//y=y0*cos(theta)-x0*sin(theta)
+	//Rotate Axes and scale controls
+	DriveSystem::rotateAxes(x,y,gyroAngle());
+	DriveSystem::scaleComponents(x,y,r);
 	//Do Some Math to determine wheel values
-	double scale=fabs(x)+fabs(y)+fabs(r);//Scale back wheels if the joystick values are to high
-	scale=(scale>1)?1/scale:1;
 	double fl=y+x-r;//front left likes to go Forward, left, and CW
 	double fr=y-x+r;//Front right likes to go forward, right, and CCW
 	double bl=y-x-r;//Back left likes to go Forward, right, and CW
 	double br=y+x+r;//Back right likes to go Forward, left, and  CCW
 	//Set Motor Values
-	Hardware::DriveFL->Set(kFL*scale*fl);//Constant for Motor * scale for all motors * calculated value
-	Hardware::DriveFR->Set(kFR*scale*fr);
-	Hardware::DriveBL->Set(kBL*scale*bl);
-	Hardware::DriveBR->Set(kBR*scale*br);
+	m_fl->Set(kFL*fl);
+	m_fr->Set(kFR*fr);
+	m_bl->Set(kBL*bl);
+	m_br->Set(kBR*br);
+}
+double DriveSystem::rotateAxes(double &x,double &y,double rotationAngle){
+	double xRot=x*cos(rotationAngle)-y*sin(rotationAngle);
+	double yRot=y*cos(rotationAngle)+x*sin(rotationAngle);
+	x=xRot;
+	y=yRot;
+}
+double DriveSystem::scaleComponents(double &x,double &y, double &r){
+	//Determine the scale
+	double scale=fabs(x)+fabs(y)+fabs(r);
+	scale=(scale>1)?1/scale:1;
+	//Scale values
+	x*=scale;
+	y*=scale;
+	r*=scale;
 }
 double DriveSystem::gyroAngle()//Get the angle we have turned
 {
-	if(Controls::GetGyroReset())Hardware::DriveGyro->Reset();
-	int angle=(int)Hardware::DriveGyro->GetAngle();//Read the gyro angle
+	//Reset Gyro if desired
+	if(Controls::GetGyroReset())rotGyro->Reset();
+	//Read the gyro angle
+	int angle=(int)rotGyro->GetAngle();
 	//Get it in desired range
 	angle%=360;
 	//Convert from degrees to radians

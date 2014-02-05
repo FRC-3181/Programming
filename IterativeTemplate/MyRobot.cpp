@@ -13,9 +13,6 @@
 class RobotDemo : public IterativeRobot
 {
 public:
-	DriveSystem *driveSys;
-	Shooter *shooter;
-	BallCollector *collector;
 	RobotDemo()
 	{
 		this->SetPeriod(0); 	//Set update period to sync with robot control packets (20ms nominal)
@@ -31,9 +28,6 @@ public:
 	{
 		Hardware::Init();
 		Controls::Init();
-		driveSys=new DriveSystem();
-		shooter=new Shooter();
-		collector=new BallCollector();
 
 	}
 	
@@ -77,8 +71,8 @@ public:
 	void RobotDemo::AutonomousPeriodic()
 	{
 		Controls::autoDriver->drive();
-		driveSys->drive();
-		shooter->shoot();
+		Hardware::driveSys->drive();
+		Hardware::shooter->shoot();
 	}
 	
 	/**
@@ -90,7 +84,6 @@ public:
 	void RobotDemo::TeleopInit()
 	{
 		Controls::isAutonomous=false;
-		Hardware::DriveGyro->Reset();
 	}
 	
 	/**
@@ -101,9 +94,9 @@ public:
 	*/
 	void RobotDemo::TeleopPeriodic()
 	{
-		driveSys->drive();//Tell Drive System to drive robot
-		shooter->shoot(); //Tell shooter to shoot if needed
-		collector->collect(); //Tell Collector to collect
+		Hardware::driveSys->drive();//Tell Drive System to drive robot
+		Hardware::shooter->shoot(); //Tell shooter to shoot if needed
+		Hardware::collector->collect(); //Tell Collector to collect
 	}
 	
 	/**

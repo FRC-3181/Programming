@@ -5,7 +5,13 @@
 class DriveSystem
 {
 public:
+	DriveSystem(SpeedController* frontLeft,SpeedController* frontRight,SpeedController* backLeft,SpeedController* backRight,Gyro* gyro);
 	void drive(); //Adjust the wheel values to whatever the controls request
-	static double gyroAngle();//Deterimine the angle that we have turned
+private:
+	SpeedController* m_fl,m_fr,m_bl,m_br;
+	Gyro *rotGyro;
+	double gyroAngle();//Deterimine the angle that we have turned
+	static double rotateAxes(double &x,double &y,double rotationAngle);
+	static double scaleComponents(double &x,double &y, double &r);
 };
 #endif

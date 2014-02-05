@@ -1,8 +1,5 @@
 #include "Shooter.h"
 #include "Controls.h"
-#include "Hardware.h"
-#include "DriveSystem.h"
-#include <math.h>
 
 const double targetSpeed=1;
 const double trussSpeed=0.5;
@@ -11,7 +8,10 @@ const double waitTime=0;
 const double potRelease=1.0;
 const double potReset=0.0;
 
-Shooter::Shooter(){
+Shooter::Shooter(SpeedController *left,SpeedController *right,AnalogChannel *pot){
+	m_l=left;
+	m_r=right;
+	potentiometer=pot;
 	state=off;
 	waitTimer=new Timer();
 }
@@ -24,16 +24,16 @@ void Shooter::shoot()
 				//Start Aiming
 				state=Aiming;
 			}
-			Hardware::ShooterLeft->Set(0);//Turn left motor off
-			Hardware::ShooterRight->Set(0);//Turn right motor off
+			m_l->Set(0);//Turn left motor off
+			m_r->Set(0);//Turn right motor off
 			break;
 		case Aiming:
 			break;
 		case firing:{
-			if(Hardware::shotPot->Get()>=potRelease){//If we have hit the relase point
+			if(potentiometer->Get()>=potRelease){//If we have hit the relase point
 				shotSpeed=0;
-				Hardware::ShooterLeft->Set(0);//Turn left motor off
-				Hardware::ShooterRight->Set(0);//Turn right motor off
+				m_l->Set(0);//Turn left motor off
+				m_r->Set(0);//Turn right motor off
 				fState=waiting;//we now need to wait  a bit
 				//Start the timer
 				waitTimer->Reset();
@@ -48,8 +48,8 @@ void Shooter::shoot()
 					shotSpeed+=0.05;//Ramp motor up a bit
 				}
 				//Set motor speeds
-				Hardware::ShooterLeft->Set(shotSpeed);
-				Hardware::ShooterRight->Set(shotSpeed);
+				m_l->Set(shotSpeed);
+				m_r->Set(shotSpeed);
 			}
 		}break;
 		case waiting:{
@@ -59,10 +59,10 @@ void Shooter::shoot()
 			}
 		}break;
 		case recovering:{
-			if(Hardware::pot->Get()<=potReset){//If we have come all the way down
+			if(potentiometer>Get()<=potReset){//If we have come all the way down
 				shotSpeed=0;
-				Hardware::ShooterLeft->Set(0);//Turn left motor off
-				Hardware::ShooterRight->Set(0);//Turn right motor off
+				m_l->Set(0);//Turn left motor off
+				m_r->Set(0);//Turn right motor off
 				fState=off; //we are done shooting
 				aState=notAimed;
 			}
@@ -75,8 +75,8 @@ void Shooter::shoot()
 					shotSpeed+=0.05;//Ramp motor up a bit
 				}
 				//Set motor speeds
-				Hardware::ShooterLeft->Set(shotSpeed);
-				Hardware::ShooterRight->Set(shotSpeed);
+				m_l->Set(shotSpeed);
+				m_r->Set(shotSpeed);
 			}
 		}break;
 	}
