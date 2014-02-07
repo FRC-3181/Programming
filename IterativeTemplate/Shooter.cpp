@@ -22,19 +22,19 @@ void Shooter::shoot()
 		case off:
 			if(Controls::GetFireButton()){
 				//Start Aiming
-				state=Aiming;
+				state=aiming;
 			}
 			m_l->Set(0);//Turn left motor off
 			m_r->Set(0);//Turn right motor off
 			break;
-		case Aiming:
+		case aiming:
 			break;
 		case firing:{
-			if(potentiometer->Get()>=potRelease){//If we have hit the relase point
+			if(potentiometer->GetValue()>=potRelease){//If we have hit the relase point
 				shotSpeed=0;
 				m_l->Set(0);//Turn left motor off
 				m_r->Set(0);//Turn right motor off
-				fState=waiting;//we now need to wait  a bit
+				state=waiting;//we now need to wait  a bit
 				//Start the timer
 				waitTimer->Reset();
 				waitTimer->Start();
@@ -52,19 +52,18 @@ void Shooter::shoot()
 				m_r->Set(shotSpeed);
 			}
 		}break;
-		case waiting:{
+		case waiting:
 			if(waitTimer->HasPeriodPassed(waitTime)){//If we waited long enough
 				waitTimer->Stop();
-				fState=recovering;//Enter the recovering state
+				state=recovering;//Enter the recovering state
 			}
-		}break;
+		break;
 		case recovering:{
-			if(potentiometer>Get()<=potReset){//If we have come all the way down
+			if(potentiometer->GetValue()<=potReset){//If we have come all the way down
 				shotSpeed=0;
 				m_l->Set(0);//Turn left motor off
 				m_r->Set(0);//Turn right motor off
-				fState=off; //we are done shooting
-				aState=notAimed;
+				state=off; //we are done shooting
 			}
 			else{
 				double maxSpeed=(trussShooting?trussSpeed:targetSpeed);//Don't go to fast
