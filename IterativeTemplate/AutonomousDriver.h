@@ -6,11 +6,10 @@ class AutonomousDriver
 {
 public:
 	AutonomousDriver();
-	void drive();
-	double GetDriveX();//Get the X value for driving
+	void startTimer();
 	double GetDriveY();//Get the Y value for driving
-	double GetDriveR();//Get the rotation for driving
 	bool ShouldShoot();//Should we fire the ball
-	bool ShouldStartAiming();//Should we begin aiming our shot
+private:
+	Timer *driveTimer;
 };
 #endif

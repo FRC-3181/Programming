@@ -60,6 +60,7 @@ public:
 	void RobotDemo::AutonomousInit()
 	{
 		Controls::isAutonomous=true;
+		Controls::autoDriver->startTimer();
 	}
 	
 	/**
@@ -70,7 +71,6 @@ public:
 	*/
 	void RobotDemo::AutonomousPeriodic()
 	{
-		Controls::autoDriver->drive();
 		Hardware::driveSys->drive();
 		Hardware::shooter->shoot();
 	}

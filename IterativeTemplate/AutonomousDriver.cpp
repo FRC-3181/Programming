@@ -1,27 +1,20 @@
 #include "Controls.h"
-// THIS CLASS Still needs to be implemented
+
+const double driveTime=3000;
+const double driveSpeed=0.5;
+
 AutonomousDriver::AutonomousDriver()
 {
-	
+	driveTimer=new Timer();
 }
-void drive(){//Change any necessary values to prepare for Robot code execution
-	
-}
-double AutonomousDriver::GetDriveX()//Get X for driving
-{
-	return 0;
+void startTimer(){//Start the timer
+	driveTimer->Reset();
+	driveTimer->Start();
 }
 double AutonomousDriver::GetDriveY()//Get Y for driving
 {
-	return 1;
-}
-double AutonomousDriver::GetDriveR()//Get Rotation for driving
-{
-	return 0;
+	return driveTimer->Get()<=driveTime?driveSpeed:0;
 }
 bool AutonomousDriver::ShouldShoot(){ //Should we shoot
-	return false;
-}
-bool AutonomousDriver::ShouldStartAiming(){ //Should we start aiming
-	return false;
+	return driveTime->Get()>driveTime;
 }

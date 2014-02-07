@@ -18,19 +18,19 @@ void Controls::Init()
 double Controls::GetDriveX()//X value for driving (side to side)
 {
 	//If autonomous, ask the Autonomous driver. Otherwise get the throttle-adjusted X value from the Joystick
-	return isAutonomous?autoDriver->GetDriveX():GetDriveThrottle()*driveStick->GetX();
+	return isAutonomous?0:GetDriveThrottle()*driveStick->GetX();
 }
 double Controls::GetDriveY() //Y value for driving (forward and backward)
 {
 	//If we are aiming, there should be no Y value
 	//If autonomous, ask the Autonomous driver. Otherwise get the throttle-adjusted Y value from the Joystick
-	return isAiming?0:(isAutonomous?autoDriver->GetDriveY():GetDriveThrottle()*driveStick->GetY());
+	return isAutonomous?autoDriver->GetDriveY():GetDriveThrottle()*driveStick->GetY();
 }
 double Controls::GetDriveR()//Rotation value for driving
 {
 	//If we are aiming, there should be no Rotation value
 	//If autonomous, ask the Autonomous driver. Otherwise get the throttle-adjusted Rotation value from the Joystick
-	return isAiming?0:(isAutonomous?autoDriver->GetDriveR():GetDriveThrottle()*driveStick->GetTwist());
+	return isAutonomous?0:GetDriveThrottle()*driveStick->GetTwist();
 }
 double Controls::GetGyroReset()
 {
