@@ -52,7 +52,7 @@ void Shooter::shoot()
 				m_r->Set(shotSpeed);
 			}
 		}break;
-		case waiting:{
+		case waiting:
 			if(waitTimer->HasPeriodPassed(waitTime)){//If we waited long enough
 				waitTimer->Stop();
 				state=recovering;//Enter the recovering state
@@ -78,6 +78,6 @@ void Shooter::shoot()
 				m_r->Set(shotSpeed);
 			}
 		}break;
-		}
 	}
+	
 }

@@ -78,6 +78,6 @@ void Shooter::shoot()
 				m_r->Set(shotSpeed);
 			}
 		}break;
-		}
 	}
+	
 }
