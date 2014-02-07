@@ -11,7 +11,7 @@ void _GLOBAL__I__Z20FRC_userClassFactoryv();
 
 void _GLOBAL__I__ZN16AutonomousDriverC2Ev();
 
-void _GLOBAL__I__ZN7ShooterC2Ev();
+void _GLOBAL__I__ZN7ShooterC2EP15SpeedControllerS1_P13AnalogChannel();
 
 void _GLOBAL__I__ZN8Hardware7DriveFLE();
 
@@ -72,7 +72,7 @@ void (*_ctors[])() =
     {
     _GLOBAL__I__Z20FRC_userClassFactoryv,
     _GLOBAL__I__ZN16AutonomousDriverC2Ev,
-    _GLOBAL__I__ZN7ShooterC2Ev,
+    _GLOBAL__I__ZN7ShooterC2EP15SpeedControllerS1_P13AnalogChannel,
     _GLOBAL__I__ZN8Hardware7DriveFLE,
     _GLOBAL__I__ZN12PrintCommandC2EPKc,
     _GLOBAL__I__ZN9Scheduler9_instanceE,
@@ -107,7 +107,7 @@ void _GLOBAL__D__Z20FRC_userClassFactoryv();
 
 void _GLOBAL__D__ZN16AutonomousDriverC2Ev();
 
-void _GLOBAL__D__ZN7ShooterC2Ev();
+void _GLOBAL__D__ZN7ShooterC2EP15SpeedControllerS1_P13AnalogChannel();
 
 void _GLOBAL__D__ZN8Hardware7DriveFLE();
 
@@ -158,7 +158,7 @@ void (*_dtors[])() =
     {
     _GLOBAL__D__Z20FRC_userClassFactoryv,
     _GLOBAL__D__ZN16AutonomousDriverC2Ev,
-    _GLOBAL__D__ZN7ShooterC2Ev,
+    _GLOBAL__D__ZN7ShooterC2EP15SpeedControllerS1_P13AnalogChannel,
     _GLOBAL__D__ZN8Hardware7DriveFLE,
     _GLOBAL__D__ZN9Scheduler9_instanceE,
     _GLOBAL__D_wpi_error_s_ModuleIndexOutOfRange,

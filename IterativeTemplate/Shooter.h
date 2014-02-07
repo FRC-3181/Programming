@@ -17,7 +17,7 @@ public:
 	shooterState state; //shooting state
 	bool trussShooting;//are we passing over the truss
 private:
-	SpeedController* m_l, m_r;//Motors for shooting
+	SpeedController *m_l, *m_r;//Motors for shooting
 	AnalogChannel *potentiometer;//potentiometer for determining release point
 	Timer *waitTimer; //Wait between release and recover
 	double shotSpeed;
