@@ -17,4 +17,4 @@ double AutonomousDriver::GetDriveY()//Get Y for driving
 }
 bool AutonomousDriver::ShouldShoot(){ //Should we shoot
 	return driveTime->Get()>driveTime;
-}
+} 

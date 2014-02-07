@@ -35,7 +35,7 @@ double Controls::GetDriveR()//Rotation value for driving
 double Controls::GetGyroReset()
 {
 	return driveStick->GetRawButton(gyroResetButton);
-}
+} 
 double Controls::GetDriveThrottle()//Throttle for drivng
 {
 	//Get Throttle returns -1 for full up and 1 for full down, convert this to 1 for full up and 0 for full down
