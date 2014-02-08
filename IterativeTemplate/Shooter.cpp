@@ -1,8 +1,7 @@
 #include "Shooter.h"
 #include "Controls.h"
+#include "Vision.h"
 
-const double targetSpeed=1;
-const double trussSpeed=0.5;
 const double recoverSpeed=-0.5;
 const double waitTime=0;
 const double potRelease=1.0;
@@ -11,6 +10,7 @@ const double potReset=0.0;
 Shooter::Shooter(SpeedController *left,SpeedController *right,AnalogChannel *pot){
 	m_l=left;
 	m_r=right;
+	fireSpeed=0;
 	potentiometer=pot;
 	state=off;
 	waitTimer=new Timer();
@@ -21,13 +21,12 @@ void Shooter::shoot()
 	switch (state){
 		case off:
 			if(Controls::GetFireButton()){
-				//Start Aiming
-				state=aiming;
+				//Aim
+				fireSpeed=Vision::FindPower();
+				state=firing;
 			}
 			m_l->Set(0);//Turn left motor off
 			m_r->Set(0);//Turn right motor off
-			break;
-		case aiming:
 			break;
 		case firing:{
 			if(potentiometer->GetValue()>=potRelease){//If we have hit the relase point
@@ -40,9 +39,8 @@ void Shooter::shoot()
 				waitTimer->Start();
 			}
 			else{
-				double maxSpeed=(trussShooting?trussSpeed:targetSpeed);//Don't go to fast
-				if(shotSpeed>=maxSpeed){//If we are at top speed, stay there
-					shotSpeed=maxSpeed;
+				if(shotSpeed>=fireSpeed){//If we are at top speed, stay there
+					shotSpeed=fireSpeed;
 				}
 				else{
 					shotSpeed+=0.05;//Ramp motor up a bit
@@ -66,12 +64,11 @@ void Shooter::shoot()
 				state=off; //we are done shooting
 			}
 			else{
-				double maxSpeed=(trussShooting?trussSpeed:targetSpeed);//Don't go to fast
-				if(shotSpeed>=maxSpeed){//If we are at top speed, stay there
-					shotSpeed=maxSpeed;
+				if(shotSpeed<=recoverSpeed){//If we are at top speed, stay there
+					shotSpeed=recoverSpeed;
 				}
 				else{
-					shotSpeed+=0.05;//Ramp motor up a bit
+					shotSpeed-=0.05;//Ramp motor up a bit
 				}
 				//Set motor speeds
 				m_l->Set(shotSpeed);

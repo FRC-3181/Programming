@@ -20,6 +20,8 @@
 		E713C0591882156B00B078CB /* Hardware.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Hardware.cpp; path = ../IterativeTemplate/Hardware.cpp; sourceTree = "<group>"; };
 		E713C05A1882156B00B078CB /* Hardware.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Hardware.h; path = ../IterativeTemplate/Hardware.h; sourceTree = "<group>"; };
 		E713C05B1882156B00B078CB /* MyRobot.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MyRobot.cpp; path = ../IterativeTemplate/MyRobot.cpp; sourceTree = "<group>"; };
+		E7237E4D18A6B272003CB339 /* Vision.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Vision.cpp; path = ../IterativeTemplate/Vision.cpp; sourceTree = "<group>"; };
+		E7237E4E18A6B272003CB339 /* Vision.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Vision.h; path = ../IterativeTemplate/Vision.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -39,6 +41,8 @@
 				CD3CBBD71884B41700D647CC /* BallCollector.cpp */,
 				CD3CBBD81884B41700D647CC /* AutonomousDriver.h */,
 				CD3CBBD91884B41700D647CC /* AutonomousDriver.cpp */,
+				E7237E4E18A6B272003CB339 /* Vision.h */,
+				E7237E4D18A6B272003CB339 /* Vision.cpp */,
 			);
 			sourceTree = "<group>";
 		};
