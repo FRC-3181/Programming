@@ -2,44 +2,49 @@
 #include "Controls.h"
 #include "Vision.h"
 
-const double recoverSpeed=-0.5;
-const double waitTime=0;
-const double potRelease=1.0;
-const double potReset=0.0;
+const double RECOVER_SPEED=-0.5;
+const double WAIT_TIME=0;
+const double POT_RELEASE=1.0;
+const double POT_RESET=0.0;
 
-Shooter::Shooter(SpeedController *left,SpeedController *right,AnalogChannel *pot){
+Shooter::Shooter(SpeedController *left,SpeedController *right,AnalogChannel *pot)
+{
 	m_l=left;
 	m_r=right;
 	fireSpeed=0;
 	potentiometer=pot;
-	state=off;
-	waitTimer=new Timer();
+	state = OFF;
+	waitTimer = new Timer();
 }
 
-void Shooter::shoot()
+void Shooter::Shoot()
 {
-	switch (state){
-		case off:
-			if(Controls::GetFireButton()){
+	switch (state)
+	{
+		case OFF:
+			if(Controls::GetFireButton())
+			{
 				//Aim
 				fireSpeed=Vision::FindPower();
-				state=firing;
+				state=FIRING;
 			}
 			m_l->Set(0);//Turn left motor off
 			m_r->Set(0);//Turn right motor off
 			break;
-		case firing:{
-			if(potentiometer->GetValue()>=potRelease){//If we have hit the relase point
+		case FIRING:{
+			if(potentiometer->GetValue()>=POT_RELEASE)//If we have hit the relase point
+			{
 				shotSpeed=0;
 				m_l->Set(0);//Turn left motor off
 				m_r->Set(0);//Turn right motor off
-				state=waiting;//we now need to wait  a bit
+				state=WAITING;//we now need to wait  a bit
 				//Start the timer
 				waitTimer->Reset();
 				waitTimer->Start();
 			}
 			else{
-				if(shotSpeed>=fireSpeed){//If we are at top speed, stay there
+				if(shotSpeed>=fireSpeed)//If we are at top speed, stay there
+				{
 					shotSpeed=fireSpeed;
 				}
 				else{
@@ -50,24 +55,28 @@ void Shooter::shoot()
 				m_r->Set(shotSpeed);
 			}
 		}break;
-		case waiting:{
-			if(waitTimer->HasPeriodPassed(waitTime)){//If we waited long enough
+		case WAITING:{
+			if(waitTimer->HasPeriodPassed(WAIT_TIME))//If we waited long enough
+			{
 				waitTimer->Stop();
-				state=recovering;//Enter the recovering state
+				state=RECOVERING;//Enter the recovering state
 			}
 		break;
-		case recovering:{
-			if(potentiometer->GetValue()<=potReset){//If we have come all the way down
+		case RECOVERING:{
+			if(potentiometer->GetValue()<=POT_RESET)//If we have come all the way down
+			{
 				shotSpeed=0;
 				m_l->Set(0);//Turn left motor off
 				m_r->Set(0);//Turn right motor off
-				state=off; //we are done shooting
+				state = OFF; //we are done shooting
 			}
 			else{
-				if(shotSpeed<=recoverSpeed){//If we are at top speed, stay there
-					shotSpeed=recoverSpeed;
+				if(shotSpeed<=RECOVER_SPEED)//If we are at top speed, stay there
+				{
+					shotSpeed=RECOVER_SPEED;
 				}
-				else{
+				else
+				{
 					shotSpeed-=0.05;//Ramp motor up a bit
 				}
 				//Set motor speeds

@@ -2,9 +2,9 @@
 
 
 //Static Variable Declarations
-DriveSystem* Hardware::driveSys=NULL;
-Shooter* Hardware::shooter=NULL;
-BallCollector* Hardware::collector=NULL;
+DriveSystem* Hardware::DriveSys = NULL;
+Shooter* Hardware::BallShooter = NULL;
+BallCollector* Hardware::Collector = NULL;
 
 SpeedController* Hardware::DriveFL = NULL;
 SpeedController* Hardware::DriveBL = NULL;
@@ -16,7 +16,7 @@ SpeedController* Hardware::CollectorSpinL = NULL;
 SpeedController* Hardware::CollectorSpinR = NULL;
 SpeedController* Hardware::CollectorRaise = NULL;
 Gyro *Hardware::DriveGyro = NULL;
-AnalogChannel * Hardware::shotPot = NULL;
+AnalogChannel * Hardware::ShotPotentiometer = NULL;
 
 
 void Hardware::Init()
@@ -33,10 +33,10 @@ void Hardware::Init()
 	CollectorSpinR = new Victor(8);
 	CollectorRaise = new Victor(9);
 	DriveGyro = new Gyro(1);
-	shotPot = new AnalogChannel(2);
+	ShotPotentiometer = new AnalogChannel(2);
 	
 	//Initialize subsystems
-	driveSys=new DriveSystem(DriveFL,DriveFR,DriveBL,DriveBR,DriveGyro);
-	shooter=new Shooter(ShooterLeft,ShooterRight,shotPot);
-	collector=new BallCollector(CollectorSpinL,CollectorSpinR,CollectorRaise);
+	DriveSys = new DriveSystem(DriveFL, DriveFR, DriveBL, DriveBR, DriveGyro);
+	BallShooter = new Shooter(ShooterLeft, ShooterRight, ShotPotentiometer);
+	Collector = new BallCollector(CollectorSpinL, CollectorSpinR, CollectorRaise);
 }

@@ -6,11 +6,10 @@ class AutonomousDriver
 {
 public:
 	AutonomousDriver();
-	void startTimer();
+	void StartTimer();
 	double GetDriveY();//Get the Y value for driving
 	bool ShouldShoot();//Should we fire the ball
 private:
-	Timer *driveTimer;
+	Timer* driveTimer;
 };
 #endif
- 

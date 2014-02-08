@@ -9,13 +9,19 @@
 
 void _GLOBAL__I__Z20FRC_userClassFactoryv();
 
+void _GLOBAL__I__ZN11DriveSystemC2EP15SpeedControllerS1_S1_S1_P4Gyro();
+
+void _GLOBAL__I__ZN13BallCollectorC2EP15SpeedControllerS1_S1_();
+
 void _GLOBAL__I__ZN16AutonomousDriverC2Ev();
 
 void _GLOBAL__I__ZN6Vision9FindPowerEv();
 
 void _GLOBAL__I__ZN7ShooterC2EP15SpeedControllerS1_P13AnalogChannel();
 
-void _GLOBAL__I__ZN8Hardware7DriveFLE();
+void _GLOBAL__I__ZN8Controls10DriveStickE();
+
+void _GLOBAL__I__ZN8Hardware8DriveSysE();
 
 void _GLOBAL__I__ZN12PrintCommandC2EPKc();
 
@@ -73,10 +79,13 @@ extern void (*_ctors[])();
 void (*_ctors[])() =
     {
     _GLOBAL__I__Z20FRC_userClassFactoryv,
+    _GLOBAL__I__ZN11DriveSystemC2EP15SpeedControllerS1_S1_S1_P4Gyro,
+    _GLOBAL__I__ZN13BallCollectorC2EP15SpeedControllerS1_S1_,
     _GLOBAL__I__ZN16AutonomousDriverC2Ev,
     _GLOBAL__I__ZN6Vision9FindPowerEv,
     _GLOBAL__I__ZN7ShooterC2EP15SpeedControllerS1_P13AnalogChannel,
-    _GLOBAL__I__ZN8Hardware7DriveFLE,
+    _GLOBAL__I__ZN8Controls10DriveStickE,
+    _GLOBAL__I__ZN8Hardware8DriveSysE,
     _GLOBAL__I__ZN12PrintCommandC2EPKc,
     _GLOBAL__I__ZN9Scheduler9_instanceE,
     _GLOBAL__I__ZN11WaitCommandC2Ed,
@@ -108,13 +117,19 @@ void (*_ctors[])() =
 
 void _GLOBAL__D__Z20FRC_userClassFactoryv();
 
+void _GLOBAL__D__ZN11DriveSystemC2EP15SpeedControllerS1_S1_S1_P4Gyro();
+
+void _GLOBAL__D__ZN13BallCollectorC2EP15SpeedControllerS1_S1_();
+
 void _GLOBAL__D__ZN16AutonomousDriverC2Ev();
 
 void _GLOBAL__D__ZN6Vision9FindPowerEv();
 
 void _GLOBAL__D__ZN7ShooterC2EP15SpeedControllerS1_P13AnalogChannel();
 
-void _GLOBAL__D__ZN8Hardware7DriveFLE();
+void _GLOBAL__D__ZN8Controls10DriveStickE();
+
+void _GLOBAL__D__ZN8Hardware8DriveSysE();
 
 void _GLOBAL__D__ZN9Scheduler9_instanceE();
 
@@ -162,10 +177,13 @@ extern void (*_dtors[])();
 void (*_dtors[])() =
     {
     _GLOBAL__D__Z20FRC_userClassFactoryv,
+    _GLOBAL__D__ZN11DriveSystemC2EP15SpeedControllerS1_S1_S1_P4Gyro,
+    _GLOBAL__D__ZN13BallCollectorC2EP15SpeedControllerS1_S1_,
     _GLOBAL__D__ZN16AutonomousDriverC2Ev,
     _GLOBAL__D__ZN6Vision9FindPowerEv,
     _GLOBAL__D__ZN7ShooterC2EP15SpeedControllerS1_P13AnalogChannel,
-    _GLOBAL__D__ZN8Hardware7DriveFLE,
+    _GLOBAL__D__ZN8Controls10DriveStickE,
+    _GLOBAL__D__ZN8Hardware8DriveSysE,
     _GLOBAL__D__ZN9Scheduler9_instanceE,
     _GLOBAL__D_wpi_error_s_ModuleIndexOutOfRange,
     _GLOBAL__D__ZN17MotorSafetyHelper12m_headHelperE,

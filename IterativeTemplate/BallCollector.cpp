@@ -3,19 +3,21 @@
 #include "Hardware.h"
 #include <math.h>
 
-const double rSpeed=1;
-const double sSpeed=1;
-BallCollector:BallCollector(SpeedController *spinL,SpeedController*spinR,SpeedController*raise){
-	m_spinL=spinL;
-	m_spinR=spinR;
-	m_raise=raise;
+const double RSPEED=1;
+const double SSPEED=1;
+BallCollector::BallCollector(SpeedController* spinL, SpeedController* spinR, SpeedController* raise)
+{
+	m_spinL = spinL;
+	m_spinR = spinR;
+	m_raise = raise;
 }
 
-void BallCollector::collect(){//Pick up the ball
+void BallCollector::Collect()//Pick up the ball
+{
 	//Set Spinner Speed
-	int spinDir=Controls::GetCollectorSpin()
-	m_spinL->Set(-sSpeed*spinDir);
-	m_spinR->Set(sSpeed*spinDir);
+	int spinDir = Controls::GetCollectorSpin();
+	m_spinL->Set(-SSPEED * spinDir);
+	m_spinR->Set(SSPEED * spinDir);
 	//Set raise/lower speed
-	m_raise->Set(rSpeed*Controls::GetCollectorRaise());
+	m_raise->Set(RSPEED * Controls::GetCollectorRaise());
 }

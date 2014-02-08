@@ -59,8 +59,8 @@ public:
 	*/
 	void RobotDemo::AutonomousInit()
 	{
-		Controls::isAutonomous=true;
-		Controls::autoDriver->startTimer();
+		Controls::IsAutonomous = true;
+		Controls::AutoDriver->StartTimer();
 	}
 	
 	/**
@@ -71,8 +71,8 @@ public:
 	*/
 	void RobotDemo::AutonomousPeriodic()
 	{
-		Hardware::driveSys->drive();
-		Hardware::shooter->shoot();
+		Hardware::DriveSys->Drive();
+		Hardware::BallShooter->Shoot();
 	}
 	
 	/**
@@ -83,7 +83,7 @@ public:
 	*/
 	void RobotDemo::TeleopInit()
 	{
-		Controls::isAutonomous=false;
+		Controls::IsAutonomous = false;
 	}
 	
 	/**
@@ -94,9 +94,9 @@ public:
 	*/
 	void RobotDemo::TeleopPeriodic()
 	{
-		Hardware::driveSys->drive();//Tell Drive System to drive robot
-		Hardware::shooter->shoot(); //Tell shooter to shoot if needed
-		Hardware::collector->collect(); //Tell Collector to collect
+		Hardware::DriveSys->Drive();//Tell Drive System to drive robot
+		Hardware::BallShooter->Shoot(); //Tell shooter to shoot if needed
+		Hardware::Collector->Collect(); //Tell Collector to collect
 	}
 	
 	/**
@@ -107,7 +107,7 @@ public:
 	*/
 	void RobotDemo::TestInit()
 	{
-		Controls::isAutonomous=false;
+		Controls::IsAutonomous=false;
 	}
 	
 	/**

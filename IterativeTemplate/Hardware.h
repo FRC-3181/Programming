@@ -9,29 +9,29 @@
 class Hardware
 {
 public:
-	static DriveSystem *driveSys;//Drive System
-	static Shooter *shooter;//Shooter
-	static BallCollector *collector;//Ball Collector
+	static DriveSystem* DriveSys;//Drive System
+	static Shooter* BallShooter;//Shooter
+	static BallCollector* Collector;//Ball Collector
 
 	static void Init();
 	
 private:
 	//Drive System Motors and Sensors
-	static SpeedController *DriveFL;
-	static SpeedController *DriveBL;
-	static SpeedController *DriveFR;
-	static SpeedController *DriveBR;
+	static SpeedController* DriveFL;
+	static SpeedController* DriveBL;
+	static SpeedController* DriveFR;
+	static SpeedController* DriveBR;
 	static Gyro * DriveGyro;
 	
 	//Shooter Motors and Sensors
-	static SpeedController *ShooterLeft;
-	static SpeedController *ShooterRight;
-	static AnalogChannel *shotPot;//Potentiometer
+	static SpeedController* ShooterLeft;
+	static SpeedController* ShooterRight;
+	static AnalogChannel* ShotPotentiometer;
 
 	//Collector Motors
-	static SpeedController *CollectorSpinL;
-	static SpeedController *CollectorSpinR;
-	static SpeedController *CollectorRaise;
+	static SpeedController* CollectorSpinL;
+	static SpeedController* CollectorSpinR;
+	static SpeedController* CollectorRaise;
 };
 
 #endif
