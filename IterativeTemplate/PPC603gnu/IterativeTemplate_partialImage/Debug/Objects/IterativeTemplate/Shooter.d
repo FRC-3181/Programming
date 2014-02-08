@@ -385,7 +385,8 @@ IterativeTemplate_partialImage/Debug/Objects/IterativeTemplate/Shooter.o:  \
   C:/WindRiver/vxworks-6.3/target/h/WPILib/Vision/ColorImage.h \
   C:/WindRiver/vxworks-6.3/target/h/WPILib/WPIErrors.h \
   C:/Users/Owner/Documents/GitHub/Programming/IterativeTemplate/Controls.h \
-  C:/Users/Owner/Documents/GitHub/Programming/IterativeTemplate/AutonomousDriver.h
+  C:/Users/Owner/Documents/GitHub/Programming/IterativeTemplate/AutonomousDriver.h \
+  C:/Users/Owner/Documents/GitHub/Programming/IterativeTemplate/Vision.h
 
 C:/Users/Owner/Documents/GitHub/Programming/IterativeTemplate/Shooter.h:
 
@@ -1158,3 +1159,5 @@ C:/WindRiver/vxworks-6.3/target/h/WPILib/WPIErrors.h:
 C:/Users/Owner/Documents/GitHub/Programming/IterativeTemplate/Controls.h:
 
 C:/Users/Owner/Documents/GitHub/Programming/IterativeTemplate/AutonomousDriver.h:
+
+C:/Users/Owner/Documents/GitHub/Programming/IterativeTemplate/Vision.h:

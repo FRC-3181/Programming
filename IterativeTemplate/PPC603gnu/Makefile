@@ -190,13 +190,18 @@ IterativeTemplate_partialImage/$(MODE_DIR)/Objects/IterativeTemplate/Shooter.o :
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
 
 
+IterativeTemplate_partialImage/$(MODE_DIR)/Objects/IterativeTemplate/Vision.o : $(PRJ_ROOT_DIR)/Vision.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
 OBJECTS_IterativeTemplate_partialImage = IterativeTemplate_partialImage/$(MODE_DIR)/Objects/IterativeTemplate/AutonomousDriver.o \
 	 IterativeTemplate_partialImage/$(MODE_DIR)/Objects/IterativeTemplate/BallCollector.o \
 	 IterativeTemplate_partialImage/$(MODE_DIR)/Objects/IterativeTemplate/Controls.o \
 	 IterativeTemplate_partialImage/$(MODE_DIR)/Objects/IterativeTemplate/DriveSystem.o \
 	 IterativeTemplate_partialImage/$(MODE_DIR)/Objects/IterativeTemplate/Hardware.o \
 	 IterativeTemplate_partialImage/$(MODE_DIR)/Objects/IterativeTemplate/MyRobot.o \
-	 IterativeTemplate_partialImage/$(MODE_DIR)/Objects/IterativeTemplate/Shooter.o
+	 IterativeTemplate_partialImage/$(MODE_DIR)/Objects/IterativeTemplate/Shooter.o \
+	 IterativeTemplate_partialImage/$(MODE_DIR)/Objects/IterativeTemplate/Vision.o
 
 IterativeTemplate_partialImage/$(MODE_DIR)/IterativeTemplate_partialImage.o : $(OBJECTS_IterativeTemplate_partialImage)
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc -r -nostdlib -Wl,-X  -o "$@" $(OBJECTS_IterativeTemplate_partialImage) $(LIBPATH) $(LIBS) $(ADDED_LIBPATH) $(ADDED_LIBS)  && if [ "$(EXPAND_DBG)" = "1" ]; then plink "$@";fi
@@ -212,7 +217,7 @@ force :
 
 DEP_FILES := IterativeTemplate_partialImage/$(MODE_DIR)/Objects/IterativeTemplate/AutonomousDriver.d IterativeTemplate_partialImage/$(MODE_DIR)/Objects/IterativeTemplate/BallCollector.d IterativeTemplate_partialImage/$(MODE_DIR)/Objects/IterativeTemplate/Controls.d \
 	 IterativeTemplate_partialImage/$(MODE_DIR)/Objects/IterativeTemplate/DriveSystem.d IterativeTemplate_partialImage/$(MODE_DIR)/Objects/IterativeTemplate/Hardware.d IterativeTemplate_partialImage/$(MODE_DIR)/Objects/IterativeTemplate/MyRobot.d \
-	 IterativeTemplate_partialImage/$(MODE_DIR)/Objects/IterativeTemplate/Shooter.d
+	 IterativeTemplate_partialImage/$(MODE_DIR)/Objects/IterativeTemplate/Shooter.d IterativeTemplate_partialImage/$(MODE_DIR)/Objects/IterativeTemplate/Vision.d
 -include $(DEP_FILES)
 
 

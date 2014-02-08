@@ -1,5 +1,4 @@
 #include "WPILib.h"
-#include "Shooter.h"
 #ifndef __VISION__
 #define __VISION__
 
@@ -11,3 +10,4 @@ public:
 private:
 	
 };
+#endif
