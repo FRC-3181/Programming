@@ -16,7 +16,8 @@ SpeedController* Hardware::CollectorSpinL = NULL;
 SpeedController* Hardware::CollectorSpinR = NULL;
 SpeedController* Hardware::CollectorRaise = NULL;
 Gyro *Hardware::DriveGyro = NULL;
-AnalogChannel * Hardware::ShotPotentiometer = NULL;
+DigitalInput* Hardware::UpperLimit=NULL;
+DigitalInput* Hardware::LowerLimit=NULL;
 
 
 void Hardware::Init()
@@ -33,10 +34,11 @@ void Hardware::Init()
 	CollectorSpinR = new Victor(8);
 	CollectorRaise = new Victor(9);
 	DriveGyro = new Gyro(1);
-	ShotPotentiometer = new AnalogChannel(2);
+	UpperLimit=new DigitalInput(1);
+	LowerLimit=new DigitalInput(2);
 	
 	//Initialize subsystems
 	DriveSys = new DriveSystem(DriveFL, DriveFR, DriveBL, DriveBR, DriveGyro);
-	BallShooter = new Shooter(ShooterLeft, ShooterRight, ShotPotentiometer);
+	BallShooter = new Shooter(ShooterLeft, ShooterRight, UpperLimit,LowerLimit);
 	Collector = new BallCollector(CollectorSpinL, CollectorSpinR, CollectorRaise);
 }

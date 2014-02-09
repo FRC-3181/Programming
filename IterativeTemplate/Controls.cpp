@@ -51,17 +51,15 @@ bool Controls::GetFireButton()//Has the driver pressed the fire button
 int Controls::GetCollectorSpin()//Should we spin the collector?
 {
 	//check the button
-	return DriveStick->GetRawAxis(5);
+	DriverStationLCD::GetInstance()->PrintFLine(kUser_Line1"%i",driveStick->GetRawAxis(5))
+	return driveStick->GetRawAxis(5);
 }
 int Controls::GetCollectorRaise()//Should we raise the collector?
 {
 	//check the button
-	return DriveStick->GetRawAxis(6);
+	DriverStationLCD::GetInstance()->PrintFLine(kUser_Line2"%i",driveStick->GetRawAxis(6))
+	return driveStick->GetRawAxis(6);
 }
-
-
-
-
 
 
 

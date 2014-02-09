@@ -4,19 +4,17 @@
 
 const double RECOVER_SPEED=-0.5;
 const double WAIT_TIME=0;
-const double POT_RELEASE=1.0;
-const double POT_RESET=0.0;
 
-Shooter::Shooter(SpeedController *left,SpeedController *right,AnalogChannel *pot)
-{
-	m_l=left;
-	m_r=right;
-	fireSpeed=0;
-	potentiometer=pot;
-	state = OFF;
-	waitTimer = new Timer();
-}
-
+Shooter::Shooter(SpeedController *left,SpeedController *right,DigitalInput *upper, DigitalInput *lower){
+}		m_l=left;
+		m_r=right;
+		ls_l=lower;
+		ls_r=upper;
+		shotSpeed=0;
+		fireSpeed=0;
+		state=off;
+		waitTimer=new Timer();
+	}
 void Shooter::Shoot()
 {
 	switch (state)
@@ -32,7 +30,7 @@ void Shooter::Shoot()
 			m_r->Set(0);//Turn right motor off
 			break;
 		case FIRING:{
-			if(potentiometer->GetValue()>=POT_RELEASE)//If we have hit the relase point
+			if(ls_u->Get()){//If we have hit the relase point
 			{
 				shotSpeed=0;
 				m_l->Set(0);//Turn left motor off
@@ -63,7 +61,7 @@ void Shooter::Shoot()
 			}
 		break;
 		case RECOVERING:{
-			if(potentiometer->GetValue()<=POT_RESET)//If we have come all the way down
+			if(ls_l->Get()){//If we have come all the way down
 			{
 				shotSpeed=0;
 				m_l->Set(0);//Turn left motor off

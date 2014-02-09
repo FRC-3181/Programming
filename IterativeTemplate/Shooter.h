@@ -11,7 +11,7 @@ enum shooterState { //stage in shooting the ball
 class Shooter
 {
 public:
-	Shooter(SpeedController *left,SpeedController *right,AnalogChannel *pot);//Initialize the shoooter
+	Shooter(SpeedController *left,SpeedController *right,DigitalInput *upper, DigitalInput *lower);//Initialize the shoooter
 	void Shoot();//determine if we need to shoot
 private:
 	//Fire information
@@ -22,7 +22,7 @@ private:
 	Timer* waitTimer; //Wait between release and recover
 	//Hardware
 	SpeedController *m_l, *m_r;//Motors for shooting
-	AnalogChannel* potentiometer;//potentiometer for determining release point
+	DigitalInput *ls_l,*ls_u;//Limit Switches for determining stopping point
 };
 
 #endif

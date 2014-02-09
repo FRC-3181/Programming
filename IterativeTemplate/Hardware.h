@@ -27,6 +27,9 @@ private:
 	static SpeedController* ShooterLeft;
 	static SpeedController* ShooterRight;
 	static AnalogChannel* ShotPotentiometer;
+	static DigitalInput* UpperLimit;
+	static DigitalInput* LowerLimit;
+
 
 	//Collector Motors
 	static SpeedController* CollectorSpinL;
