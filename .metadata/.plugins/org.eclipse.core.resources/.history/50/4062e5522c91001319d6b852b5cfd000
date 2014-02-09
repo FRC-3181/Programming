@@ -12,7 +12,7 @@ Shooter::Shooter(SpeedController *left,SpeedController *right,DigitalInput *uppe
 		ls_u=upper;
 		shotSpeed=0;
 		fireSpeed=0;
-		state=OFF;
+		state=off;
 		waitTimer=new Timer();
 	}
 void Shooter::Shoot()
@@ -30,7 +30,7 @@ void Shooter::Shoot()
 			m_r->Set(0);//Turn right motor off
 			break;
 		case FIRING:{
-			if(ls_u->Get())//If we have hit the relase point
+			if(ls_u->Get()){//If we have hit the relase point
 			{
 				shotSpeed=0;
 				m_l->Set(0);//Turn left motor off
@@ -61,7 +61,7 @@ void Shooter::Shoot()
 			}
 		break;
 		case RECOVERING:{
-			if(ls_l->Get())//If we have come all the way down
+			if(ls_l->Get()){//If we have come all the way down
 			{
 				shotSpeed=0;
 				m_l->Set(0);//Turn left motor off
