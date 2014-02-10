@@ -3,7 +3,7 @@
 
 //Static Variable Declarations
 DriveSystem* Hardware::DriveSys = NULL;
-Shooter* Hardware::BallShooter = NULL;
+BallShooter* Hardware::Shooter = NULL;
 BallCollector* Hardware::Collector = NULL;
 
 SpeedController* Hardware::DriveFL = NULL;
@@ -19,26 +19,37 @@ Gyro *Hardware::DriveGyro = NULL;
 DigitalInput* Hardware::UpperLimit=NULL;
 DigitalInput* Hardware::LowerLimit=NULL;
 
+/*Wiring Problems:
+ * Drive Front Left (Talon 4)
+ * Shooter Left (Talon 7)
+ * Shooter Right (Talon 8)
+ * 
+ */
 
 void Hardware::Init()
 {
-	
-	//Initialize motors and sensors
-	DriveFR = new Talon(2);
-	DriveBR = new Talon(3);
-	DriveBL = new Talon(4);
-	DriveFL = new Talon(1);
-	ShooterLeft = new Talon(5);
-	ShooterRight = new Talon(6);
-	CollectorSpinL = new Victor(7);
-	CollectorSpinR = new Victor(8);
-	CollectorRaise = new Victor(9);
+	//Drive System
+	DriveFL = new Talon(4);
+	DriveFR = new Talon(3);
+	DriveBR = new Talon(1);
+	DriveBL = new Talon(2);
 	DriveGyro = new Gyro(1);
+	DriveSys = new DriveSystem(DriveFL, DriveFR, DriveBL, DriveBR, DriveGyro);
+
+
+//Shooter
+	ShooterLeft = new Talon(7);
+	ShooterRight = new Talon(8);
 	UpperLimit=new DigitalInput(1);
 	LowerLimit=new DigitalInput(2);
-	
-	//Initialize subsystems
-	DriveSys = new DriveSystem(DriveFL, DriveFR, DriveBL, DriveBR, DriveGyro);
-	BallShooter = new Shooter(ShooterLeft, ShooterRight, UpperLimit,LowerLimit);
+	Shooter = new BallShooter(ShooterLeft, ShooterRight, UpperLimit,LowerLimit);
+	return;
+
+	CollectorSpinL = new Victor(5);
+	CollectorSpinR = new Victor(6);
+	CollectorRaise = new Victor(9);
 	Collector = new BallCollector(CollectorSpinL, CollectorSpinR, CollectorRaise);
+	
+	//
+//	
 }

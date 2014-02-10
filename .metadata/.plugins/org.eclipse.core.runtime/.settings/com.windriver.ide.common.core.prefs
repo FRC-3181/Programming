@@ -1,4 +1,4 @@
-#Sat Feb 08 13:42:33 EST 2014
+#Mon Feb 10 17:41:00 EST 2014
 //PROJECT/VisionSample2013/class\ com.windriver.ide.core.build.model.WRUserDefinedPathEntryContainer\:useProject=false
 //PROJECT/IterativeTemplate/class\ com.windriver.ide.core.build.model.WRUserDefinedPathEntryContainer\:default=false
 //PROJECT/VisionSample2013/class\ com.windriver.ide.core.build.model.WRUserDefinedPathEntryContainer\:default=false
@@ -7,5 +7,8 @@
 //PROJECT/VisionSample2013/class\ com.windriver.ide.core.build.model.WRUserDefinedPathEntryContainer\:staticanalysisMode=0
 //PROJECT/VisionSample2014/class\ com.windriver.ide.core.build.model.WRUserDefinedPathEntryContainer\:useProject=false
 //PROJECT/IterativeTemplate/class\ com.windriver.ide.core.build.model.WRUserDefinedPathEntryContainer\:useProject=false
+//PROJECT/SimpleTemplate/class\ com.windriver.ide.core.build.model.WRUserDefinedPathEntryContainer\:default=false
 eclipse.preferences.version=1
 //PROJECT/VisionSample2014/class\ com.windriver.ide.core.build.model.WRUserDefinedPathEntryContainer\:default=false
+//PROJECT/SimpleTemplate/class\ com.windriver.ide.core.build.model.WRUserDefinedPathEntryContainer\:useProject=false
+//PROJECT/SimpleTemplate/class\ com.windriver.ide.core.build.model.WRUserDefinedPathEntryContainer\:staticanalysisMode=0

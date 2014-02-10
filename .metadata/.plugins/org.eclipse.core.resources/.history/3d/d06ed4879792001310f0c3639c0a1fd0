@@ -1,0 +1,79 @@
+#include "DriveSystem.h"
+#include "Controls.h"
+#include "Hardware.h"
+#include <math.h>
+
+//Speed at which we
+const double COR_SPEED = 0.3;
+
+//Constants to adjust the speeds of the motors based on resistance
+const double K_FL = 1;
+const double K_FR = 1;
+const double K_BL = 1;
+const double K_BR = 1;
+
+
+DriveSystem::DriveSystem(SpeedController* frontLeft,SpeedController* frontRight,SpeedController* backLeft,SpeedController* backRight,Gyro* gyro){
+	m_fl = frontLeft;
+	m_fr = frontRight;
+	m_bl = backLeft;
+	m_br = backRight;
+	rotateGyro = gyro;
+	//DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line2,"Drive Code Initialized");
+
+}
+
+
+void DriveSystem::Drive()
+{
+	//DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line2,"Drive Code Running");
+
+	//Get Control Values
+	double x = Controls::GetDriveX();
+	double y = Controls::GetDriveY();
+	double r = Controls::GetDriveR();
+	//Rotate Axes and scale controls
+	DriveSystem::RotateAxes(x,y,GyroAngle());
+	DriveSystem::ScaleComponents(x,y,r);
+	//Do Some Math to determine wheel values
+	double fl = y + x - r;//front left likes to go Forward, left, and CW
+	double fr = y - x + r;//Front right likes to go forward, right, and CCW
+	double bl = y - x - r;//Back left likes to go Forward, right, and CW
+	double br = y + x + r;//Back right likes to go Forward, left, and  CCW
+	//Set Motor Values
+	Hardware::DriveFL->Set(K_FL * fl);
+	Hardware::DriveFR->Set(K_FR * fr);
+	Hardware::DriveBL->Set(K_BL * bl);
+	Hardware::DriveBR->Set(K_BR * br);
+	DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line2,"%f",y);
+
+}
+void DriveSystem::RotateAxes(double &x,double &y,double rotationAngle){
+	double xRotation = x * cos(rotationAngle) - y * sin(rotationAngle);
+	double yRotation = y * cos(rotationAngle) + x * sin(rotationAngle);
+	x = xRotation;
+	y = yRotation;
+}
+void DriveSystem::ScaleComponents(double &x,double &y, double &r){
+	//Determine the scale
+	double scale = fabs(x)+ fabs(y)+ fabs(r);
+	scale = (scale > 1) ? 1 / scale:1;
+	//Scale values
+	x *= scale;
+	y *= scale;
+	r *= scale;
+}
+double DriveSystem::GyroAngle()//Get the angle we have turned
+{
+	return 0;
+	/*
+	//Reset Gyro if desired
+	if(Controls::GetGyroReset())rotateGyro->Reset();
+	//Read the gyro angle
+	int angle=(int)rotateGyro->GetAngle();
+	//Get it in desired range
+	angle%=360;
+	//Convert from degrees to radians
+	return double(angle)*-3.14159/180.0;
+	*/
+}

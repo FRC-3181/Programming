@@ -10,12 +10,11 @@ class Hardware
 {
 public:
 	static DriveSystem* DriveSys;//Drive System
-	static Shooter* BallShooter;//Shooter
+	static BallShooter* Shooter;//Shooter
 	static BallCollector* Collector;//Ball Collector
 
 	static void Init();
 	
-private:
 	//Drive System Motors and Sensors
 	static SpeedController* DriveFL;
 	static SpeedController* DriveBL;

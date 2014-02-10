@@ -28,7 +28,8 @@ public:
 	{
 		Hardware::Init();
 		Controls::Init();
-
+		DriverStationLCD::GetInstance()->Clear();
+		DriverStationLCD::GetInstance()->UpdateLCD();
 	}
 	
 	/**
@@ -72,7 +73,7 @@ public:
 	void RobotDemo::AutonomousPeriodic()
 	{
 		Hardware::DriveSys->Drive();
-		Hardware::BallShooter->Shoot();
+		if(Controls::GetFireButton())Hardware::Shooter->ShootBall();
 	}
 	
 	/**
@@ -81,11 +82,12 @@ public:
 	* Use this method for initialization code which will be called each time
 	* the robot enters teleop mode.
 	*/
+
 	void RobotDemo::TeleopInit()
 	{
 		Controls::IsAutonomous = false;
 	}
-	
+
 	/**
 	* Periodic code for teleop mode should go here.
 	*
@@ -94,9 +96,18 @@ public:
 	*/
 	void RobotDemo::TeleopPeriodic()
 	{
+		DriverStationLCD::GetInstance()->Clear();
+
+		DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line1,"Robot Enabled");
 		Hardware::DriveSys->Drive();//Tell Drive System to drive robot
-		Hardware::BallShooter->Shoot(); //Tell shooter to shoot if needed
+		if(Controls::GetFireButton()){
+			DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line2,"Shooter Activated");
+			Hardware::Shooter->ShootBall();
+		}
+			
 		Hardware::Collector->Collect(); //Tell Collector to collect
+		DriverStationLCD::GetInstance()->UpdateLCD();
+
 	}
 	
 	/**

@@ -38,8 +38,9 @@ bool Controls::GetGyroReset()
 } 
 double Controls::GetDriveThrottle()//Throttle for drivng
 {
+
 	//Get Throttle returns -1 for full up and 1 for full down, convert this to 1 for full up and 0 for full down
-	return (1 - DriveStick->GetThrottle()) / 2;
+	return (1 - DriveStick->GetThrottle()) / -2;
 }
 //Shooter and collector
 bool Controls::GetFireButton()//Has the driver pressed the fire button
@@ -51,13 +52,14 @@ bool Controls::GetFireButton()//Has the driver pressed the fire button
 int Controls::GetCollectorSpin()//Should we spin the collector?
 {
 	//check the button
-	DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line1,"%i",DriveStick->GetRawAxis(5));
+	//DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line2,"%i",DriveStick->GetRawAxis(5));
 	return DriveStick->GetRawAxis(5);
 }
 int Controls::GetCollectorRaise()//Should we raise the collector?
 {
 	//check the button
-	DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line2,"%i",DriveStick->GetRawAxis(6));
+//	DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line3,"%i",DriveStick->GetRawAxis(6));
+//	DriverStationLCD::GetInstance()->UpdateLCD();
 	return DriveStick->GetRawAxis(6);
 }
 

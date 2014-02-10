@@ -1,6 +1,6 @@
 IterativeTemplate_partialImage/Debug/Objects/IterativeTemplate/Shooter.o:  \
- C:/Users/Owner/My\ Documents/GitHub/Programming/IterativeTemplate/Shooter.cpp \
-  C:/Users/Owner/My\ Documents/GitHub/Programming/IterativeTemplate/Shooter.h \
+ C:/Users/Owner/Documents/GitHub/Programming/IterativeTemplate/Shooter.cpp \
+  C:/Users/Owner/Documents/GitHub/Programming/IterativeTemplate/Shooter.h \
   C:/WindRiver/vxworks-6.3/target/h/WPILib/WPILib.h \
   C:/WindRiver/vxworks-6.3/target/h/string.h \
   C:/WindRiver/vxworks-6.3/target/h/types/vxANSI.h \
@@ -384,11 +384,11 @@ IterativeTemplate_partialImage/Debug/Objects/IterativeTemplate/Shooter.o:  \
   C:/WindRiver/vxworks-6.3/target/h/WPILib/Vision/HSLImage.h \
   C:/WindRiver/vxworks-6.3/target/h/WPILib/Vision/ColorImage.h \
   C:/WindRiver/vxworks-6.3/target/h/WPILib/WPIErrors.h \
-  C:/Users/Owner/My\ Documents/GitHub/Programming/IterativeTemplate/Controls.h \
-  C:/Users/Owner/My\ Documents/GitHub/Programming/IterativeTemplate/AutonomousDriver.h \
-  C:/Users/Owner/My\ Documents/GitHub/Programming/IterativeTemplate/Vision.h
+  C:/Users/Owner/Documents/GitHub/Programming/IterativeTemplate/Controls.h \
+  C:/Users/Owner/Documents/GitHub/Programming/IterativeTemplate/AutonomousDriver.h \
+  C:/Users/Owner/Documents/GitHub/Programming/IterativeTemplate/Vision.h
 
-C:/Users/Owner/My\ Documents/GitHub/Programming/IterativeTemplate/Shooter.h:
+C:/Users/Owner/Documents/GitHub/Programming/IterativeTemplate/Shooter.h:
 
 C:/WindRiver/vxworks-6.3/target/h/WPILib/WPILib.h:
 
@@ -1156,8 +1156,8 @@ C:/WindRiver/vxworks-6.3/target/h/WPILib/Vision/ColorImage.h:
 
 C:/WindRiver/vxworks-6.3/target/h/WPILib/WPIErrors.h:
 
-C:/Users/Owner/My\ Documents/GitHub/Programming/IterativeTemplate/Controls.h:
+C:/Users/Owner/Documents/GitHub/Programming/IterativeTemplate/Controls.h:
 
-C:/Users/Owner/My\ Documents/GitHub/Programming/IterativeTemplate/AutonomousDriver.h:
+C:/Users/Owner/Documents/GitHub/Programming/IterativeTemplate/AutonomousDriver.h:
 
-C:/Users/Owner/My\ Documents/GitHub/Programming/IterativeTemplate/Vision.h:
+C:/Users/Owner/Documents/GitHub/Programming/IterativeTemplate/Vision.h:

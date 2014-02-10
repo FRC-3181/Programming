@@ -3,5 +3,5 @@
 double Vision::FindPower(){
 
 	//To be implemented
-	return 1;
+	return 0.3;
 }

@@ -11,7 +11,7 @@ private:
 	SpeedController *m_fl, *m_fr, *m_bl, *m_br;
 	Gyro* rotateGyro;
 	double GyroAngle();//Deterimine the angle that we have turned
-	static double RotateAxes(double &x, double &y, double rotationAngle);
-	static double ScaleComponents(double &x, double &y, double &r);
+	static void RotateAxes(double &x, double &y, double rotationAngle);
+	static void ScaleComponents(double &x, double &y, double &r);
 };
 #endif

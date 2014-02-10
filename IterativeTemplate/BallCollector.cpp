@@ -19,5 +19,8 @@ void BallCollector::Collect()//Pick up the ball
 	m_spinL->Set(-SSPEED * spinDir);
 	m_spinR->Set(SSPEED * spinDir);
 	//Set raise/lower speed
+	int i= Controls::GetCollectorRaise();
+	return;
+
 	m_raise->Set(RSPEED * Controls::GetCollectorRaise());
 }
