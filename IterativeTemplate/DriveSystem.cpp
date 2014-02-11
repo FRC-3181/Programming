@@ -26,6 +26,7 @@ DriveSystem::DriveSystem(SpeedController* frontLeft,SpeedController* frontRight,
 
 void DriveSystem::Drive()
 {
+	return;
 	//Get Control Values
 	double x = Controls::GetDriveX();
 	double y = Controls::GetDriveY();

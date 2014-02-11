@@ -27,10 +27,37 @@ public:
 	 */
 	void OperatorControl()
 	{
-		Talon *motor=new Talon(1);
-		Talon *motor2=new Talon(2);
+		DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line1,"Robot Enabled");
+		DriverStationLCD::GetInstance()->UpdateLCD();
+		Wait(5);				// wait for a motor update time
+
+		Talon *motor=new Talon(7);
+		Talon *motor2=new Talon(8);
+		motor->Set(1);
+				motor2->Set(1);
+				DriverStationLCD::GetInstance()->Clear();
+				DriverStationLCD::GetInstance()->UpdateLCD();
+
+				Wait(5);				// wait for a motor update time
+				motor->Set(-1);
+								motor2->Set(-1);
+								Wait(5);				// wait for a motor update time
+								motor->Set(0);
+																motor2->Set(0);
+																Wait(500);				// wait for a motor update time
+
+																		
+		/*
 		Talon *motor3=new Talon(3);
 		Talon *motor4=new Talon(4);
+/*
+		motor->Set(0.5);
+		motor2->Set(0.5);
+		Wait(10);				// wait for a motor update time
+		motor->Set(0);
+		motor2->Set(0);
+		Wait(1000);				// wait for a motor update time
+
 		while (IsOperatorControl())
 		{
 			motor->Set(0.5);
@@ -38,8 +65,7 @@ public:
 			motor3->Set(0.5);
 			motor4->Set(0.5);
 
-			Wait(0.005);				// wait for a motor update time
-		}
+		}*/
 	}
 	
 	/**

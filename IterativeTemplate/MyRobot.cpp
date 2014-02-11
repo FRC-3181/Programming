@@ -26,9 +26,10 @@ public:
 	*/
 	void RobotDemo::RobotInit()
 	{
+		DriverStationLCD::GetInstance()->Clear();
+
 		Hardware::Init();
 		Controls::Init();
-		DriverStationLCD::GetInstance()->Clear();
 		DriverStationLCD::GetInstance()->UpdateLCD();
 	}
 	
@@ -97,15 +98,25 @@ public:
 	void RobotDemo::TeleopPeriodic()
 	{
 		DriverStationLCD::GetInstance()->Clear();
-
 		DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line1,"Robot Enabled");
-		Hardware::DriveSys->Drive();//Tell Drive System to drive robot
+		DriverStationLCD::GetInstance()->UpdateLCD();
+
 		if(Controls::GetFireButton()){
 			DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line2,"Shooter Activated");
+			DriverStationLCD::GetInstance()->UpdateLCD();
 			Hardware::Shooter->ShootBall();
 		}
-			
-		Hardware::Collector->Collect(); //Tell Collector to collect
+		else
+		{
+			DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line2,"Shooter Disabled");
+
+			Hardware::Shooter->Lower();
+			DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line3,"Drive Enabled");
+
+			Hardware::DriveSys->Drive();//Tell Drive System to drive robot
+			//	Hardware::Collector->Collect(); //Tell Collector to collect
+
+		}
 		DriverStationLCD::GetInstance()->UpdateLCD();
 
 	}

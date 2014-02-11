@@ -2,8 +2,8 @@
 #include "Controls.h"
 #include "Vision.h"
 
-const double RECOVER_SPEED=-0.5;
-const double WAIT_TIME=0;//Time for waiting at the top in ms
+const double RECOVER_SPEED=-0.05;
+const double WAIT_TIME=100;//Time for waiting at the top in ms
 
 BallShooter::BallShooter(SpeedController *left,SpeedController *right,DigitalInput *upper, DigitalInput *lower)
 {
@@ -16,20 +16,29 @@ BallShooter::BallShooter(SpeedController *left,SpeedController *right,DigitalInp
 		//state=OFF;
 		//waitTimer=new Timer();
 	}
+void BallShooter::Lower()	//Bring the shooter back dwon
+{
+	double shotSpeed=(ls_l->Get()?0.0:RECOVER_SPEED);
+	m_l->Set(-shotSpeed);
+	m_r->Set(shotSpeed);
+	if(shotSpeed!=0)DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line2,"Shooter Lowering");
+	DriverStationLCD::GetInstance()->UpdateLCD();
 
+}
 void BallShooter::ShootBall()
 {
-	return;
+	DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line2,"Shooter Activated");
+
 	//Deterime speed required to hit target
 	double fireSpeed=Vision::FindPower();
 	//Move shooter up
-	double shotSpeed=0;
+	double shotSpeed=0.0;
 	while(!ls_u->Get())//If we hit the top, stop
 	{
 		shotSpeed=shotSpeed>=fireSpeed?fireSpeed:shotSpeed+0.05;//Determine Ramped motor speed
 		//Set motor speeds
-		m_l->Set(shotSpeed);
-		m_r->Set(-shotSpeed);
+		m_l->Set(-shotSpeed);
+		m_r->Set(shotSpeed);
 		Wait(0.01);//Let the motors adjust their speeds
 	}
 	//Stop Motors when we hit the top
@@ -40,17 +49,4 @@ void BallShooter::ShootBall()
 	{
 		Wait(0.001);
 	}
-	//Bring the shooter back dwon
-	shotSpeed=0;
-		while(!ls_l->Get())//If we hit the top, stop
-		{
-			shotSpeed=shotSpeed<=RECOVER_SPEED?RECOVER_SPEED:shotSpeed-0.05;//Determine Ramped motor speed
-			//Set motor speeds
-			m_l->Set(shotSpeed);
-			m_r->Set(-shotSpeed);
-			Wait(0.01);//Let the motors adjust their speeds
-		}
-		//Stop Motors when we hit the bottom
-		m_l->Set(0);
-		m_r->Set(0);
 }
