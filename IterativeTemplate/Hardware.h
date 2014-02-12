@@ -5,6 +5,7 @@
 #ifndef __HARDWARE__
 #define __HARDWARE__
 
+#define CollectorEnabled //Comment this to disable the colletor
 
 class Hardware
 {

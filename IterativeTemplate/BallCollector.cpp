@@ -14,6 +14,8 @@ BallCollector::BallCollector(SpeedController* spinL, SpeedController* spinR, Spe
 
 void BallCollector::Collect()//Pick up the ball
 {
+#ifdef CollectorEnabled
+
 	//Set Spinner Speed
 	int spinDir = Controls::GetCollectorSpin();
 	m_spinL->Set(-SSPEED * spinDir);
@@ -23,4 +25,5 @@ void BallCollector::Collect()//Pick up the ball
 	return;
 
 	m_raise->Set(RSPEED * Controls::GetCollectorRaise());
+#endif
 }

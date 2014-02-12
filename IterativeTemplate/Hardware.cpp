@@ -26,7 +26,7 @@ void Hardware::Init()
 	DriveFR = new Talon(3);
 	DriveBR = new Talon(1);
 	DriveBL = new Talon(2);
-//	DriveGyro = new Gyro(1);
+	DriveGyro = new Gyro(1);
 	DriveSys = new DriveSystem(DriveFL, DriveFR, DriveBL, DriveBR, DriveGyro);
 
 
@@ -36,11 +36,12 @@ void Hardware::Init()
 	UpperLimit=new DigitalInput(1);
 	LowerLimit=new DigitalInput(2);
 	Shooter = new BallShooter(ShooterLeft, ShooterRight, UpperLimit,LowerLimit);
-	return;
-
+#ifdef CollectorEnabled
 	CollectorSpinL = new Victor(5);
 	CollectorSpinR = new Victor(6);
-	CollectorRaise = new Victor(9);
+	CollectorRaise = new Victor(9);//TODO: At the Victor for the Collector Window Motor
+#endif
+
 	Collector = new BallCollector(CollectorSpinL, CollectorSpinR, CollectorRaise);
 	
 	//

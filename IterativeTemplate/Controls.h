@@ -24,6 +24,8 @@ private:
 	static double GetDriveThrottle();//Amount drive Values are throttled
 	//Controls for the driver
 	static Joystick* DriveStick;//Joystick
+	static Joystick* BallStick;//Joystick for Ball Handling
+
 
 };
 #endif

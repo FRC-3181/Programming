@@ -19,8 +19,6 @@ DriveSystem::DriveSystem(SpeedController* frontLeft,SpeedController* frontRight,
 	m_bl = backLeft;
 	m_br = backRight;
 	rotateGyro = gyro;
-	//DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line2,"Drive Code Initialized");
-
 }
 
 
@@ -69,8 +67,7 @@ void DriveSystem::ScaleComponents(double &x,double &y, double &r){
 }
 double DriveSystem::GyroAngle()//Get the angle we have turned
 {
-	return 0;
-	/*
+
 	//Reset Gyro if desired
 	if(Controls::GetGyroReset())rotateGyro->Reset();
 	//Read the gyro angle
@@ -79,5 +76,4 @@ double DriveSystem::GyroAngle()//Get the angle we have turned
 	angle%=360;
 	//Convert from degrees to radians
 	return double(angle)*-3.14159/180.0;
-	*/
 }

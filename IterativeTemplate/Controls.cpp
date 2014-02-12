@@ -11,6 +11,7 @@ const int GYRO_RESET_BUTTON = 6;
 void Controls::Init()
 {
 	DriveStick = new Joystick(1); //Drive Joystick
+	BallStick = new Joystick(2);
 	IsAutonomous = true;
 	AutoDriver = new AutonomousDriver();
 }
@@ -18,13 +19,13 @@ void Controls::Init()
 double Controls::GetDriveX()//X value for driving (side to side)
 {
 	//If autonomous, ask the Autonomous driver. Otherwise get the throttle-adjusted X value from the Joystick
-	return IsAutonomous ? 0 : GetDriveThrottle()* DriveStick->GetX();
+	return IsAutonomous ? 0 : GetDriveThrottle()* pow(DriveStick->GetX(),3);
 }
 double Controls::GetDriveY() //Y value for driving (forward and backward)
 {
 	//If we are aiming, there should be no Y value
 	//If autonomous, ask the Autonomous driver. Otherwise get the throttle-adjusted Y value from the Joystick
-	return IsAutonomous ? AutoDriver->GetDriveY() : GetDriveThrottle() * DriveStick->GetY();
+	return IsAutonomous ? AutoDriver->GetDriveY() : GetDriveThrottle() * pow(DriveStick->GetY(),3);
 }
 double Controls::GetDriveR()//Rotation value for driving
 {
@@ -47,17 +48,17 @@ bool Controls::GetFireButton()//Has the driver pressed the fire button
 {
 	//If we have are in Autonomous, ask the auto driver if we should fire
 	//If we are in teleop, check the fire button
-	return IsAutonomous ? AutoDriver->ShouldShoot() : DriveStick->GetTrigger();
+	return IsAutonomous ? AutoDriver->ShouldShoot() : BallStick->GetTrigger();
 }
 int Controls::GetCollectorSpin()//Should we spin the collector?
 {
 	//check the button
-	return DriveStick->GetRawAxis(5);
+	return BallStick->GetX();
 }
 int Controls::GetCollectorRaise()//Should we raise the collector?
 {
 	//check the button
-	return -DriveStick->GetRawAxis(6);
+	return BallStick->GetY();
 }
 
 

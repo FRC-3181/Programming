@@ -110,8 +110,7 @@ public:
 		{
 			DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line2,"Shooter Disabled");
 			Hardware::Shooter->Lower();
-			//	Hardware::Collector->Collect(); //Tell Collector to collect
-
+			Hardware::Collector->Collect(); //Tell Collector to collect
 		}
 		DriverStationLCD::GetInstance()->UpdateLCD();
 
