@@ -26,7 +26,7 @@ DriveSystem::DriveSystem(SpeedController* frontLeft,SpeedController* frontRight,
 
 void DriveSystem::Drive()
 {
-	return;
+	
 	//Get Control Values
 	double x = Controls::GetDriveX();
 	double y = Controls::GetDriveY();
@@ -46,7 +46,7 @@ void DriveSystem::Drive()
 	double bl = y - x - r;//Back left likes to go Forward, right, and CW
 	double br = y + x + r;//Back right likes to go Forward, left, and  CCW
 	//Set Motor Values
-	//m_fl->Set(K_FL * fl);
+	m_fl->Set(K_FL * fl);
 	m_fr->Set(K_FR * fr);
 	m_bl->Set(K_BL * bl);
 	m_br->Set(K_BR * br);

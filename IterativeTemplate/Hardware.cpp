@@ -19,22 +19,15 @@ Gyro *Hardware::DriveGyro = NULL;
 DigitalInput* Hardware::UpperLimit=NULL;
 DigitalInput* Hardware::LowerLimit=NULL;
 
-/*Wiring Problems:
- * Drive Front Left (Talon 4)
- * Shooter Left (Talon 7)
- * Shooter Right (Talon 8)
- * 
- */
-
 void Hardware::Init()
 {
 	//Drive System
-	//DriveFL = new Talon(4);
-//	DriveFR = new Talon(3);
-//	DriveBR = new Talon(1);
-//	DriveBL = new Talon(2);
+	DriveFL = new Talon(4);
+	DriveFR = new Talon(3);
+	DriveBR = new Talon(1);
+	DriveBL = new Talon(2);
 //	DriveGyro = new Gyro(1);
-	//DriveSys = new DriveSystem(DriveFL, DriveFR, DriveBL, DriveBR, DriveGyro);
+	DriveSys = new DriveSystem(DriveFL, DriveFR, DriveBL, DriveBR, DriveGyro);
 
 
 //Shooter

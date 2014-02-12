@@ -100,7 +100,7 @@ public:
 		DriverStationLCD::GetInstance()->Clear();
 		DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line1,"Robot Enabled");
 		DriverStationLCD::GetInstance()->UpdateLCD();
-
+		Hardware::DriveSys->Drive();
 		if(Controls::GetFireButton()){
 			DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line2,"Shooter Activated");
 			DriverStationLCD::GetInstance()->UpdateLCD();
@@ -109,11 +109,7 @@ public:
 		else
 		{
 			DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line2,"Shooter Disabled");
-
 			Hardware::Shooter->Lower();
-			DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line3,"Drive Enabled");
-
-			Hardware::DriveSys->Drive();//Tell Drive System to drive robot
 			//	Hardware::Collector->Collect(); //Tell Collector to collect
 
 		}
