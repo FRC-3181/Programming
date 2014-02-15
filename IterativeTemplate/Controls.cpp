@@ -50,6 +50,12 @@ bool Controls::GetFireButton()//Has the driver pressed the fire button
 	//If we are in teleop, check the fire button
 	return IsAutonomous ? AutoDriver->ShouldShoot() : BallStick->GetTrigger();
 }
+bool Controls::GetPassButton()//Has the driver pressed the fire button
+{
+        //If we have are in Autonomous, ask the auto driver if we should fire
+        //If we are in teleop, check the fire button
+        return BallStick->GetRawButton(3);
+}
 double Controls::GetCollectorSpin()//Should we spin the collector?
 {
 	//check the button

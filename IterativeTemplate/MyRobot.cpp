@@ -74,7 +74,7 @@ public:
 	void RobotDemo::AutonomousPeriodic()
 	{
 		Hardware::DriveSys->Drive();
-		if(Controls::GetFireButton())Hardware::Shooter->ShootBall();
+		if(Controls::GetFireButton())Hardware::Shooter->ShootBall(false);
 	}
 	
 	/**
@@ -97,23 +97,20 @@ public:
 	*/
 	void RobotDemo::TeleopPeriodic()
 	{
-		DriverStationLCD::GetInstance()->Clear();
-		DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line1,"Robot Enabled");
-		DriverStationLCD::GetInstance()->UpdateLCD();
 		Hardware::DriveSys->Drive();
-		if(Controls::GetFireButton()){
-			DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line2,"Shooter Activated");
-			DriverStationLCD::GetInstance()->UpdateLCD();
-			Hardware::Shooter->ShootBall();
+		if(Controls::GetFireButton())
+		{
+		    Hardware::Shooter->ShootBall(false);
+		}
+		else if(Controls::GetPassButton())
+		{
+		   Hardware::Shooter->ShootBall(true);
 		}
 		else
 		{
-			DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line2,"Shooter Disabled");
 			Hardware::Shooter->Lower();
 			Hardware::Collector->Collect(); //Tell Collector to collect
 		}
-		DriverStationLCD::GetInstance()->UpdateLCD();
-
 	}
 	
 	/**

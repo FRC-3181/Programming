@@ -18,6 +18,8 @@ public:
 	static double GetCollectorSpin();//Driver pressed buttons spin collector
 	static double GetCollectorRaise();//Driver pressed buttons to raise and lower collector
 	static bool GetFireButton(); //Driver pressed the button to shoot at the target
+        static bool GetPassButton(); //Driver pressed the button to shoot at the target
+
 
 	
 private:

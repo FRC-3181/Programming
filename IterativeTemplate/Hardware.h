@@ -28,12 +28,16 @@ public:
 	static AnalogChannel* ShotPotentiometer;
 	static DigitalInput* UpperLimit;
 	static DigitalInput* LowerLimit;
+	static Encoder *ShootEncoder;
 
 
-	//Collector Motors
+	//Collector Motors and Sensors
 	static SpeedController* CollectorSpinL;
 	static SpeedController* CollectorSpinR;
 	static SpeedController* CollectorRaise;
+	static DigitalInput* CollectorUpperLimit;
+	static DigitalInput* CollectorLowerLimit;
+
 };
 
 #endif

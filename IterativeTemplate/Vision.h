@@ -7,6 +7,8 @@ class Vision
 {
 public:
 	static double FindPower();
+        static int FindAngle();
+
 private:
 	
 };

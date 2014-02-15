@@ -29,12 +29,6 @@ void DriveSystem::Drive()
 	double x = Controls::GetDriveX();
 	double y = Controls::GetDriveY();
 	double r = Controls::GetDriveR();
-	if(Controls::GetFireButton())//Don't drive when shooting
-		{
-			x=0;
-			y=0;
-			r=0;
-		}
 	//Rotate Axes and scale controls
 	DriveSystem::RotateAxes(x,y,GyroAngle());
 	DriveSystem::ScaleComponents(x,y,r);
