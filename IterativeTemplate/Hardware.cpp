@@ -36,11 +36,9 @@ void Hardware::Init()
 	UpperLimit=new DigitalInput(1);
 	LowerLimit=new DigitalInput(2);
 	Shooter = new BallShooter(ShooterLeft, ShooterRight, UpperLimit,LowerLimit);
-#ifdef CollectorEnabled
 	CollectorSpinL = new Victor(5);
 	CollectorSpinR = new Victor(6);
-	CollectorRaise = new Victor(9);//TODO: At the Victor for the Collector Window Motor
-#endif
+	//CollectorRaise = new Victor(9);//TODO: At the Victor for the Collector Window Motor
 
 	Collector = new BallCollector(CollectorSpinL, CollectorSpinR, CollectorRaise);
 	

@@ -1,5 +1,5 @@
 #include "Controls.h"
-
+#include <math.h>
 //Set up stuff
 Joystick* Controls::DriveStick = NULL;
 bool Controls::IsAutonomous = false;
@@ -50,12 +50,12 @@ bool Controls::GetFireButton()//Has the driver pressed the fire button
 	//If we are in teleop, check the fire button
 	return IsAutonomous ? AutoDriver->ShouldShoot() : BallStick->GetTrigger();
 }
-int Controls::GetCollectorSpin()//Should we spin the collector?
+double Controls::GetCollectorSpin()//Should we spin the collector?
 {
 	//check the button
 	return BallStick->GetX();
 }
-int Controls::GetCollectorRaise()//Should we raise the collector?
+double Controls::GetCollectorRaise()//Should we raise the collector?
 {
 	//check the button
 	return BallStick->GetY();

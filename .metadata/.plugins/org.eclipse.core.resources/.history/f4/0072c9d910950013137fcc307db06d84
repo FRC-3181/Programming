@@ -1,0 +1,78 @@
+#include "wheelCalibration.h"
+
+//:3 < this is just labeling the ports
+const uint32 FL_port1 = 1;
+const uint32 _port2 = 2;
+const uint32 FR_port1 = 3;
+const uint32 FR_port2 = 4;
+const uint32 BL_port1 = 5;
+const uint32 BL_port2 = 6;
+const uint32 BR_port1 = 7;
+const uint32 BR_port2 = 8;
+const EncodingType ET = k4X;
+//:3 < yeah we chose ET because it stood for EncodingType :P
+		
+wheelCalibration::wheelCalibration()
+{
+	//:3 < first we have to create the encoder objects
+	FL_Encoder = new encoder(FL_port1, FL_port2, true, ET);  
+	//:3 < front left wheel encoder
+	FR_Encoder = new encoder(FR_port1, FR_port2, true, ET);  
+	//:3 < front right wheel encoder
+	BL_Encoder = new Encoder(BL_port1, BL_port2, true, ET);  
+	//:3 < back left wheel encoder
+	BR_Encoder = new Encoder(BR_port1, BR_port2, true, ET);  
+	//:3 < back right wheel encoder
+	
+	//:3 < then we have to reset the encoders before starting
+	FL_Encoder->Reset();
+	FR_Encoder->Reset();
+	BL_Encoder->Reset();
+	BR_Encoder->Reset();
+}
+
+wheelCalibration::~wheelCalibration()
+{
+	//:3 gotta delete them when finished to save space
+	delete FL_Encoder;
+	delete FR_Encoder;
+	delete BL_Encoder;
+	delete BR_Encoder;
+}
+
+//:3 < to start the encoder
+void wheelCalibration::start()
+{
+	FL_Encoder->Start();
+	FR_Encoder->Start();
+	BL_Encoder->Start();
+	BR_Encoder->Start();
+}
+
+//:3 < to stop the encoder
+void wheelCalibration::stop()
+{
+	FL_Encoder->Stop();
+	FR_Encoder->Stop();
+	BL_Encoder->Stop();
+	BR_Encoder->Stop();
+}
+
+//:3 < to reset the encoder
+void wheelCalibration::reset()
+{
+	FL_Encoder->Reset();
+	FR_Encoder->Reset();
+	BL_Encoder->Reset();
+	BR_Encoder->Reset();
+}
+
+//:3 < to let us get data from the encoder
+//:3 < robbie plz finish this part
+void Report ()
+{
+	FL_Encoder->GetRaw(); // Robbie to decide which pipe to send to
+	FR_Encoder->GetRaw();
+	BL_Encoder->GetRaw();
+	BR_Encoder->GetRaw();
+}

@@ -1,0 +1,27 @@
+#include "WPILib.h"
+#ifndef __CALIBRATE WHEELS__
+#define __CALIBRATE WHEELS__
+
+class wheelCalibration {
+	public:
+		void Start();
+		//:3 < starts encoder
+		void Stop ();
+		//:3 < stops encoder
+		void Reset ();
+		//:3 < resets encoder
+		void Report ();
+		//:3 < method for letting us get info from encoder
+		
+	private:
+		Encoder * FL_Encoder; 
+		//:3 < front right encoder
+		Encoder * FR_Encoder;  
+		//:3 < front left encoder
+		Encoder * BL_Encoder;  
+		//:3 < back left encoder
+		Encoder * BR_Encoder;  
+		//:3 < back right encoder
+}
+
+#endif

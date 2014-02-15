@@ -15,8 +15,8 @@ public:
 	static double GetDriveR(); //Rotation for driving
 	static bool GetGyroReset();//Reset Gyro?
 	//Shooter  and Collector
-	static int GetCollectorSpin();//Driver pressed buttons spin collector
-	static int GetCollectorRaise();//Driver pressed buttons to raise and lower collector
+	static double GetCollectorSpin();//Driver pressed buttons spin collector
+	static double GetCollectorRaise();//Driver pressed buttons to raise and lower collector
 	static bool GetFireButton(); //Driver pressed the button to shoot at the target
 
 	

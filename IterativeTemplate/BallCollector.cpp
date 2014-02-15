@@ -3,8 +3,8 @@
 #include "Hardware.h"
 #include <math.h>
 
-const double RSPEED=1;
-const double SSPEED=1;
+const double RSPEED=0.25;
+const double SSPEED=0.25;
 BallCollector::BallCollector(SpeedController* spinL, SpeedController* spinR, SpeedController* raise)
 {
 	m_spinL = spinL;
@@ -14,8 +14,6 @@ BallCollector::BallCollector(SpeedController* spinL, SpeedController* spinR, Spe
 
 void BallCollector::Collect()//Pick up the ball
 {
-#ifdef CollectorEnabled
-
 	//Set Spinner Speed
 	int spinDir = Controls::GetCollectorSpin();
 	m_spinL->Set(-SSPEED * spinDir);
@@ -23,7 +21,5 @@ void BallCollector::Collect()//Pick up the ball
 	//Set raise/lower speed
 	int i= Controls::GetCollectorRaise();
 	return;
-
 	m_raise->Set(RSPEED * Controls::GetCollectorRaise());
-#endif
 }

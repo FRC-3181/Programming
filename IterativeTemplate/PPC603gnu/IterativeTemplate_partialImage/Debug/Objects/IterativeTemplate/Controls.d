@@ -385,7 +385,8 @@
   C:/WindRiver/vxworks-6.3/target/h/WPILib/Vision/HSLImage.h \
   C:/WindRiver/vxworks-6.3/target/h/WPILib/Vision/ColorImage.h \
   C:/WindRiver/vxworks-6.3/target/h/WPILib/WPIErrors.h \
-  C:/Users/Owner/Documents/GitHub/Programming/IterativeTemplate/AutonomousDriver.h
+  C:/Users/Owner/Documents/GitHub/Programming/IterativeTemplate/AutonomousDriver.h \
+  C:/WindRiver/vxworks-6.3/target/h/math.h
 
 C:/Users/Owner/Documents/GitHub/Programming/IterativeTemplate/Controls.h:
 
@@ -1156,3 +1157,5 @@ C:/WindRiver/vxworks-6.3/target/h/WPILib/Vision/ColorImage.h:
 C:/WindRiver/vxworks-6.3/target/h/WPILib/WPIErrors.h:
 
 C:/Users/Owner/Documents/GitHub/Programming/IterativeTemplate/AutonomousDriver.h:
+
+C:/WindRiver/vxworks-6.3/target/h/math.h:
