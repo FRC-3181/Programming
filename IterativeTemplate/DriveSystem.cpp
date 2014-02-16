@@ -7,10 +7,10 @@
 const double COR_SPEED = 0.3;
 
 //Constants to adjust the speeds of the motors based on resistance
-const double K_FL = 1;
-const double K_FR = -1;
-const double K_BL = 1;
-const double K_BR = -1;
+const double K_FL = -1;
+const double K_FR = 1;
+const double K_BL = -1;
+const double K_BR = 1;
 
 
 DriveSystem::DriveSystem(SpeedController* frontLeft,SpeedController* frontRight,SpeedController* backLeft,SpeedController* backRight,Gyro* gyro){

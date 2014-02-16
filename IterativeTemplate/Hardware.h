@@ -35,8 +35,6 @@ public:
 	static SpeedController* CollectorSpinL;
 	static SpeedController* CollectorSpinR;
 	static SpeedController* CollectorRaise;
-	static DigitalInput* CollectorUpperLimit;
-	static DigitalInput* CollectorLowerLimit;
 
 };
 

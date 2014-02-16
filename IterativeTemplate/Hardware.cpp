@@ -18,9 +18,8 @@ SpeedController* Hardware::CollectorRaise = NULL;
 Gyro *Hardware::DriveGyro = NULL;
 DigitalInput* Hardware::UpperLimit=NULL;
 DigitalInput* Hardware::LowerLimit=NULL;
-DigitalInput* Hardware::CollectorUpperLimit=NULL;
-DigitalInput* Hardware::CollectorLowerLimit=NULL;
 Encoder* Hardware::ShootEncoder=NULL;
+
 void Hardware::Init()
 {
 	//Drive System
@@ -37,7 +36,7 @@ void Hardware::Init()
 	ShooterRight = new Talon(8);
 	UpperLimit=new DigitalInput(1);
 	LowerLimit=new DigitalInput(2);
-	uint32_t port1=0,port2=0;
+	uint32_t port1=3,port2=4;
 	ShootEncoder = new Encoder(port1, port2, false, Encoder::k4X);//Change Port numbers
 	ShootEncoder->Reset();
         Shooter = new BallShooter(ShooterLeft, ShooterRight, UpperLimit,LowerLimit,ShootEncoder);
@@ -45,10 +44,8 @@ void Hardware::Init()
 	//Collector
 	CollectorSpinL = new Victor(5);
 	CollectorSpinR = new Victor(6);
-	CollectorRaise = new Victor(9);//TODO: At the Victor for the Collector Window Motor
-	CollectorUpperLimit=new DigitalInput(3);
-	CollectorLowerLimit=new DigitalInput(4);
-	Collector = new BallCollector(CollectorSpinL, CollectorSpinR, CollectorRaise,CollectorUpperLimit,CollectorLowerLimit);
+	CollectorRaise = new Victor(9);
+	Collector = new BallCollector(CollectorSpinL, CollectorSpinR, CollectorRaise);
 	
 	//
 //	

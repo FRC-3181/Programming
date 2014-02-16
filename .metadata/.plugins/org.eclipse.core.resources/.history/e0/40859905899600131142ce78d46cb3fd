@@ -1,0 +1,66 @@
+#include "WPILib.h"
+
+/**
+ * This is a demo program showing the use of the RobotBase class.
+ * The SimpleRobot class is the base of a robot application that will automatically call your
+ * Autonomous and OperatorControl methods at the right time as controlled by the switches on
+ * the driver station or the field controls.
+ */ 
+const double RSPEED=0.25;
+        const double SSPEED=0.25;
+class RobotDemo : public SimpleRobot
+{
+
+public:
+	RobotDemo()
+	{
+
+	}
+
+	/**
+	 * Drive left & right motors for 2 seconds then stop
+	 */
+	void Autonomous()
+	{
+	
+	}
+
+	/**
+	 * Runs the motors with arcade steering. 
+	 */
+	
+	
+	void OperatorControl()
+	{
+	  
+	  DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line1,"Collector Enabled");
+	  DriverStationLCD::GetInstance()->UpdateLCD();
+	  Joystick *joy=new Joystick(2);
+	  
+	  
+	  Victor* m_spinL=new Victor(5);
+	        Victor* m_spinR=new Victor(6);
+	          Victor* m_raise=new Victor(9);
+
+		while (IsOperatorControl() && IsEnabled())
+		{
+		          double spinDir = joy->GetX();
+		            m_spinL->Set(-SSPEED * spinDir);
+		            m_spinR->Set(SSPEED * spinDir);
+		            //Set raise/lower speed
+		            double speed= joy->GetY();
+		            m_raise->Set(RSPEED * speed);
+			Wait(0.005);				// wait for a motor update time
+		}
+	}
+	
+	/**
+	 * Runs during test mode
+	 */
+	void Test() {
+
+	}
+};
+
+START_ROBOT_CLASS(RobotDemo);
+

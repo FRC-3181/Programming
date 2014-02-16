@@ -30,15 +30,16 @@ void BallShooter::ShootBall(bool passing)
     if(!previouslyShooting){
         //Deterime speed required to hit target
         int releaseAngle = passing?PASS_RELEASE_ANGLE:Vision::FindAngle();
-        enc->Reset();
-        enc->Start(); 
+      //  enc->Reset();
+      //  enc->Start(); 
         previouslyShooting=true;
     }
     m_l->Set(-SHOOT_SPEED);
     m_r->Set(SHOOT_SPEED);
-    if(ls_u->Get()||enc->GetRaw()>=releaseAngle)//If we hit the top, stop
+    //|| enc->GetRaw()>=releaseAngle
+    if( ls_u->Get()  )//If we hit the top, stop
     {
-      enc->Stop();
+     // enc->Stop();
       //Stop Motors when we hit the top
       m_l->Set(0);
       m_r->Set(0);

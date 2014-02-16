@@ -382,7 +382,12 @@ SimpleTemplate_partialImage/Debug/Objects/SimpleTemplate/MyRobot.o:  \
   C:/WindRiver/vxworks-6.3/target/h/WPILib/Vision/Threshold.h \
   C:/WindRiver/vxworks-6.3/target/h/WPILib/Vision/HSLImage.h \
   C:/WindRiver/vxworks-6.3/target/h/WPILib/Vision/ColorImage.h \
-  C:/WindRiver/vxworks-6.3/target/h/WPILib/WPIErrors.h
+  C:/WindRiver/vxworks-6.3/target/h/WPILib/WPIErrors.h \
+  C:/Users/Owner/Documents/GitHub/Programming/SimpleTemplate/Hardware.h \
+  C:/Users/Owner/Documents/GitHub/Programming/SimpleTemplate/DriveSystem.h \
+  C:/Users/Owner/Documents/GitHub/Programming/SimpleTemplate/BallShooter.h \
+  C:/Users/Owner/Documents/GitHub/Programming/SimpleTemplate/BallCollector.h \
+  C:/Users/Owner/Documents/GitHub/Programming/SimpleTemplate/UnderGlow.h
 
 C:/WindRiver/vxworks-6.3/target/h/WPILib/WPILib.h:
 
@@ -1149,3 +1154,13 @@ C:/WindRiver/vxworks-6.3/target/h/WPILib/Vision/HSLImage.h:
 C:/WindRiver/vxworks-6.3/target/h/WPILib/Vision/ColorImage.h:
 
 C:/WindRiver/vxworks-6.3/target/h/WPILib/WPIErrors.h:
+
+C:/Users/Owner/Documents/GitHub/Programming/SimpleTemplate/Hardware.h:
+
+C:/Users/Owner/Documents/GitHub/Programming/SimpleTemplate/DriveSystem.h:
+
+C:/Users/Owner/Documents/GitHub/Programming/SimpleTemplate/BallShooter.h:
+
+C:/Users/Owner/Documents/GitHub/Programming/SimpleTemplate/BallCollector.h:
+
+C:/Users/Owner/Documents/GitHub/Programming/SimpleTemplate/UnderGlow.h:
