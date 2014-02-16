@@ -74,7 +74,6 @@ void DriveSystem::ReadControls(double &x,double &y, double &r){
 }
 double DriveSystem::GyroAngle()//Get the angle we have turned
 {
- return 0;
         //Reset Gyro if desired
         if(stick->GetRawButton(6))rotateGyro->Reset();
         //Read the gyro angle

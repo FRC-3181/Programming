@@ -19,7 +19,7 @@ void Hardware::Init()
          SpeedController* driveFR = new Talon(3);
          SpeedController* driveBR = new Talon(1);
          SpeedController* driveBL = new Talon(2);
-       Gyro* driveGyro = NULL;//new Gyro(1);
+       Gyro* driveGyro = new Gyro(1);
         DriveSys = new DriveSystem(driveFL, driveFR, driveBL, driveBR, driveGyro,driveStick);
 
 

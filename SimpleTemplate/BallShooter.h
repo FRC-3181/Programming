@@ -21,7 +21,7 @@ private:
         DigitalInput *ls_l,*ls_u;//Limit Switches for determining stopping point
         Joystick* stick;
         Encoder *enc;
-        bool previouslyShooting;
+        bool previouslyShooting,finishedShot;
         int releaseAngle;
         int lastAngle;
 };
