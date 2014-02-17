@@ -7,42 +7,34 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		CD3CBBD41884B41700D647CC /* Shooter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Shooter.h; path = ../IterativeTemplate/Shooter.h; sourceTree = "<group>"; };
-		CD3CBBD51884B41700D647CC /* Shooter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Shooter.cpp; path = ../IterativeTemplate/Shooter.cpp; sourceTree = "<group>"; };
-		CD3CBBD61884B41700D647CC /* BallCollector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BallCollector.h; path = ../IterativeTemplate/BallCollector.h; sourceTree = "<group>"; };
-		CD3CBBD71884B41700D647CC /* BallCollector.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = BallCollector.cpp; path = ../IterativeTemplate/BallCollector.cpp; sourceTree = "<group>"; };
-		CD3CBBD81884B41700D647CC /* AutonomousDriver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AutonomousDriver.h; path = ../IterativeTemplate/AutonomousDriver.h; sourceTree = "<group>"; };
-		CD3CBBD91884B41700D647CC /* AutonomousDriver.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AutonomousDriver.cpp; path = ../IterativeTemplate/AutonomousDriver.cpp; sourceTree = "<group>"; };
-		E713C0551882156B00B078CB /* Controls.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Controls.cpp; path = ../IterativeTemplate/Controls.cpp; sourceTree = "<group>"; };
-		E713C0561882156B00B078CB /* Controls.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Controls.h; path = ../IterativeTemplate/Controls.h; sourceTree = "<group>"; };
-		E713C0571882156B00B078CB /* DriveSystem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DriveSystem.cpp; path = ../IterativeTemplate/DriveSystem.cpp; sourceTree = "<group>"; };
-		E713C0581882156B00B078CB /* DriveSystem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DriveSystem.h; path = ../IterativeTemplate/DriveSystem.h; sourceTree = "<group>"; };
-		E713C0591882156B00B078CB /* Hardware.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Hardware.cpp; path = ../IterativeTemplate/Hardware.cpp; sourceTree = "<group>"; };
-		E713C05A1882156B00B078CB /* Hardware.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Hardware.h; path = ../IterativeTemplate/Hardware.h; sourceTree = "<group>"; };
-		E713C05B1882156B00B078CB /* MyRobot.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MyRobot.cpp; path = ../IterativeTemplate/MyRobot.cpp; sourceTree = "<group>"; };
-		E7237E4D18A6B272003CB339 /* Vision.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Vision.cpp; path = ../IterativeTemplate/Vision.cpp; sourceTree = "<group>"; };
-		E7237E4E18A6B272003CB339 /* Vision.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Vision.h; path = ../IterativeTemplate/Vision.h; sourceTree = "<group>"; };
+		E7267C5618B0FD9A003685EC /* BallCollector.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = BallCollector.cpp; path = ../SimpleTemplate/BallCollector.cpp; sourceTree = "<group>"; };
+		E7267C5718B0FD9A003685EC /* BallCollector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BallCollector.h; path = ../SimpleTemplate/BallCollector.h; sourceTree = "<group>"; };
+		E7267C5818B0FD9A003685EC /* BallShooter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = BallShooter.cpp; path = ../SimpleTemplate/BallShooter.cpp; sourceTree = "<group>"; };
+		E7267C5918B0FD9A003685EC /* BallShooter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BallShooter.h; path = ../SimpleTemplate/BallShooter.h; sourceTree = "<group>"; };
+		E7267C5A18B0FD9A003685EC /* DriveSystem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DriveSystem.cpp; path = ../SimpleTemplate/DriveSystem.cpp; sourceTree = "<group>"; };
+		E7267C5B18B0FD9A003685EC /* DriveSystem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DriveSystem.h; path = ../SimpleTemplate/DriveSystem.h; sourceTree = "<group>"; };
+		E7267C5C18B0FD9A003685EC /* Hardware.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Hardware.cpp; path = ../SimpleTemplate/Hardware.cpp; sourceTree = "<group>"; };
+		E7267C5D18B0FD9A003685EC /* Hardware.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Hardware.h; path = ../SimpleTemplate/Hardware.h; sourceTree = "<group>"; };
+		E7267C5E18B0FD9A003685EC /* MyRobot.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MyRobot.cpp; path = ../SimpleTemplate/MyRobot.cpp; sourceTree = "<group>"; };
+		E7267C5F18B0FD9A003685EC /* UnderGlow.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = UnderGlow.cpp; path = ../SimpleTemplate/UnderGlow.cpp; sourceTree = "<group>"; };
+		E7267C6018B0FD9A003685EC /* UnderGlow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = UnderGlow.h; path = ../SimpleTemplate/UnderGlow.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
 		E713C04E1882154D00B078CB = {
 			isa = PBXGroup;
 			children = (
-				E713C0561882156B00B078CB /* Controls.h */,
-				E713C0551882156B00B078CB /* Controls.cpp */,
-				E713C0581882156B00B078CB /* DriveSystem.h */,
-				E713C0571882156B00B078CB /* DriveSystem.cpp */,
-				E713C05A1882156B00B078CB /* Hardware.h */,
-				E713C0591882156B00B078CB /* Hardware.cpp */,
-				E713C05B1882156B00B078CB /* MyRobot.cpp */,
-				CD3CBBD41884B41700D647CC /* Shooter.h */,
-				CD3CBBD51884B41700D647CC /* Shooter.cpp */,
-				CD3CBBD61884B41700D647CC /* BallCollector.h */,
-				CD3CBBD71884B41700D647CC /* BallCollector.cpp */,
-				CD3CBBD81884B41700D647CC /* AutonomousDriver.h */,
-				CD3CBBD91884B41700D647CC /* AutonomousDriver.cpp */,
-				E7237E4E18A6B272003CB339 /* Vision.h */,
-				E7237E4D18A6B272003CB339 /* Vision.cpp */,
+				E7267C5618B0FD9A003685EC /* BallCollector.cpp */,
+				E7267C5718B0FD9A003685EC /* BallCollector.h */,
+				E7267C5818B0FD9A003685EC /* BallShooter.cpp */,
+				E7267C5918B0FD9A003685EC /* BallShooter.h */,
+				E7267C5A18B0FD9A003685EC /* DriveSystem.cpp */,
+				E7267C5B18B0FD9A003685EC /* DriveSystem.h */,
+				E7267C5C18B0FD9A003685EC /* Hardware.cpp */,
+				E7267C5D18B0FD9A003685EC /* Hardware.h */,
+				E7267C5E18B0FD9A003685EC /* MyRobot.cpp */,
+				E7267C5F18B0FD9A003685EC /* UnderGlow.cpp */,
+				E7267C6018B0FD9A003685EC /* UnderGlow.h */,
 			);
 			sourceTree = "<group>";
 		};
