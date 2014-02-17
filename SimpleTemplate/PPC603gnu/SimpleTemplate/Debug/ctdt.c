@@ -13,7 +13,7 @@ void _GLOBAL__I__ZN11BallShooterC2EP15SpeedControllerS1_P12DigitalInputS3_P7Enco
 
 void _GLOBAL__I__ZN11DriveSystemC2EP15SpeedControllerS1_S1_S1_P4GyroP8Joystick();
 
-void _GLOBAL__I__ZN13BallCollectorC2EP15SpeedControllerS1_S1_P12DigitalInputS3_P8Joystick();
+void _GLOBAL__I__ZN13BallCollectorC2EP15SpeedControllerS1_S1_P12DigitalInputP8Joystick();
 
 void _GLOBAL__I__ZN8Hardware8DriveSysE();
 
@@ -77,7 +77,7 @@ void (*_ctors[])() =
     _GLOBAL__I__Z20FRC_userClassFactoryv,
     _GLOBAL__I__ZN11BallShooterC2EP15SpeedControllerS1_P12DigitalInputS3_P7EncoderP8Joystick,
     _GLOBAL__I__ZN11DriveSystemC2EP15SpeedControllerS1_S1_S1_P4GyroP8Joystick,
-    _GLOBAL__I__ZN13BallCollectorC2EP15SpeedControllerS1_S1_P12DigitalInputS3_P8Joystick,
+    _GLOBAL__I__ZN13BallCollectorC2EP15SpeedControllerS1_S1_P12DigitalInputP8Joystick,
     _GLOBAL__I__ZN8Hardware8DriveSysE,
     _GLOBAL__I__ZN9UnderGlowC2Eiii,
     _GLOBAL__I__ZN12PrintCommandC2EPKc,
@@ -115,7 +115,7 @@ void _GLOBAL__D__ZN11BallShooterC2EP15SpeedControllerS1_P12DigitalInputS3_P7Enco
 
 void _GLOBAL__D__ZN11DriveSystemC2EP15SpeedControllerS1_S1_S1_P4GyroP8Joystick();
 
-void _GLOBAL__D__ZN13BallCollectorC2EP15SpeedControllerS1_S1_P12DigitalInputS3_P8Joystick();
+void _GLOBAL__D__ZN13BallCollectorC2EP15SpeedControllerS1_S1_P12DigitalInputP8Joystick();
 
 void _GLOBAL__D__ZN8Hardware8DriveSysE();
 
@@ -169,7 +169,7 @@ void (*_dtors[])() =
     _GLOBAL__D__Z20FRC_userClassFactoryv,
     _GLOBAL__D__ZN11BallShooterC2EP15SpeedControllerS1_P12DigitalInputS3_P7EncoderP8Joystick,
     _GLOBAL__D__ZN11DriveSystemC2EP15SpeedControllerS1_S1_S1_P4GyroP8Joystick,
-    _GLOBAL__D__ZN13BallCollectorC2EP15SpeedControllerS1_S1_P12DigitalInputS3_P8Joystick,
+    _GLOBAL__D__ZN13BallCollectorC2EP15SpeedControllerS1_S1_P12DigitalInputP8Joystick,
     _GLOBAL__D__ZN8Hardware8DriveSysE,
     _GLOBAL__D__ZN9UnderGlowC2Eiii,
     _GLOBAL__D__ZN9Scheduler9_instanceE,

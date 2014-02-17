@@ -2,40 +2,42 @@
 #include "Hardware.h"
 #include <math.h>
 
-const double RAISE_SPEED=0.75;
 const double SPIN_SPEED=0.35;
+const double RAISE_SPEED=1;
+
+
 BallCollector::BallCollector(SpeedController* spinL, SpeedController* spinR, SpeedController* raise,
-    DigitalInput* upperLimit,DigitalInput* lowerLimit, Joystick *joystick)
+    DigitalInput* limit, Joystick *joystick)
 {
         m_spinL = spinL;
         m_spinR = spinR;
         m_raise = raise;
-        ls_d=lowerLimit;
-        ls_u=upperLimit;
+        ls=limit;
         stick=joystick;
+        state=UP;
+        buttonState=false;
+        buttonEnabled=true;
 }
-double deadzone(double speed){
-  if(fabs(speed)<0.3)return 0;
-  return speed;
-}
+//down is one
 void BallCollector::AutonomousCollect(double sPower,double rPower){
   m_spinL->Set(-sPower*SPIN_SPEED);
   m_spinR->Set(sPower*SPIN_SPEED);
-  m_raise->Set(rPower*RAISE_SPEED);
-  while(!ls_d->Get()){
+  m_raise->Set(RAISE_SPEED*rPower);
+  Wait(0.3);
+  while(!ls->Get()){
       Wait(0.05);
   }
+  m_spinR->Set(0);
+  m_spinL->Set(0);
+  m_raise->Set(0);
+  state=rPower>=0?DOWN:UP;
 }
 bool BallCollector::OKToShoot(){
-  if(ls_d->Get())
-  {
-      m_raise->Set(0);
-           return true;
+  if(state==DOWN){
+      return true;
   }
-  else
-  {
+  else{
       m_raise->Set(RAISE_SPEED);
-           return false;
   }
 }
 void BallCollector::Collect()//Pick up the ball
@@ -45,7 +47,48 @@ void BallCollector::Collect()//Pick up the ball
         m_spinL->Set(-SPIN_SPEED * spinDir);
         m_spinR->Set(SPIN_SPEED * spinDir);
         //Set raise/lower speed
-        double speed=RAISE_SPEED*deadzone(stick->GetY());
-        if(speed<0) m_raise->Set(ls_d->Get()?0:speed);
-        else m_raise->Set(ls_d->Get()?0:speed);
+        return;
+        if(stick->GetRawButton(6)) m_raise->Set(-RAISE_SPEED);
+        else if(stick->GetRawButton(7)) m_raise->Set(RAISE_SPEED);
+        else switch(state){
+            case UP:
+              buttonEnabled=buttonEnabled||!stick->GetRawButton(4);
+              buttonState=buttonState||(buttonEnabled&&stick->GetRawButton(4));
+              m_raise->Set(buttonState?RAISE_SPEED:0);
+              if(!ls->Get()){
+                  state=LOWERING;
+                  buttonState=false;
+              }
+            break;
+            case LOWERING:
+              buttonEnabled=buttonEnabled||!stick->GetRawButton(4);
+              buttonState=false;
+              m_raise->Set(RAISE_SPEED);
+              if(ls->Get())
+                {
+                  state=DOWN;
+                  buttonEnabled=!stick->GetRawButton(4);
+                  
+                }
+            break;
+            case DOWN:
+              buttonEnabled=buttonEnabled||!stick->GetRawButton(4);
+              buttonState=buttonState||(buttonEnabled&&stick->GetRawButton(4));
+              m_raise->Set(buttonState?-RAISE_SPEED:0);
+              if(!ls->Get())
+                {
+                  state=RAISING;
+                  buttonState=false;
+                }
+            break;
+            case RAISING:
+              m_raise->Set(-RAISE_SPEED);
+              if(ls->Get())
+                {
+                  state=UP;
+                  buttonEnabled=!stick->GetRawButton(4);
+                }
+            break;
+        }
+
 }

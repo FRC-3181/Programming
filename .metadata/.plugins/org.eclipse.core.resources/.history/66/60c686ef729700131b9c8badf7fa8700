@@ -1,0 +1,51 @@
+#include "BallCollector.h"
+#include "Hardware.h"
+#include <math.h>
+
+const double RAISE_SPEED=0.75;
+const double SPIN_SPEED=0.35;
+BallCollector::BallCollector(SpeedController* spinL, SpeedController* spinR, SpeedController* raise,
+    DigitalInput* upperLimit,DigitalInput* lowerLimit, Joystick *joystick)
+{
+        m_spinL = spinL;
+        m_spinR = spinR;
+        m_raise = raise;
+        ls_d=lowerLimit;
+        ls_u=upperLimit;
+        stick=joystick;
+}
+double deadzone(double speed){
+  if(fabs(speed)<0.3)return 0;
+  return speed;
+}
+void BallCollector::AutonomousCollect(double sPower,double rPower){
+  m_spinL->Set(-sPower*SPIN_SPEED);
+  m_spinR->Set(sPower*SPIN_SPEED);
+  m_raise->Set(rPower*RAISE_SPEED);
+  while(!ls_d->Get()){
+      Wait(0.05);
+  }
+}
+bool BallCollector::OKToShoot(){
+  if(ls_d->Get())
+  {
+      m_raise->Set(0);
+           return true;
+  }
+  else
+  {
+      m_raise->Set(RAISE_SPEED);
+           return false;
+  }
+}
+void BallCollector::Collect()//Pick up the ball
+{
+        //Set Spinner Speed
+        double spinDir = stick->GetRawButton(2)?1:(stick->GetRawButton(3)?-1:0);
+        m_spinL->Set(-SPIN_SPEED * spinDir);
+        m_spinR->Set(SPIN_SPEED * spinDir);
+        //Set raise/lower speed
+        double speed=RAISE_SPEED*deadzone(stick->GetY());
+        if(speed<0) m_raise->Set(ls_d->Get()?0:speed);
+        else m_raise->Set(ls_d->Get()?0:speed);
+}

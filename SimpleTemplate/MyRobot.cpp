@@ -16,7 +16,8 @@ public:
 	RobotDemo()
 	{
 	  Hardware::Init();
-	 // Hardware::RobotLights->setUnderGlow(false,false,true);
+	 // 
+	  
 	}
 
 	/**
@@ -24,8 +25,18 @@ public:
 	 */
 	void Autonomous()
 	{
-	  Hardware::Collector->AutonomousCollect(0.2,-1);
-          Hardware::Collector->AutonomousCollect(0,0);
+	  switch(DriverStation::GetInstance()->GetAlliance()){
+	            case DriverStation::kRed:{
+	              Hardware::RobotLights->SetUnderGlow(UnderGlow::RED);
+	            }break;
+	            case DriverStation::kBlue:{
+	              Hardware::RobotLights->SetUnderGlow(UnderGlow::BLUE); 
+	                      }break;
+	            default:{
+	              Hardware::RobotLights->SetUnderGlow(UnderGlow::OFF);        
+	                      }break;
+	            }
+	  Hardware::Collector->AutonomousCollect(0.2,1);
           Hardware::DriveSys->DriveForward(0.3,0.75);
           Hardware::DriveSys->DriveForward(0,1);
           Hardware::Shooter->AutonomousShoot(this);
@@ -39,14 +50,14 @@ public:
 	
 	void OperatorControl()
 	{
+	  Hardware::RobotLights->SetUnderGlow(UnderGlow::WHITE);
 	  DriverStationLCD::GetInstance()->Clear();
-
 		while (IsOperatorControl() && IsEnabled())
 		{
 		    Hardware::DriveSys->Drive();
-	          //      Hardware::Collector->Collect();
+	                Hardware::Collector->Collect();
 	                
-		  //    Hardware::Shooter->Shoot();
+		      Hardware::Shooter->Shoot();
 		    DriverStationLCD::GetInstance()->UpdateLCD();
 
 			Wait(0.005);				// wait for a motor update time

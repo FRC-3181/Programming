@@ -13,6 +13,7 @@ public:
         void AutonomousShoot(RobotBase* robot);
 
 private:
+        double ShootPower();
         void ShootBall(bool passing);
 
         void Lower();

@@ -4,13 +4,24 @@
 #define __UGLOW__
 
 class UnderGlow{
-public:
+  public:
+
+  enum Color{
+    OFF=0,
+    BLUE=1,
+    GREEN=2,
+    CYAN=3,
+    RED=4,
+    MAGENTA=5,
+    YELLOW=6,
+    WHITE=7
+  };
+
         UnderGlow(int r,int g,int b);
         ~UnderGlow();
-        void setUnderGlow(bool r,bool g,bool b);
+        void SetUnderGlow(Color color);
         
 private:
-        bool redState,greenState,blueState;
         Solenoid *red, *green, *blue;
         
 };
