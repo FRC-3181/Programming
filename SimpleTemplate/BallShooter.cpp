@@ -1,4 +1,5 @@
 #include "BallShooter.h"
+#include "Hardware.h"
 //#include "Vision.h"
 #include <math.h>
 
@@ -6,7 +7,7 @@ const double RECOVER_SPEED = -0.25;
 const int PASS_RELEASE_ANGLE = 50;
 
 const double WAIT_TIME = 100;//Time for waiting at the top in ms
-const double SHOOT_SPEED = 0.75;
+const double SHOOT_SPEED = 1.0;
 
 BallShooter::BallShooter(SpeedController *left, SpeedController *right,
                 DigitalInput *upper, DigitalInput *lower,Encoder* encoder,
@@ -24,10 +25,7 @@ BallShooter::BallShooter(SpeedController *left, SpeedController *right,
 void BallShooter::Shoot(){
   if(stick->GetTrigger())
   {
-      ShootBall(false);
-  }
-  else if(stick->GetRawButton(3)){
-        ShootBall(true);
+      if(Hardware::Collector->OKToShoot())ShootBall(stick->GetRawButton(5));
   }
   else{
       Lower();
@@ -37,14 +35,11 @@ void BallShooter::Shoot(){
 void BallShooter::AutonomousShoot(RobotBase* robot){
   
   while (robot->IsAutonomous() && robot->IsEnabled()){
+      DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line1,"Shooting");
+      DriverStationLCD::GetInstance()->UpdateLCD();
       ShootBall(false);
-      if(m_l->Get()==0)break;
       Wait(0.05);
   }
-  while (robot->IsAutonomous() && robot->IsEnabled()){
-        Lower();
-        Wait(0.05);
-    }
 }
 void BallShooter::Lower() //Bring the shooter back down
 {

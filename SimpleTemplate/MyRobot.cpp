@@ -24,7 +24,10 @@ public:
 	 */
 	void Autonomous()
 	{
-          Hardware::DriveSys->DriveForward(0.5,3.0);
+	  Hardware::Collector->AutonomousCollect(0.2,-1);
+          Hardware::Collector->AutonomousCollect(0,0);
+          Hardware::DriveSys->DriveForward(0.3,0.75);
+          Hardware::DriveSys->DriveForward(0,1);
           Hardware::Shooter->AutonomousShoot(this);
 
 	}
@@ -36,15 +39,15 @@ public:
 	
 	void OperatorControl()
 	{
-	  
-	  DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line1,"Variable Shooter Enabled");
-	 
+	  DriverStationLCD::GetInstance()->Clear();
+
 		while (IsOperatorControl() && IsEnabled())
 		{
 		    Hardware::DriveSys->Drive();
-		      Hardware::Shooter->Shoot();
-		      Hardware::Collector->Collect();
-		      DriverStationLCD::GetInstance()->UpdateLCD();
+	          //      Hardware::Collector->Collect();
+	                
+		  //    Hardware::Shooter->Shoot();
+		    DriverStationLCD::GetInstance()->UpdateLCD();
 
 			Wait(0.005);				// wait for a motor update time
 		}

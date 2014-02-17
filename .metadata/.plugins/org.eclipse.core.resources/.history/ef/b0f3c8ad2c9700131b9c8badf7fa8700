@@ -1,0 +1,34 @@
+#include "BallCollector.h"
+#include "Hardware.h"
+#include <math.h>
+
+const double RAISE_SPEED=0.75;
+const double SPIN_SPEED=0.35;
+BallCollector::BallCollector(SpeedController* spinL, SpeedController* spinR, SpeedController* raise,Joystick *joystick)
+{
+        m_spinL = spinL;
+        m_spinR = spinR;
+        m_raise = raise;
+        stick=joystick;
+}
+double deadzone(double speed){
+  if(fabs(speed)<0.3)return 0;
+  return speed;
+}
+void BallCollector::AutonomousCollect(double sPower,double rPower,double time){
+  m_spinL->Set(-sPower*SPIN_SPEED);
+  m_spinR->Set(sPower*SPIN_SPEED);
+  m_raise->Set(rPower*RAISE_SPEED);
+  Wait(time);
+}
+void BallCollector::Collect()//Pick up the ball
+{
+        //Set Spinner Speed
+        double spinDir = deadzone(stick->GetX());
+        m_spinL->Set(-SPIN_SPEED * spinDir);
+        m_spinR->Set(SPIN_SPEED * spinDir);
+        DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line1,"Collector: %f",deadzone(stick->GetY()));
+
+        //Set raise/lower speed
+        m_raise->Set(RAISE_SPEED*deadzone(stick->GetY()));
+}

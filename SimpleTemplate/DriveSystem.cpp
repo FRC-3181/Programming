@@ -19,12 +19,15 @@ DriveSystem::DriveSystem(SpeedController* frontLeft,SpeedController* frontRight,
         m_br = backRight;
         rotateGyro = gyro;
         stick=joystick;
+        gyroState=true;
+        buttonState=false;
 }
 void DriveSystem::DriveForward(double speed, double time){
-  m_fl->Set(K_FL *speed);
-  m_fr->Set(K_FR *speed);
-  m_bl->Set(K_BL *speed);
-  m_br->Set(K_BR *speed);
+  rotateGyro->Reset();
+  m_fl->Set(-K_FL *speed);
+  m_fr->Set(-K_FR *speed);
+  m_bl->Set(-K_BL *speed);
+  m_br->Set(-K_BR *speed);
   Wait(time);
 }
 
@@ -35,7 +38,7 @@ void DriveSystem::Drive()
         double x,y,r;
         ReadControls(x,y,r);
         //Rotate Axes and scale controls
-        DriveSystem::RotateAxes(x,y,GyroAngle());
+        DriveSystem::RotateAxes(x,y);
         DriveSystem::ScaleComponents(x,y,r);
         //Do Some Math to determine wheel values
         double fl = y + x - r;//front left likes to go Forward, left, and CW
@@ -49,7 +52,11 @@ void DriveSystem::Drive()
         m_br->Set(K_BR * br);
 
 }
-void DriveSystem::RotateAxes(double &x,double &y,double rotationAngle){
+bool DriveSystem::TurboMode(){
+  return stick->GetTrigger();
+}
+void DriveSystem::RotateAxes(double &x,double &y){
+        double rotationAngle=GyroAngle();
         double xRotation = x * cos(rotationAngle) - y * sin(rotationAngle);
         double yRotation = y * cos(rotationAngle) + x * sin(rotationAngle);
         x = xRotation;
@@ -58,7 +65,7 @@ void DriveSystem::RotateAxes(double &x,double &y,double rotationAngle){
 void DriveSystem::ScaleComponents(double &x,double &y, double &r){
         //Determine the scale
         double scale = fabs(x)+ fabs(y)+ fabs(r);
-        scale = (scale > 1) ? 1 / scale:1;
+        scale = (scale > 1||(TurboMode()&&scale>0.25)) ? 1 / scale:1;
         //Scale values
         x *= scale;
         y *= scale;
@@ -66,16 +73,26 @@ void DriveSystem::ScaleComponents(double &x,double &y, double &r){
 }
 void DriveSystem::ReadControls(double &x,double &y, double &r){
         //Determine the scale
-        double scale = (1-stick->GetThrottle()) /2;
+        double scale = TurboMode()?1:0.75*((1-stick->GetThrottle()) /2);
         //Read Values
-        x = stick->GetX() * scale;
-        y = stick->GetY() * scale;
-        r = stick->GetTwist()* scale;
+        double hatX=-stick->GetRawAxis(5);
+        double hatY=stick->GetRawAxis(6);
+        x = (hatX!=0||hatY!=0)?hatX:pow(stick->GetX(),3);
+        y = (hatX!=0||hatY!=0)?hatY:pow(stick->GetY(),3);
+        r = stick->GetTwist();
+        x *= scale;
+        y *= scale;
+        r *= scale;
 }
 double DriveSystem::GyroAngle()//Get the angle we have turned
 {
+        if(stick->GetRawButton(5)&&!buttonState){
+            gyroState=!gyroState;
+        }
+        buttonState=stick->GetRawButton(5);
         //Reset Gyro if desired
         if(stick->GetRawButton(6))rotateGyro->Reset();
+        if(!gyroState)return 0;
         //Read the gyro angle
         int angle=(int)rotateGyro->GetAngle();
         //Get it in desired range

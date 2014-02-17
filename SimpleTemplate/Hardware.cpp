@@ -37,7 +37,9 @@ void Hardware::Init()
         SpeedController* collectorSpinLeft = new Victor(5);
        SpeedController* collectorSpinRight = new Victor(6);
        SpeedController* collectorRaise = new Victor(9);
-       Collector = new BallCollector(collectorSpinLeft, collectorSpinRight, collectorRaise, ballStick);
+       DigitalInput* upperCollectLimit=new DigitalInput(5);
+              DigitalInput* lowerCollectLimit=new DigitalInput(6);
+       Collector = new BallCollector(collectorSpinLeft, collectorSpinRight, collectorRaise,upperCollectLimit,lowerCollectLimit, ballStick);
        
        
        //RobotLights=new UnderGlow(1,2,3);

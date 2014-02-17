@@ -14,9 +14,11 @@ private:
         SpeedController *m_fl, *m_fr, *m_bl, *m_br;
         Gyro* rotateGyro;
         Joystick* stick;
+        bool gyroState, buttonState;
+        bool TurboMode();
         void ReadControls(double &x, double &y, double &r);
         double GyroAngle();//Deterimine the angle that we have turned
-        static void RotateAxes(double &x, double &y, double rotationAngle);
-        static void ScaleComponents(double &x, double &y, double &r);
+        void RotateAxes(double &x, double &y);
+        void ScaleComponents(double &x, double &y, double &r);
 };
 #endif
