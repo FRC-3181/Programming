@@ -29,7 +29,7 @@ void Hardware::Init()
         DigitalInput* upperLimit=new DigitalInput(1);
         DigitalInput* lowerLimit=new DigitalInput(2);
         uint32_t port1=3,port2=4;
-        Encoder* shootEncoder = new Encoder(port1, port2, true, Encoder::k4X);//Change Port numbers
+        Encoder* shootEncoder = new Encoder(port1, port2, false, Encoder::k4X);//Change Port numbers
         shootEncoder->Reset();
         Shooter = new BallShooter(shooterLeft, shooterRight, upperLimit,lowerLimit,shootEncoder,ballStick);
 
@@ -41,6 +41,6 @@ void Hardware::Init()
        Collector = new BallCollector(collectorSpinLeft, collectorSpinRight, collectorRaise,collectLimit, ballStick);
        
        
-       RobotLights=new UnderGlow(1,2,3);
+       RobotLights=new UnderGlow(1,2);
 
 }

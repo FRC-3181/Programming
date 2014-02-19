@@ -24,9 +24,12 @@ void BallCollector::AutonomousCollect(double sPower,double rPower){
   m_spinR->Set(sPower*SPIN_SPEED);
   m_raise->Set(RAISE_SPEED*rPower);
   Wait(0.3);
-  while(!ls->Get()){
+  while(ls->Get()){
       Wait(0.05);
   }
+  while(!ls->Get()){
+        Wait(0.05);
+    }
   m_spinR->Set(0);
   m_spinL->Set(0);
   m_raise->Set(0);
@@ -47,15 +50,13 @@ void BallCollector::Collect()//Pick up the ball
         m_spinL->Set(-SPIN_SPEED * spinDir);
         m_spinR->Set(SPIN_SPEED * spinDir);
         //Set raise/lower speed
-        return;
-        if(stick->GetRawButton(6)) m_raise->Set(-RAISE_SPEED);
-        else if(stick->GetRawButton(7)) m_raise->Set(RAISE_SPEED);
+        if(stick->GetRawButton(5)) m_raise->Set(-RAISE_SPEED);
         else switch(state){
             case UP:
               buttonEnabled=buttonEnabled||!stick->GetRawButton(4);
               buttonState=buttonState||(buttonEnabled&&stick->GetRawButton(4));
               m_raise->Set(buttonState?RAISE_SPEED:0);
-              if(!ls->Get()){
+              if(!ls->Get()&&buttonState){
                   state=LOWERING;
                   buttonState=false;
               }
@@ -75,7 +76,7 @@ void BallCollector::Collect()//Pick up the ball
               buttonEnabled=buttonEnabled||!stick->GetRawButton(4);
               buttonState=buttonState||(buttonEnabled&&stick->GetRawButton(4));
               m_raise->Set(buttonState?-RAISE_SPEED:0);
-              if(!ls->Get())
+              if(!ls->Get()&&buttonState)
                 {
                   state=RAISING;
                   buttonState=false;

@@ -4,12 +4,17 @@
 #include <math.h>
 
 const double RECOVER_SPEED = -0.25;
-const int PASS_RELEASE_ANGLE = 50;
-
-const double WAIT_TIME = 100;//Time for waiting at the top in ms
 const double SHOOT_SPEED = 1.0;
 
-const double MAX_SHOOT_ANGLE=200;
+const int MAX_SHOOT_ANGLE=120;
+const int MIN_SHOOT_ANGLE=55;
+const int RELEASE_ANGLE_1 = 60;
+const int RELEASE_ANGLE_2 = 70;
+const int RELEASE_ANGLE_3 = 80;
+const int RELEASE_ANGLE_4 = 90;
+const int RELEASE_ANGLE_5 = 100;
+const int RELEASE_ANGLE_6 = 110;
+
 
 BallShooter::BallShooter(SpeedController *left, SpeedController *right,
                 DigitalInput *upper, DigitalInput *lower,Encoder* encoder,
@@ -23,18 +28,32 @@ BallShooter::BallShooter(SpeedController *left, SpeedController *right,
         releaseAngle=0;
         previouslyShooting=false;
         finishedShot=false;
+        triggerState=false;
+}
+void BallShooter::EncoderTest()
+{
+  DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line5,"Encoder Raw: %i",enc->GetRaw());
+
 }
 double BallShooter::ShootPower()
 {
-  return (1-stick->GetZ())/2;
+  return (1-stick->GetThrottle())/2.0;
 }
 void BallShooter::Shoot()
 {
-  DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line2,"Shooter Power: %d%%",ShootPower());
-
-  if(stick->GetTrigger())
+  DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line3,"Shooter Power: %f %%",100*ShootPower());
+  triggerState=triggerState||(stick->GetTrigger()&&ls_l->Get());
+  if(triggerState)
   {
-      if(Hardware::Collector->OKToShoot())ShootBall(stick->GetRawButton(5));
+    int angle=0;
+    if(stick->GetRawButton(6))angle=RELEASE_ANGLE_1;
+    else if(stick->GetRawButton(7))angle=RELEASE_ANGLE_2;
+    else if(stick->GetRawButton(8))angle=RELEASE_ANGLE_3;
+    else if(stick->GetRawButton(9))angle=RELEASE_ANGLE_4;
+    else if(stick->GetRawButton(10))angle=RELEASE_ANGLE_5;
+    else if(stick->GetRawButton(11))angle=RELEASE_ANGLE_6;
+
+    ShootBall(angle);
   }
   else{
       Lower();
@@ -46,7 +65,7 @@ void BallShooter::AutonomousShoot(RobotBase* robot){
   while (robot->IsAutonomous() && robot->IsEnabled()){
       DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line1,"Shooting");
       DriverStationLCD::GetInstance()->UpdateLCD();
-      ShootBall(false);
+      if(Hardware::Collector->OKToShoot())ShootBall(0);
       Wait(0.05);
   }
 }
@@ -58,7 +77,7 @@ void BallShooter::Lower() //Bring the shooter back down
     m_l->Set(-shotSpeed);
     m_r->Set(shotSpeed);
 }
-void BallShooter::ShootBall(bool passing) 
+void BallShooter::ShootBall(int angle) 
 {
   if(finishedShot){
       double shotSpeed = (ls_l->Get() ? 0.0 : RECOVER_SPEED);
@@ -68,21 +87,22 @@ void BallShooter::ShootBall(bool passing)
   }
     if(!previouslyShooting){
         //Deterime speed required to hit target
-        int releaseAngle = passing?PASS_RELEASE_ANGLE:MAX_SHOOT_ANGLE*ShootPower();
+        releaseAngle = angle==0?MIN_SHOOT_ANGLE+(MAX_SHOOT_ANGLE-MIN_SHOOT_ANGLE)*ShootPower():angle;
+
         enc->Reset();
         enc->Start(); 
         previouslyShooting=true;
         finishedShot=false;
-    }
+    }        
     m_l->Set(-SHOOT_SPEED);
     m_r->Set(SHOOT_SPEED);
-    DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line4,"encoder raw: %i",enc->GetRaw());
 
     //
-    if( ls_u->Get() /*|| enc->GetRaw()>=releaseAngle*/)//If we hit the top, stop
+    if( ls_u->Get() || enc->GetRaw()>=releaseAngle)//If we hit the top, stop
     {
       enc->Stop();
       finishedShot=true;
+      triggerState=false;
       //Stop Motors when we hit the top
       m_l->Set(0);
       m_r->Set(0);

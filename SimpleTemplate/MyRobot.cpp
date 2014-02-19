@@ -16,8 +16,10 @@ public:
 	RobotDemo()
 	{
 	  Hardware::Init();
-	 // 
-	  
+	          Hardware::RobotLights->SetUnderGlow(UnderGlow::WHITE);
+	              DriverStationLCD::GetInstance()->Clear();
+	                    DriverStationLCD::GetInstance()->UpdateLCD();
+
 	}
 
 	/**
@@ -50,14 +52,23 @@ public:
 	
 	void OperatorControl()
 	{
-	  Hardware::RobotLights->SetUnderGlow(UnderGlow::WHITE);
 	  DriverStationLCD::GetInstance()->Clear();
+	 DriverStationLCD::GetInstance()->UpdateLCD();
+          DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line1,"Robot Enabled");
+          
+          bool buttonState=false;
+          bool LSDMode=false;
 		while (IsOperatorControl() && IsEnabled())
 		{
-		    Hardware::DriveSys->Drive();
-	                Hardware::Collector->Collect();
+		    
+		    if(!buttonState&&Hardware::DriveSys->stick->GetRawButton(7))LSDMode=!LSDMode;
+		    buttonState=Hardware::DriveSys->stick->GetRawButton(7);
+                        Hardware::RobotLights->LSDSimulator(LSDMode);
+
+		          Hardware::DriveSys->Drive();
+	                    Hardware::Collector->Collect();
 	                
-		      Hardware::Shooter->Shoot();
+		           Hardware::Shooter->Shoot();
 		    DriverStationLCD::GetInstance()->UpdateLCD();
 
 			Wait(0.005);				// wait for a motor update time

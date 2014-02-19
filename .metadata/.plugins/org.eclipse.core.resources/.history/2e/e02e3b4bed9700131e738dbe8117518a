@@ -1,0 +1,125 @@
+#include "DriveSystem.h"
+#include "Hardware.h"
+#include <math.h>
+
+
+//Constants to adjust the speeds of the motors based on resistance
+const double K_FL = -1;
+const double K_FR = 1;
+const double K_BL = -1;
+const double K_BR = 1;
+
+
+DriveSystem::DriveSystem(SpeedController* frontLeft,SpeedController* frontRight,
+    SpeedController* backLeft,SpeedController* backRight,
+    Gyro* gyro,Joystick *joystick){
+        m_fl = frontLeft; 
+        m_fr = frontRight;
+        m_bl = backLeft;
+        m_br = backRight;
+        rotateGyro = gyro;
+        stick=joystick;
+        gyroState=true;
+        buttonState=false;
+}
+void DriveSystem::DriveForward(double speed, double time){
+  rotateGyro->Reset();
+  m_fl->Set(-K_FL *speed);
+  m_fr->Set(-K_FR *speed);
+  m_bl->Set(-K_BL *speed);
+  m_br->Set(-K_BR *speed);
+  Wait(time);
+}
+
+void DriveSystem::Drive()
+{
+        
+        //Get Control Values
+        double x,y,r;
+        ReadControls(x,y,r);
+        //Rotate Axes and scale controls
+        DriveSystem::RotateAxes(x,y);
+        DriveSystem::ScaleComponents(x,y,r);
+        //Do Some Math to determine wheel values
+        double fl = -y + x - r;//front left likes to go Forward, left, and CW
+        double fr = -y - x + r;//Front right likes to go forward, right, and CCW
+        double bl = y - x - r;//Back left likes to go Forward, right, and CW
+        double br = y + x + r;//Back right likes to go Forward, left, and  CCW
+        //Set Motor Values
+        m_fl->Set(K_FL * fl);
+        m_fr->Set(K_FR * fr);
+        m_bl->Set(K_BL * bl);
+        m_br->Set(K_BR * br);
+
+}
+bool DriveSystem::TurboMode(){
+  if(stick->GetTrigger())
+  {
+      Hardware::RobotLights->SetUnderGlow(UnderGlow::GREEN);
+      return true;
+  }
+  return false;
+  switch(DriverStation::GetInstance()->GetAlliance()){
+                      case DriverStation::kRed:{
+                        Hardware::RobotLights->SetUnderGlow(UnderGlow::RED);
+                      }break;
+                      case DriverStation::kBlue:{
+                        Hardware::RobotLights->SetUnderGlow(UnderGlow::BLUE); 
+                                }break;
+                      default:{
+                        Hardware::RobotLights->SetUnderGlow(UnderGlow::OFF);        
+                                }break;
+                      }
+  return false;
+}
+void DriveSystem::RotateAxes(double &x,double &y){
+        double rotationAngle=GyroAngle();
+        double xRotation = x * cos(rotationAngle) - y * sin(rotationAngle);
+        double yRotation = y * cos(rotationAngle) + x * sin(rotationAngle);
+        x = xRotation;
+        y = yRotation;
+}
+void DriveSystem::ScaleComponents(double &x,double &y, double &r){
+        //Determine the scale
+        double scale = fabs(x)+ fabs(y)+ fabs(r);
+        scale = (scale > 1) ? 1 / scale:1;
+        if(TurboMode()){
+            double mag=x*x+y*y+r*r;
+            scale=mag>=1?mag:pow(mag,0.0625);
+        }
+        //Scale values
+        x *= scale;
+        y *= scale;
+        r *= scale;
+}
+void DriveSystem::ReadControls(double &x,double &y, double &r){
+        //Determine the scale
+        double scale = TurboMode()?1:0.75*((1-stick->GetThrottle()) /2);
+        //Read Values
+        double hatX=stick->GetRawAxis(5);
+        double hatY=stick->GetRawAxis(6);
+        x = (hatX!=0||hatY!=0)?hatX:pow(stick->GetX(),3);
+        y = (hatX!=0||hatY!=0)?hatY:pow(stick->GetY(),3);
+        r = stick->GetTwist();
+        x *= scale;
+        y *= scale;
+        r *= scale;
+}
+double DriveSystem::GyroAngle()//Get the angle we have turned
+{
+        if(stick->GetRawButton(5)&&!buttonState){
+            gyroState=!gyroState;
+        }
+        if(gyroState)DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line2,"Gyro Enabled");
+        else DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line2,"Gyro Disabled");
+        buttonState=stick->GetRawButton(5);
+        //Reset Gyro if desired
+        if(stick->GetRawButton(6))rotateGyro->Reset();
+        if(!gyroState)return 0;
+        //Read the gyro angle
+        int angle=(int)rotateGyro->GetAngle();
+        //Get it in desired range
+        angle%=360;
+        //Convert from degrees to radians
+        return double(angle)*-3.14159/180.0;
+}

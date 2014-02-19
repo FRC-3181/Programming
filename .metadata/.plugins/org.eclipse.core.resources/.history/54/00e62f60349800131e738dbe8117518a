@@ -1,0 +1,26 @@
+#include "UnderGlow.h"
+
+
+        UnderGlow::UnderGlow(int port1,int port2){
+
+              alliance=new Relay(port1);
+              turbo=new Relay(port2);
+        }
+        UnderGlow::~UnderGlow(){
+                delete alliance;
+                delete turbo;
+        }
+        
+        void UnderGlow::SetUnderGlow(Color color){
+                if(color/4==1)
+                {
+                    alliance->Set((color%2)==1?Relay::kOn:Relay::kReverse);
+                }
+                else
+                  {
+                    alliance->Set((color%2)==1?Relay::kForward:Relay::kOff);
+
+                  }
+                turbo->Set((color%4/2)==1?Relay::kOn:Relay::kForward);
+        }
+     

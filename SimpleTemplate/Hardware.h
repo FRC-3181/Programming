@@ -6,7 +6,6 @@
 #ifndef __HARDWARE__
 #define __HARDWARE__
 
-
 class Hardware
 {
 public:

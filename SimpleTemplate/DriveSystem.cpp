@@ -58,7 +58,6 @@ bool DriveSystem::TurboMode(){
       Hardware::RobotLights->SetUnderGlow(UnderGlow::GREEN);
       return true;
   }
-  return false;
   switch(DriverStation::GetInstance()->GetAlliance()){
                       case DriverStation::kRed:{
                         Hardware::RobotLights->SetUnderGlow(UnderGlow::RED);
@@ -94,32 +93,30 @@ void DriveSystem::ScaleComponents(double &x,double &y, double &r){
 }
 void DriveSystem::ReadControls(double &x,double &y, double &r){
         //Determine the scale
-        double scale = TurboMode()?1:0.75*((1-stick->GetThrottle()) /2);
+        double scale = TurboMode()?1:0.75*((1-stick->GetTwist()) /2);
         //Read Values
         double hatX=stick->GetRawAxis(5);
         double hatY=stick->GetRawAxis(6);
         x = (hatX!=0||hatY!=0)?hatX:pow(stick->GetX(),3);
         y = (hatX!=0||hatY!=0)?hatY:pow(stick->GetY(),3);
-        r = stick->GetTwist();
+        r = stick->GetThrottle()*1.3;
         x *= scale;
         y *= scale;
         r *= scale;
 }
 double DriveSystem::GyroAngle()//Get the angle we have turned
 {
-        if(stick->GetRawButton(5)&&!buttonState){
+        if(stick->GetRawButton(11)&&!buttonState){
             gyroState=!gyroState;
         }
         if(gyroState)DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line2,"Gyro Enabled");
         else DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line2,"Gyro Disabled");
-        buttonState=stick->GetRawButton(5);
+        buttonState=stick->GetRawButton(11);
         //Reset Gyro if desired
-        if(stick->GetRawButton(6))rotateGyro->Reset();
+        if(stick->GetRawButton(12))rotateGyro->Reset();
         if(!gyroState)return 0;
         //Read the gyro angle
-        int angle=(int)rotateGyro->GetAngle();
-        //Get it in desired range
-        angle%=360;
+     //   return rotateGyro->GetRate();
         //Convert from degrees to radians
-        return double(angle)*-3.14159/180.0;
+        return rotateGyro->GetAngle()*-3.14159/180.0;
 }

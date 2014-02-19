@@ -1,0 +1,21 @@
+#include "UnderGlow.h"
+
+
+        UnderGlow::UnderGlow(int r,int g,int b){
+
+               red=new DoubleSolenoid(r,r);
+                green=new DoubleSolenoid(g,g);
+                blue=new DoubleSolenoid(b,b);
+        }
+        UnderGlow::~UnderGlow(){
+                delete red;
+                delete green;
+                delete blue;
+        }
+        
+        void UnderGlow::SetUnderGlow(Color color){
+                red->Set(color&RED==RED?-1:0);
+                green->Set(color&GREEN==GREEN?-1:0);
+               blue->Set(color&BLUE==BLUE?-1:0);
+        }
+     

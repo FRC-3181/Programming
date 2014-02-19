@@ -11,10 +11,10 @@ public:
         //void Shoot();//determine if we need to shoot
         void Shoot();
         void AutonomousShoot(RobotBase* robot);
-
+        void EncoderTest();
 private:
         double ShootPower();
-        void ShootBall(bool passing);
+        void ShootBall(int angle);
 
         void Lower();
         //Hardware
@@ -22,8 +22,9 @@ private:
         DigitalInput *ls_l,*ls_u;//Limit Switches for determining stopping point
         Joystick* stick;
         Encoder *enc;
+        bool triggerState;
         bool previouslyShooting,finishedShot;
-        int releaseAngle;
+        double releaseAngle;
         int lastAngle;
 };
 

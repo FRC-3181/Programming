@@ -17,7 +17,7 @@ void _GLOBAL__I__ZN13BallCollectorC2EP15SpeedControllerS1_S1_P12DigitalInputP8Jo
 
 void _GLOBAL__I__ZN8Hardware8DriveSysE();
 
-void _GLOBAL__I__ZN9UnderGlowC2Eiii();
+void _GLOBAL__I__ZN9UnderGlowC2Eii();
 
 void _GLOBAL__I__ZN12PrintCommandC2EPKc();
 
@@ -79,7 +79,7 @@ void (*_ctors[])() =
     _GLOBAL__I__ZN11DriveSystemC2EP15SpeedControllerS1_S1_S1_P4GyroP8Joystick,
     _GLOBAL__I__ZN13BallCollectorC2EP15SpeedControllerS1_S1_P12DigitalInputP8Joystick,
     _GLOBAL__I__ZN8Hardware8DriveSysE,
-    _GLOBAL__I__ZN9UnderGlowC2Eiii,
+    _GLOBAL__I__ZN9UnderGlowC2Eii,
     _GLOBAL__I__ZN12PrintCommandC2EPKc,
     _GLOBAL__I__ZN9Scheduler9_instanceE,
     _GLOBAL__I__ZN11WaitCommandC2Ed,
@@ -119,7 +119,7 @@ void _GLOBAL__D__ZN13BallCollectorC2EP15SpeedControllerS1_S1_P12DigitalInputP8Jo
 
 void _GLOBAL__D__ZN8Hardware8DriveSysE();
 
-void _GLOBAL__D__ZN9UnderGlowC2Eiii();
+void _GLOBAL__D__ZN9UnderGlowC2Eii();
 
 void _GLOBAL__D__ZN9Scheduler9_instanceE();
 
@@ -171,7 +171,7 @@ void (*_dtors[])() =
     _GLOBAL__D__ZN11DriveSystemC2EP15SpeedControllerS1_S1_S1_P4GyroP8Joystick,
     _GLOBAL__D__ZN13BallCollectorC2EP15SpeedControllerS1_S1_P12DigitalInputP8Joystick,
     _GLOBAL__D__ZN8Hardware8DriveSysE,
-    _GLOBAL__D__ZN9UnderGlowC2Eiii,
+    _GLOBAL__D__ZN9UnderGlowC2Eii,
     _GLOBAL__D__ZN9Scheduler9_instanceE,
     _GLOBAL__D_wpi_error_s_ModuleIndexOutOfRange,
     _GLOBAL__D__ZN17MotorSafetyHelper12m_headHelperE,

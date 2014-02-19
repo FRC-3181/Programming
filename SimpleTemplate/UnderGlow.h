@@ -17,13 +17,17 @@ class UnderGlow{
     WHITE=7
   };
 
-        UnderGlow(int r,int g,int b);
+        UnderGlow(int port1,int port2);
         ~UnderGlow();
         void SetUnderGlow(Color color);
-        
+        void LSDSimulator(bool run);
 private:
-        Solenoid *red, *green, *blue;
-        
+        Relay *alliance, *turbo;
+        double waitTime;
+        Timer* LSDTimer;
+        Color currentColor;
+        bool isLSDMode;
+       
 };
 
 #endif
