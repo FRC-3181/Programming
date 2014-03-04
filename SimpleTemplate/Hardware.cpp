@@ -1,5 +1,6 @@
 #include "Hardware.h"
 
+#define VictorDrive
 
 //Static Variable Declarations
 DriveSystem* Hardware::DriveSys = NULL;
@@ -13,12 +14,18 @@ void Hardware::Init()
   Joystick* driveStick=new Joystick(1);
 
   Joystick* ballStick=new Joystick(2);
-
+#ifdef VictorDrive
+SpeedController* driveFL=new Victor(1);
+SpeedController* driveFR=new Victor(2);
+SpeedController* driveBR=new Victor(3);
+SpeedController* driveBL=new Victor(4);
+#else
      //Drive System
         SpeedController*  driveFL = new Talon(1);
          SpeedController* driveFR = new Talon(2);
          SpeedController* driveBR = new Talon(3);
          SpeedController* driveBL = new Talon(4);
+#endif
        Gyro* driveGyro = new Gyro(1);
         DriveSys = new DriveSystem(driveFL, driveFR, driveBL, driveBR, driveGyro,driveStick);
 

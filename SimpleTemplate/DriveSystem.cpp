@@ -41,10 +41,10 @@ void DriveSystem::Drive()
         DriveSystem::RotateAxes(x,y);
         DriveSystem::ScaleComponents(x,y,r);
         //Do Some Math to determine wheel values
-        double fl = -y + x - r;//front left likes to go Forward, left, and CW
-        double fr = -y - x + r;//Front right likes to go forward, right, and CCW
-        double bl = y - x - r;//Back left likes to go Forward, right, and CW
-        double br = y + x + r;//Back right likes to go Forward, left, and  CCW
+        double fl = y - x - r;//front left likes to go Forward, left, and CW
+        double fr = y + x + r;//Front right likes to go forward, right, and CCW
+        double bl = y + x - r;//Back left likes to go Forward, right, and CW
+        double br = y - x + r;//Back right likes to go Forward, left, and  CCW
         //Set Motor Values
         m_fl->Set(K_FL * fl);
         m_fr->Set(K_FR * fr);
@@ -94,12 +94,14 @@ void DriveSystem::ScaleComponents(double &x,double &y, double &r){
 void DriveSystem::ReadControls(double &x,double &y, double &r){
         //Determine the scale
         double scale = TurboMode()?1:0.75*((1-stick->GetTwist()) /2);
+        double deadzone=stick->GetMagnitude()<0.2?0:1;
         //Read Values
         double hatX=stick->GetRawAxis(5);
         double hatY=stick->GetRawAxis(6);
-        x = (hatX!=0||hatY!=0)?hatX:pow(stick->GetX(),3);
-        y = (hatX!=0||hatY!=0)?hatY:pow(stick->GetY(),3);
+        x = (hatX!=0||hatY!=0)?hatX:pow(deadzone*stick->GetX(),3);
+        y = (hatX!=0||hatY!=0)?hatY:pow(deadzone*stick->GetY(),3);
         r = stick->GetThrottle()*1.3;
+        if(fabs(r)<0.3)r=0;
         x *= scale;
         y *= scale;
         r *= scale;

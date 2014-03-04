@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workbench progressCount="17" version="2.0">
 <workbenchAdvisor/>
-<window height="699" width="1942" x="-18" y="0">
+<window height="699" width="1622" x="242" y="15">
 <fastViewData fastViewLocation="1024"/>
 <perspectiveBar>
 <itemSize x="160"/>
@@ -50,19 +50,19 @@
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="Hardware.cpp" partName="Hardware.cpp" path="C:/Users/Owner/Documents/GitHub/Programming/SimpleTemplate/Hardware.cpp" title="Hardware.cpp" tooltip="SimpleTemplate/Hardware.cpp" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SimpleTemplate/Hardware.cpp"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="562" selectionTopPixel="303"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="529" selectionTopPixel="180"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="BallCollector.cpp" partName="BallCollector.cpp" path="C:/Users/Owner/Documents/GitHub/Programming/SimpleTemplate/BallCollector.cpp" title="BallCollector.cpp" tooltip="SimpleTemplate/BallCollector.cpp" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SimpleTemplate/BallCollector.cpp"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="954" selectionTopPixel="660"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="598" selectionTopPixel="362"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="DriveSystem.cpp" partName="DriveSystem.cpp" path="C:/Users/Owner/Documents/GitHub/Programming/SimpleTemplate/DriveSystem.cpp" title="DriveSystem.cpp" tooltip="SimpleTemplate/DriveSystem.cpp" workbook="DefaultEditorWorkbook">
+<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="DriveSystem.cpp" partName="DriveSystem.cpp" path="C:/Users/Owner/Documents/GitHub/Programming/SimpleTemplate/DriveSystem.cpp" title="DriveSystem.cpp" tooltip="SimpleTemplate/DriveSystem.cpp" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SimpleTemplate/DriveSystem.cpp"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="4158" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3652" selectionTopPixel="1740"/>
 </editor>
-<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="MyRobot.cpp" partName="MyRobot.cpp" path="C:/Users/Owner/Documents/GitHub/Programming/SimpleTemplate/MyRobot.cpp" title="MyRobot.cpp" tooltip="SimpleTemplate/MyRobot.cpp" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="MyRobot.cpp" partName="MyRobot.cpp" path="C:/Users/Owner/Documents/GitHub/Programming/SimpleTemplate/MyRobot.cpp" title="MyRobot.cpp" tooltip="SimpleTemplate/MyRobot.cpp" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SimpleTemplate/MyRobot.cpp"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2182" selectionTopPixel="1070"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1289" selectionTopPixel="530"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="BallShooter.cpp" partName="BallShooter.cpp" path="C:/Users/Owner/Documents/GitHub/Programming/SimpleTemplate/BallShooter.cpp" title="BallShooter.cpp" tooltip="SimpleTemplate/BallShooter.cpp" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SimpleTemplate/BallShooter.cpp"/>
@@ -477,69 +477,21 @@
 <editors>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/SimpleTemplate/UnderGlow.cpp"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/SimpleTemplate/UnderGlow.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/SimpleTemplate/BallCollector.cpp"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/SimpleTemplate/BallShooter.cpp"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/SimpleTemplate/DriveSystem.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/SimpleTemplate/Hardware.cpp"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/SimpleTemplate/BallShooter.h"/>
 <editor factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="C:\WindRiver\vxworks-6.3\target\h\WPILib\Timer.h" project="SimpleTemplate"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/SimpleTemplate/MyRobot.cpp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/SimpleTemplate/Hardware.cpp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/SimpleTemplate/DriveSystem.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/SimpleTemplate/DriveSystem.cpp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/SimpleTemplate/BallCollector.cpp"/>
 </editors>
-<item historyLabel="BallShooter.cpp" index="3">
-<position info="not_deleted" x="1813" y="0"/>
-</item>
-<item historyLabel="BallShooter.cpp" index="3">
-<position info="not_deleted" x="1395" y="0"/>
-</item>
-<item historyLabel="BallShooter.cpp" index="3">
-<position info="not_deleted" x="2361" y="0"/>
-</item>
-<item historyLabel="BallCollector.cpp" index="2">
-<position info="not_deleted" x="101" y="0"/>
-</item>
-<item historyLabel="BallShooter.cpp" index="3">
-<position info="not_deleted" x="618" y="0"/>
-</item>
-<item historyLabel="BallCollector.cpp" index="2">
-<position info="not_deleted" x="954" y="0"/>
-</item>
-<item historyLabel="Hardware.cpp" index="5">
-<position info="not_deleted" x="562" y="0"/>
-</item>
-<item historyLabel="BallShooter.cpp" index="3">
-<position info="not_deleted" x="618" y="0"/>
-</item>
-<item historyLabel="BallShooter.h" index="6">
-<position info="not_deleted" x="771" y="12"/>
-</item>
-<item historyLabel="BallShooter.cpp" index="3">
-<position info="not_deleted" x="618" y="0"/>
-</item>
-<item historyLabel="BallShooter.cpp" index="3">
-<position info="not_deleted" x="1306" y="0"/>
-</item>
-<item historyLabel="BallShooter.cpp" index="3">
-<position info="not_deleted" x="1260" y="12"/>
-</item>
-<item historyLabel="BallShooter.h" index="6">
-<position info="not_deleted" x="771" y="12"/>
-</item>
-<item historyLabel="BallShooter.cpp" index="3">
-<position info="not_deleted" x="3112" y="0"/>
-</item>
-<item historyLabel="UnderGlow.cpp" index="0">
-<position/>
-</item>
-<item historyLabel="UnderGlow.h" index="1">
-<position info="not_deleted" x="343" y="12"/>
-</item>
 <item historyLabel="UnderGlow.h" index="1">
 <position info="not_deleted" x="438" y="0"/>
 </item>
 <item historyLabel="UnderGlow.cpp" index="0">
 <position info="not_deleted" x="866" y="0"/>
 </item>
-<item historyLabel="DriveSystem.h" index="4">
+<item historyLabel="DriveSystem.h" index="2">
 <position info="not_deleted" x="511" y="0"/>
 </item>
 <item historyLabel="UnderGlow.h" index="1">
@@ -560,7 +512,7 @@
 <item historyLabel="UnderGlow.h" index="1">
 <position info="not_deleted" x="446" y="5"/>
 </item>
-<item historyLabel="Timer.h" index="7">
+<item historyLabel="Timer.h" index="3">
 <position info="not_deleted" x="1117" y="15"/>
 </item>
 <item historyLabel="UnderGlow.cpp" index="0">
@@ -587,7 +539,7 @@
 <item historyLabel="UnderGlow.cpp" index="0">
 <position info="not_deleted" x="1576" y="0"/>
 </item>
-<item historyLabel="Timer.h" index="7">
+<item historyLabel="Timer.h" index="3">
 <position info="not_deleted" x="1117" y="15"/>
 </item>
 <item historyLabel="UnderGlow.cpp" index="0">
@@ -602,13 +554,13 @@
 <item historyLabel="UnderGlow.cpp" index="0">
 <position info="not_deleted" x="1578" y="0"/>
 </item>
-<item historyLabel="MyRobot.cpp" index="8">
+<item historyLabel="MyRobot.cpp" index="4">
 <position info="not_deleted" x="2150" y="0"/>
 </item>
 <item historyLabel="UnderGlow.cpp" index="0">
 <position info="not_deleted" x="200" y="5"/>
 </item>
-<item historyLabel="Timer.h" index="7">
+<item historyLabel="Timer.h" index="3">
 <position info="not_deleted" x="1094" y="0"/>
 </item>
 <item historyLabel="UnderGlow.cpp" index="0">
@@ -632,8 +584,56 @@
 <item historyLabel="UnderGlow.cpp" index="0">
 <position info="not_deleted" x="1392" y="0"/>
 </item>
-<item active="true" historyLabel="MyRobot.cpp" index="8">
+<item historyLabel="MyRobot.cpp" index="4">
 <position info="not_deleted" x="2150" y="0"/>
+</item>
+<item historyLabel="Hardware.cpp" index="5">
+<position info="not_deleted" x="780" y="0"/>
+</item>
+<item historyLabel="Hardware.cpp" index="5">
+<position info="not_deleted" x="415" y="0"/>
+</item>
+<item historyLabel="Hardware.cpp" index="5">
+<position info="not_deleted" x="456" y="0"/>
+</item>
+<item historyLabel="Hardware.cpp" index="5">
+<position info="not_deleted" x="538" y="0"/>
+</item>
+<item historyLabel="DriveSystem.h" index="6">
+<position info="not_deleted" x="511" y="0"/>
+</item>
+<item historyLabel="DriveSystem.cpp" index="7">
+<position info="not_deleted" x="4259" y="0"/>
+</item>
+<item historyLabel="BallCollector.cpp" index="8">
+<position info="not_deleted" x="954" y="0"/>
+</item>
+<item historyLabel="Hardware.cpp" index="5">
+<position info="not_deleted" x="529" y="0"/>
+</item>
+<item historyLabel="DriveSystem.cpp" index="7">
+<position info="not_deleted" x="1414" y="0"/>
+</item>
+<item historyLabel="BallCollector.cpp" index="8">
+<position info="not_deleted" x="598" y="0"/>
+</item>
+<item historyLabel="DriveSystem.cpp" index="7">
+<position info="not_deleted" x="1141" y="0"/>
+</item>
+<item historyLabel="MyRobot.cpp" index="4">
+<position info="not_deleted" x="1289" y="0"/>
+</item>
+<item historyLabel="DriveSystem.cpp" index="7">
+<position info="not_deleted" x="1141" y="0"/>
+</item>
+<item historyLabel="DriveSystem.cpp" index="7">
+<position info="not_deleted" x="3297" y="0"/>
+</item>
+<item historyLabel="DriveSystem.cpp" index="7">
+<position info="not_deleted" x="3600" y="0"/>
+</item>
+<item active="true" historyLabel="DriveSystem.cpp" index="7">
+<position info="not_deleted" x="3610" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -641,12 +641,6 @@
 <workbenchWindowAdvisor/>
 <actionBarAdvisor/>
 <trimLayout>
-<trimArea IMemento.internal.id="16384">
-<trimItem IMemento.internal.id="left"/>
-</trimArea>
-<trimArea IMemento.internal.id="131072">
-<trimItem IMemento.internal.id="right"/>
-</trimArea>
 <trimArea IMemento.internal.id="128">
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.WorkbenchWindow.topBar"/>
 </trimArea>
@@ -655,7 +649,6 @@
 <trimItem IMemento.internal.id="org.eclipse.jface.action.StatusLineManager"/>
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.HeapStatus"/>
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.progress.ProgressRegion"/>
-<trimItem IMemento.internal.id="bottom"/>
 </trimArea>
 </trimLayout>
 </window>
