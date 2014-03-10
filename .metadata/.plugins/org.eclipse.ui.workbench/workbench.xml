@@ -44,21 +44,21 @@
 </folder>
 </info>
 </editorArea>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="UnderGlow.cpp" partName="UnderGlow.cpp" path="C:/Users/Owner/Documents/GitHub/Programming/SimpleTemplate/UnderGlow.cpp" title="UnderGlow.cpp" tooltip="SimpleTemplate/UnderGlow.cpp" workbook="DefaultEditorWorkbook">
+<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="UnderGlow.cpp" partName="UnderGlow.cpp" path="C:/Users/Owner/Documents/GitHub/Programming/SimpleTemplate/UnderGlow.cpp" title="UnderGlow.cpp" tooltip="SimpleTemplate/UnderGlow.cpp" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SimpleTemplate/UnderGlow.cpp"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1392" selectionTopPixel="622"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="284" selectionTopPixel="0"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="Hardware.cpp" partName="Hardware.cpp" path="C:/Users/Owner/Documents/GitHub/Programming/SimpleTemplate/Hardware.cpp" title="Hardware.cpp" tooltip="SimpleTemplate/Hardware.cpp" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SimpleTemplate/Hardware.cpp"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="529" selectionTopPixel="180"/>
+<editorState selectionHorizontalPixel="0" selectionLength="9" selectionOffset="1845" selectionTopPixel="602"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="BallCollector.cpp" partName="BallCollector.cpp" path="C:/Users/Owner/Documents/GitHub/Programming/SimpleTemplate/BallCollector.cpp" title="BallCollector.cpp" tooltip="SimpleTemplate/BallCollector.cpp" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SimpleTemplate/BallCollector.cpp"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="598" selectionTopPixel="362"/>
 </editor>
-<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="DriveSystem.cpp" partName="DriveSystem.cpp" path="C:/Users/Owner/Documents/GitHub/Programming/SimpleTemplate/DriveSystem.cpp" title="DriveSystem.cpp" tooltip="SimpleTemplate/DriveSystem.cpp" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="DriveSystem.cpp" partName="DriveSystem.cpp" path="C:/Users/Owner/Documents/GitHub/Programming/SimpleTemplate/DriveSystem.cpp" title="DriveSystem.cpp" tooltip="SimpleTemplate/DriveSystem.cpp" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SimpleTemplate/DriveSystem.cpp"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3652" selectionTopPixel="1740"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3673" selectionTopPixel="1800"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="MyRobot.cpp" partName="MyRobot.cpp" path="C:/Users/Owner/Documents/GitHub/Programming/SimpleTemplate/MyRobot.cpp" title="MyRobot.cpp" tooltip="SimpleTemplate/MyRobot.cpp" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SimpleTemplate/MyRobot.cpp"/>
@@ -119,7 +119,7 @@
 <viewState/>
 </view>
 </views>
-<perspectives activePart="org.eclipse.cdt.ui.editor.CEditor" activePerspective="com.windriver.ide.perspective.SDE">
+<perspectives activePart="org.eclipse.ui.views.ContentOutline" activePerspective="com.windriver.ide.perspective.SDE">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="com.windriver.ide.ui.SDEPerspectiveFactory" id="com.windriver.ide.perspective.SDE" label="Basic Device Development"/>
 <alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
@@ -179,13 +179,13 @@
 <hide_menu_item_id id="org.eclipse.debug.ui.commands.ProfileLast"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.move.element"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.self.encapsulate.field"/>
-<hide_menu_item_id id="org.eclipse.ui.navigate.addToWorkingSet"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.search.write.access.in.project"/>
+<hide_menu_item_id id="org.eclipse.ui.navigate.addToWorkingSet"/>
 <hide_menu_item_id id="org.eclipse.ltk.ui.refactor.apply.refactoring.script"/>
 <hide_menu_item_id id="org.eclipse.jdt.debug.ui.commands.AllReferences"/>
 <hide_menu_item_id id="org.eclipse.ui.file.revert"/>
-<hide_menu_item_id id="org.eclipse.ui.cheatsheets.actions.CheatSheetHelpMenuAction"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.open.super.implementation"/>
+<hide_menu_item_id id="org.eclipse.ui.cheatsheets.actions.CheatSheetHelpMenuAction"/>
 <hide_menu_item_id id="org.eclipse.ui.window.closeAllPerspectives"/>
 <hide_menu_item_id id="org.eclipse.wst.sse.ui.structure.select.previous"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.generate.hashcode.equals"/>
@@ -219,27 +219,27 @@
 <hide_menu_item_id id="org.eclipse.jdt.ui.generate.javadoc"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.introduce.parameter"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.open.type.hierarchy"/>
-<hide_menu_item_id id="org.eclipse.debug.ui.commands.ToggleMethodBreakpoint"/>
 <hide_menu_item_id id="org.eclipse.team.cvs.ui.updateSwitch"/>
+<hide_menu_item_id id="org.eclipse.debug.ui.commands.ToggleMethodBreakpoint"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.infer.type.arguments"/>
 <hide_menu_item_id id="org.eclipse.wst.sse.ui.format.active.elements"/>
 <hide_menu_item_id id="org.eclipse.jdt.debug.ui.commands.StepIntoSelection"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.push.down"/>
-<hide_menu_item_id id="org.eclipse.ui.window.newEditor"/>
 <hide_menu_item_id id="org.eclipse.debug.ui.actions.BreakpointTypesContribution"/>
+<hide_menu_item_id id="org.eclipse.ui.window.newEditor"/>
 <hide_menu_item_id id="com.windriver.ide.debug.ui.menu.dropToFrameAction"/>
-<hide_menu_item_id id="org.eclipse.ui.navigate.selectWorkingSets"/>
 <hide_menu_item_id id="org.eclipse.ui.edit.text.shiftRight"/>
-<hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.extract.method"/>
+<hide_menu_item_id id="org.eclipse.ui.navigate.selectWorkingSets"/>
 <hide_menu_item_id id="org.eclipse.debug.ui.commands.StepOver"/>
+<hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.extract.method"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.search.occurrences.in.file.quickMenu"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.find.broken.nls.keys"/>
 <hide_menu_item_id id="org.eclipse.ui.file.saveAll"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.extract.class"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.introduce.indirection"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.navigate.gotopackage"/>
-<hide_menu_item_id id="org.eclipse.jdt.junit.gotoTest"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.search.write.access.in.workspace"/>
+<hide_menu_item_id id="org.eclipse.jdt.junit.gotoTest"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.quick.format"/>
 <hide_menu_item_id id="com.windriver.ide.debug.ui.menu.setBreakpointAtFrameFunctionAction"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.navigate.gototype"/>
@@ -250,16 +250,16 @@
 <hide_menu_item_id id="org.eclipse.cdt.dsf.test.fileBrowser"/>
 <hide_menu_item_id id="org.eclipse.cdt.debug.ui.internal.actions.RestartActionDelegate"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.add.block.comment"/>
-<hide_menu_item_id id="org.eclipse.jdt.ui.navigate.open.type"/>
 <hide_menu_item_id id="org.eclipse.debug.ui.commands.Resume"/>
+<hide_menu_item_id id="org.eclipse.jdt.ui.navigate.open.type"/>
 <hide_menu_item_id id="com.windriver.ide.wrlinux.ui.quiltAction"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.add.unimplemented.constructors"/>
 <hide_menu_item_id id="com.windriver.ide.debug.ui.menu.addDataBreakpointAction"/>
-<hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.open.external.javadoc"/>
 <hide_menu_item_id id="org.eclipse.jdt.debug.ui.commands.ForceReturn"/>
+<hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.open.external.javadoc"/>
 <hide_menu_item_id id="org.eclipse.wst.sse.ui.goto.matching.bracket"/>
-<hide_menu_item_id id="org.eclipse.cdt.ui.edit.text.rename.element"/>
 <hide_menu_item_id id="org.eclipse.debug.internal.ui.actions.ProfileWithConfigurationAction"/>
+<hide_menu_item_id id="org.eclipse.cdt.ui.edit.text.rename.element"/>
 <hide_menu_item_id id="org.eclipse.team.cvs.ui.update"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.search.declarations.in.working.set"/>
 <hide_menu_item_id id="com.windriver.ide.debug.ui.menu.runToFrameAddressAction"/>
@@ -358,16 +358,16 @@
 <hide_menu_item_id id="com.windriver.ide.ui.internal.actions.register2eclipseaction"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.extract.constant"/>
 <hide_menu_item_id id="org.eclipse.wst.sse.ui.remove.block.comment"/>
-<hide_menu_item_id id="org.eclipse.wst.sse.ui.cleanup.document"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.search.implementors.in.working.set"/>
-<hide_menu_item_id id="org.eclipse.wst.xml.ui.nextSibling"/>
+<hide_menu_item_id id="org.eclipse.wst.sse.ui.cleanup.document"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.search.declarations.in.workspace"/>
+<hide_menu_item_id id="org.eclipse.wst.xml.ui.nextSibling"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.open.call.hierarchy"/>
 <hide_menu_item_id id="org.eclipse.cdt.debug.ui.actions.ResumeAtLine"/>
-<hide_menu_item_id id="org.eclipse.ui.edit.text.shiftLeft"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.organize.imports"/>
-<hide_menu_item_id id="org.eclipse.search.ui.openSearchDialog"/>
+<hide_menu_item_id id="org.eclipse.ui.edit.text.shiftLeft"/>
 <hide_menu_item_id id="org.eclipse.ui.update.manageConfiguration"/>
+<hide_menu_item_id id="org.eclipse.search.ui.openSearchDialog"/>
 <hide_menu_item_id id="org.eclipse.debug.ui.commands.RemoveAllBreakpoints"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.edit.text.java.format"/>
 <hide_menu_item_id id="org.eclipse.wst.sse.ui.structure.select.next"/>
@@ -379,14 +379,14 @@
 <hide_toolbar_item_id id="org.eclipse.ui.externaltools.ExternalToolMenuDelegateToolbar"/>
 <hide_toolbar_item_id id="com.windriver.ide.ui.SetEmacsKeysAction"/>
 <hide_toolbar_item_id id="org.eclipse.team.ui.synchronizeAll"/>
-<hide_toolbar_item_id id="com.windriver.ide.search.performOpenTextSearch"/>
 <hide_toolbar_item_id id="org.eclipse.cdt.dsf.debug.ui.refreshAll"/>
-<hide_toolbar_item_id id="com.windriver.ide.staticanalysis.ui.openElementInCallHierarchy"/>
+<hide_toolbar_item_id id="com.windriver.ide.search.performOpenTextSearch"/>
 <hide_toolbar_item_id id="org.eclipse.ui.navigate.selectWorkingSets"/>
-<hide_toolbar_item_id id="org.eclipse.jdt.ui.navigate.open.type"/>
+<hide_toolbar_item_id id="com.windriver.ide.staticanalysis.ui.openElementInCallHierarchy"/>
 <hide_toolbar_item_id id="org.eclipse.jdt.ui.edit.text.java.toggleBreadcrumb"/>
-<hide_toolbar_item_id id="org.eclipse.cdt.ui.actions.NewFolderDropDown"/>
+<hide_toolbar_item_id id="org.eclipse.jdt.ui.navigate.open.type"/>
 <hide_toolbar_item_id id="com.windriver.ide.vxworks55.action.launch_tornado"/>
+<hide_toolbar_item_id id="org.eclipse.cdt.ui.actions.NewFolderDropDown"/>
 <hide_toolbar_item_id id="com.windriver.ide.wrlinux.ui.quiltAction"/>
 <hide_toolbar_item_id id="org.eclipse.cdt.ui.actions.NewTypeDropDown"/>
 <hide_toolbar_item_id id="org.eclipse.ui.navigate.addToWorkingSet"/>
@@ -404,8 +404,8 @@
 <hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
 <hide_toolbar_item_id id="org.eclipse.jdt.ui.actions.NewTypeDropDown"/>
 <hide_toolbar_item_id id="org.eclipse.team.cvs.ui.checkout"/>
-<hide_toolbar_item_id id="org.eclipse.debug.internal.ui.actions.ProfileDropDownAction"/>
 <hide_toolbar_item_id id="com.windriver.scopetools.memscope.WRMemoryToolbarAction"/>
+<hide_toolbar_item_id id="org.eclipse.debug.internal.ui.actions.ProfileDropDownAction"/>
 <view id="org.eclipse.ui.views.TaskList"/>
 <view id="com.windriver.ide.ui.build.WRBuildConsoleView"/>
 <view id="org.eclipse.search.ui.views.SearchView"/>
@@ -477,26 +477,16 @@
 <editors>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/SimpleTemplate/UnderGlow.cpp"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/SimpleTemplate/UnderGlow.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/SimpleTemplate/DriveSystem.h"/>
 <editor factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="C:\WindRiver\vxworks-6.3\target\h\WPILib\Timer.h" project="SimpleTemplate"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/SimpleTemplate/MyRobot.cpp"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/SimpleTemplate/Hardware.cpp"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/SimpleTemplate/DriveSystem.h"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/SimpleTemplate/DriveSystem.cpp"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/SimpleTemplate/BallCollector.cpp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/SimpleTemplate/MyRobot.cpp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/SimpleTemplate/Hardware.cpp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/SimpleTemplate/UnderGlow.cpp"/>
 </editors>
-<item historyLabel="UnderGlow.h" index="1">
-<position info="not_deleted" x="438" y="0"/>
-</item>
-<item historyLabel="UnderGlow.cpp" index="0">
-<position info="not_deleted" x="866" y="0"/>
-</item>
-<item historyLabel="DriveSystem.h" index="2">
-<position info="not_deleted" x="511" y="0"/>
-</item>
-<item historyLabel="UnderGlow.h" index="1">
-<position info="not_deleted" x="438" y="0"/>
-</item>
 <item historyLabel="UnderGlow.cpp" index="0">
 <position info="not_deleted" x="866" y="0"/>
 </item>
@@ -512,7 +502,7 @@
 <item historyLabel="UnderGlow.h" index="1">
 <position info="not_deleted" x="446" y="5"/>
 </item>
-<item historyLabel="Timer.h" index="3">
+<item historyLabel="Timer.h" index="2">
 <position info="not_deleted" x="1117" y="15"/>
 </item>
 <item historyLabel="UnderGlow.cpp" index="0">
@@ -539,7 +529,7 @@
 <item historyLabel="UnderGlow.cpp" index="0">
 <position info="not_deleted" x="1576" y="0"/>
 </item>
-<item historyLabel="Timer.h" index="3">
+<item historyLabel="Timer.h" index="2">
 <position info="not_deleted" x="1117" y="15"/>
 </item>
 <item historyLabel="UnderGlow.cpp" index="0">
@@ -554,13 +544,13 @@
 <item historyLabel="UnderGlow.cpp" index="0">
 <position info="not_deleted" x="1578" y="0"/>
 </item>
-<item historyLabel="MyRobot.cpp" index="4">
+<item historyLabel="MyRobot.cpp" index="3">
 <position info="not_deleted" x="2150" y="0"/>
 </item>
 <item historyLabel="UnderGlow.cpp" index="0">
 <position info="not_deleted" x="200" y="5"/>
 </item>
-<item historyLabel="Timer.h" index="3">
+<item historyLabel="Timer.h" index="2">
 <position info="not_deleted" x="1094" y="0"/>
 </item>
 <item historyLabel="UnderGlow.cpp" index="0">
@@ -584,56 +574,68 @@
 <item historyLabel="UnderGlow.cpp" index="0">
 <position info="not_deleted" x="1392" y="0"/>
 </item>
-<item historyLabel="MyRobot.cpp" index="4">
+<item historyLabel="MyRobot.cpp" index="3">
 <position info="not_deleted" x="2150" y="0"/>
 </item>
-<item historyLabel="Hardware.cpp" index="5">
+<item historyLabel="Hardware.cpp" index="4">
 <position info="not_deleted" x="780" y="0"/>
 </item>
-<item historyLabel="Hardware.cpp" index="5">
+<item historyLabel="Hardware.cpp" index="4">
 <position info="not_deleted" x="415" y="0"/>
 </item>
-<item historyLabel="Hardware.cpp" index="5">
+<item historyLabel="Hardware.cpp" index="4">
 <position info="not_deleted" x="456" y="0"/>
 </item>
-<item historyLabel="Hardware.cpp" index="5">
+<item historyLabel="Hardware.cpp" index="4">
 <position info="not_deleted" x="538" y="0"/>
 </item>
-<item historyLabel="DriveSystem.h" index="6">
+<item historyLabel="DriveSystem.h" index="5">
 <position info="not_deleted" x="511" y="0"/>
 </item>
-<item historyLabel="DriveSystem.cpp" index="7">
+<item historyLabel="DriveSystem.cpp" index="6">
 <position info="not_deleted" x="4259" y="0"/>
 </item>
-<item historyLabel="BallCollector.cpp" index="8">
+<item historyLabel="BallCollector.cpp" index="7">
 <position info="not_deleted" x="954" y="0"/>
 </item>
-<item historyLabel="Hardware.cpp" index="5">
+<item historyLabel="Hardware.cpp" index="4">
 <position info="not_deleted" x="529" y="0"/>
 </item>
-<item historyLabel="DriveSystem.cpp" index="7">
+<item historyLabel="DriveSystem.cpp" index="6">
 <position info="not_deleted" x="1414" y="0"/>
 </item>
-<item historyLabel="BallCollector.cpp" index="8">
+<item historyLabel="BallCollector.cpp" index="7">
 <position info="not_deleted" x="598" y="0"/>
 </item>
-<item historyLabel="DriveSystem.cpp" index="7">
+<item historyLabel="DriveSystem.cpp" index="6">
 <position info="not_deleted" x="1141" y="0"/>
 </item>
-<item historyLabel="MyRobot.cpp" index="4">
+<item historyLabel="MyRobot.cpp" index="3">
 <position info="not_deleted" x="1289" y="0"/>
 </item>
-<item historyLabel="DriveSystem.cpp" index="7">
+<item historyLabel="DriveSystem.cpp" index="6">
 <position info="not_deleted" x="1141" y="0"/>
 </item>
-<item historyLabel="DriveSystem.cpp" index="7">
+<item historyLabel="DriveSystem.cpp" index="6">
 <position info="not_deleted" x="3297" y="0"/>
 </item>
-<item historyLabel="DriveSystem.cpp" index="7">
+<item historyLabel="DriveSystem.cpp" index="6">
 <position info="not_deleted" x="3600" y="0"/>
 </item>
-<item active="true" historyLabel="DriveSystem.cpp" index="7">
+<item historyLabel="DriveSystem.cpp" index="6">
 <position info="not_deleted" x="3610" y="0"/>
+</item>
+<item historyLabel="MyRobot.cpp" index="8">
+<position info="not_deleted" x="1289" y="0"/>
+</item>
+<item historyLabel="Hardware.cpp" index="9">
+<position info="not_deleted" x="529" y="0"/>
+</item>
+<item historyLabel="UnderGlow.cpp" index="10">
+<position info="not_deleted" x="1392" y="0"/>
+</item>
+<item active="true" historyLabel="UnderGlow.cpp" index="10">
+<position info="not_deleted" x="47" y="9"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
