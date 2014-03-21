@@ -7,7 +7,7 @@ DriveSystem* Hardware::DriveSys = NULL;
 BallShooter* Hardware::Shooter = NULL;
 BallCollector* Hardware::Collector = NULL;
 UnderGlow* Hardware::RobotLights=NULL;
-
+AnalogChannel* Hardware::RangeFinder=NULL;
 
 void Hardware::Init()
 {
@@ -43,9 +43,13 @@ SpeedController* driveBL=new Victor(4);
         //Collector
         SpeedController* collectorSpinLeft = new Victor(5);
        SpeedController* collectorSpinRight = new Victor(6);
-       SpeedController* collectorRaise = new Victor(9);
+       SpeedController* collectorRaise = new Victor(10);
        DigitalInput* collectLimit=new DigitalInput(5);
        Collector = new BallCollector(collectorSpinLeft, collectorSpinRight, collectorRaise,collectLimit, ballStick);
+     
+       
+       
+       RangeFinder=new AnalogChannel(3);
        
        
        RobotLights=new UnderGlow(1,2);

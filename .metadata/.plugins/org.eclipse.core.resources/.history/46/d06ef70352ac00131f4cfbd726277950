@@ -14,7 +14,7 @@ public:
         void EncoderTest();
 private:
         double ShootPower();
-        void ShootBall(int angle);
+        void ShootBall(bool slow,int angle);
 
         void Lower();
         //Hardware
@@ -23,6 +23,7 @@ private:
         Joystick* stick;
         Encoder *enc;
         bool triggerState;
+        bool slowShot;
         bool previouslyShooting,finishedShot;
         double releaseAngle;
         int lastAngle;

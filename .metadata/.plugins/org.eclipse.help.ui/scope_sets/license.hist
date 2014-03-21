@@ -1,0 +1,4 @@
+#Sat Mar 15 15:55:37 EDT 2014
+__DEFAULT__=false
+org.eclipse.help.ui.localSearch.master=true
+expression=license

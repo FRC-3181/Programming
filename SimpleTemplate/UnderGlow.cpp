@@ -14,8 +14,9 @@
                 delete alliance;        
                 delete turbo;
         }
-        void UnderGlow::SetUnderGlow(Color color)
+        void UnderGlow::SetUnderGlow(Color color, bool LSD)
         {
+          if(LSD!=isLSDMode)return;
           currentColor=color;
           if((color&RED)==RED)
                 {
@@ -37,18 +38,21 @@
           else if (!isLSDMode){
               LSDTimer->Reset();
               LSDTimer->Start();
+              waitTime=0;
           }
-                if(LSDTimer->HasPeriodPassed(waitTime))
-                  {
-                    Color color=OFF;
-                    while(color!=currentColor)
-                      {
-                        color=Color(rand()%7+1);
-                      }
-                    SetUnderGlow(color);
-                    waitTime=(rand()%101)/2000.0+0.05-0.005;
-                    LSDTimer->Reset();
-                    LSDTimer->Start();
-                  }
-                isLSDMode=run;
+          if(LSDTimer->HasPeriodPassed(waitTime))
+          {
+
+              Color color=OFF;
+             do{
+                   color=Color(rand()%7+1);
+              }
+              while(color==currentColor);
+              SetUnderGlow(color,true);
+              waitTime=(rand()%101)/2000.0+0.05-0.005;
+              LSDTimer->Reset();
+              LSDTimer->Start();
+          }
+          isLSDMode=run;
+          DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line5,isLSDMode?"LSD ON":"LSD OFF");
         }

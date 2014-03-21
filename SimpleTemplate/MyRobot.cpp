@@ -16,7 +16,7 @@ public:
 	RobotDemo()
 	{
 	  Hardware::Init();
-	          Hardware::RobotLights->SetUnderGlow(UnderGlow::WHITE);
+	          Hardware::RobotLights->SetUnderGlow(UnderGlow::WHITE,false);
 	              DriverStationLCD::GetInstance()->Clear();
 	                    DriverStationLCD::GetInstance()->UpdateLCD();
 
@@ -29,13 +29,13 @@ public:
 	{
 	  switch(DriverStation::GetInstance()->GetAlliance()){
 	            case DriverStation::kRed:{
-	              Hardware::RobotLights->SetUnderGlow(UnderGlow::RED);
+	              Hardware::RobotLights->SetUnderGlow(UnderGlow::RED,false);
 	            }break;
 	            case DriverStation::kBlue:{
-	              Hardware::RobotLights->SetUnderGlow(UnderGlow::BLUE); 
+	              Hardware::RobotLights->SetUnderGlow(UnderGlow::BLUE,false); 
 	                      }break;
 	            default:{
-	              Hardware::RobotLights->SetUnderGlow(UnderGlow::OFF);        
+	              Hardware::RobotLights->SetUnderGlow(UnderGlow::OFF,false);        
 	                      }break;
 	            }
 	  Hardware::Collector->AutonomousCollect(0.2,1);
@@ -63,14 +63,24 @@ public:
 		    
 		    if(!buttonState&&Hardware::DriveSys->stick->GetRawButton(7))LSDMode=!LSDMode;
 		    buttonState=Hardware::DriveSys->stick->GetRawButton(7);
+
                         Hardware::RobotLights->LSDSimulator(LSDMode);
 
 		          Hardware::DriveSys->Drive();
 	                    Hardware::Collector->Collect();
 	                
 		           Hardware::Shooter->Shoot();
+		           
+		   float voltage=Hardware::RangeFinder->GetVoltage();
+		   float v=int(voltage*100)/100;
+		   float dist=v*8.787+0.212;
+		   int feet=int(dist);
+		   int inch=int(dist*12)%12;
+		  DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line4,"Distance: %i ft %i in",feet,inch);
+                  SmartDashboard::PutNumber("Dist",dist); 
 		    DriverStationLCD::GetInstance()->UpdateLCD();
 
+		    
 			Wait(0.005);				// wait for a motor update time
 		}
 	}

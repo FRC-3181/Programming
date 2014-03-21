@@ -19,7 +19,7 @@ class UnderGlow{
 
         UnderGlow(int port1,int port2);
         ~UnderGlow();
-        void SetUnderGlow(Color color);
+        void SetUnderGlow(Color color, bool LSD);
         void LSDSimulator(bool run);
 private:
         Relay *alliance, *turbo;

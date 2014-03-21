@@ -13,7 +13,7 @@ const int RELEASE_ANGLE_2 = 70;
 const int RELEASE_ANGLE_3 = 80;
 const int RELEASE_ANGLE_4 = 90;
 const int RELEASE_ANGLE_5 = 100;
-const int RELEASE_ANGLE_6 = 110;
+const double DUMP_SPEED= 0.5;
 
 
 BallShooter::BallShooter(SpeedController *left, SpeedController *right,
@@ -41,7 +41,7 @@ double BallShooter::ShootPower()
 }
 void BallShooter::Shoot()
 {
-  DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line3,"Shooter Power: %f %%",100*ShootPower());
+  DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line3,"Shooter Enabled");//"Shooter Power: %f %%",100*ShootPower());
   triggerState=triggerState||(stick->GetTrigger()&&ls_l->Get());
   if(triggerState)
   {
@@ -51,9 +51,9 @@ void BallShooter::Shoot()
     else if(stick->GetRawButton(8))angle=RELEASE_ANGLE_3;
     else if(stick->GetRawButton(9))angle=RELEASE_ANGLE_4;
     else if(stick->GetRawButton(10))angle=RELEASE_ANGLE_5;
-    else if(stick->GetRawButton(11))angle=RELEASE_ANGLE_6;
+    else if(stick->GetRawButton(11))angle=150;
 
-    ShootBall(angle);
+    ShootBall(stick->GetRawButton(11),angle);
   }
   else{
       Lower();
@@ -65,7 +65,7 @@ void BallShooter::AutonomousShoot(RobotBase* robot){
   while (robot->IsAutonomous() && robot->IsEnabled()){
       DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line1,"Shooting");
       DriverStationLCD::GetInstance()->UpdateLCD();
-      if(Hardware::Collector->OKToShoot())ShootBall(0);
+      if(Hardware::Collector->OKToShoot())ShootBall(false,0);
       Wait(0.05);
   }
 }
@@ -77,7 +77,7 @@ void BallShooter::Lower() //Bring the shooter back down
     m_l->Set(-shotSpeed);
     m_r->Set(shotSpeed);
 }
-void BallShooter::ShootBall(int angle) 
+void BallShooter::ShootBall(bool slow,int angle) 
 {
   if(finishedShot){
       double shotSpeed = (ls_l->Get() ? 0.0 : RECOVER_SPEED);
@@ -88,14 +88,14 @@ void BallShooter::ShootBall(int angle)
     if(!previouslyShooting){
         //Deterime speed required to hit target
         releaseAngle = angle==0?MIN_SHOOT_ANGLE+(MAX_SHOOT_ANGLE-MIN_SHOOT_ANGLE)*ShootPower():angle;
-
+        slowShot=slow;
         enc->Reset();
         enc->Start(); 
         previouslyShooting=true;
         finishedShot=false;
     }        
-    m_l->Set(-SHOOT_SPEED);
-    m_r->Set(SHOOT_SPEED);
+    m_l->Set(-(slowShot?DUMP_SPEED:SHOOT_SPEED));
+    m_r->Set(slowShot?DUMP_SPEED:SHOOT_SPEED);
 
     //
     if( ls_u->Get() || enc->GetRaw()>=releaseAngle)//If we hit the top, stop

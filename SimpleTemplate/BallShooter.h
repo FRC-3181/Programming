@@ -12,6 +12,7 @@ public:
         void Shoot();
         void AutonomousShoot(RobotBase* robot);
         void EncoderTest();
+        Joystick* stick;
 private:
         double ShootPower();
         void ShootBall(bool slow,int angle);
@@ -20,7 +21,6 @@ private:
         //Hardware
         SpeedController *m_l, *m_r;//Motors for shooting
         DigitalInput *ls_l,*ls_u;//Limit Switches for determining stopping point
-        Joystick* stick;
         Encoder *enc;
         bool triggerState;
         bool slowShot;

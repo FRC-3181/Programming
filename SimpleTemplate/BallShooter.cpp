@@ -3,8 +3,8 @@
 //#include "Vision.h"
 #include <math.h>
 
-const double RECOVER_SPEED = -0.25;
-const double SHOOT_SPEED = 1.0;
+const double RECOVER_SPEED = 0.25;
+const double SHOOT_SPEED = -1.0;
 
 const int MAX_SHOOT_ANGLE=120;
 const int MIN_SHOOT_ANGLE=55;

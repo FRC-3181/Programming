@@ -55,18 +55,18 @@ void DriveSystem::Drive()
 bool DriveSystem::TurboMode(){
   if(stick->GetTrigger())
   {
-      Hardware::RobotLights->SetUnderGlow(UnderGlow::GREEN);
+      Hardware::RobotLights->SetUnderGlow(UnderGlow::GREEN,false);
       return true;
   }
   switch(DriverStation::GetInstance()->GetAlliance()){
                       case DriverStation::kRed:{
-                        Hardware::RobotLights->SetUnderGlow(UnderGlow::RED);
+                        Hardware::RobotLights->SetUnderGlow(UnderGlow::RED,false);
                       }break;
                       case DriverStation::kBlue:{
-                        Hardware::RobotLights->SetUnderGlow(UnderGlow::BLUE); 
+                        Hardware::RobotLights->SetUnderGlow(UnderGlow::BLUE,false); 
                                 }break;
                       default:{
-                        Hardware::RobotLights->SetUnderGlow(UnderGlow::OFF);        
+                        Hardware::RobotLights->SetUnderGlow(UnderGlow::OFF,false);        
                                 }break;
                       }
   return false;
@@ -74,7 +74,7 @@ bool DriveSystem::TurboMode(){
 void DriveSystem::RotateAxes(double &x,double &y){
         double rotationAngle=GyroAngle();
         double xRotation = x * cos(rotationAngle) - y * sin(rotationAngle);
-        double yRotation = y * cos(rotationAngle) + x * sin(rotationAngle);
+        double yRotation = x * sin(rotationAngle) + y * cos(rotationAngle);
         x = xRotation;
         y = yRotation;
 }
@@ -120,5 +120,7 @@ double DriveSystem::GyroAngle()//Get the angle we have turned
         //Read the gyro angle
      //   return rotateGyro->GetRate();
         //Convert from degrees to radians
+        DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line6,"Gyro: %f",rotateGyro->GetAngle());
         return rotateGyro->GetAngle()*-3.14159/180.0;
+        
 }

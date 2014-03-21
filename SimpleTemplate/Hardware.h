@@ -13,6 +13,7 @@ public:
         static BallShooter* Shooter;//Shooter
         static BallCollector* Collector;//Ball Collector
         static UnderGlow* RobotLights;
+        static AnalogChannel* RangeFinder;
         static void Init();
 };
 
