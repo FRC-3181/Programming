@@ -20,6 +20,7 @@ BallCollector::BallCollector(SpeedController* spinL, SpeedController* spinR, Spe
 }
 //down is one
 void BallCollector::AutonomousCollect(double sPower,double rPower){
+ return;
   m_spinL->Set(-sPower*SPIN_SPEED);
   m_spinR->Set(sPower*SPIN_SPEED);
   m_raise->Set(RAISE_SPEED*rPower);

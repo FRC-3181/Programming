@@ -38,9 +38,9 @@ public:
 	              Hardware::RobotLights->SetUnderGlow(UnderGlow::OFF,false);        
 	                      }break;
 	            }
-	  Hardware::Collector->AutonomousCollect(0.2,1);
-          Hardware::DriveSys->DriveForward(0.3,0.75);
-          Hardware::DriveSys->DriveForward(0,1);
+	 // Hardware::Collector->AutonomousCollect(0.2,1);
+          Hardware::DriveSys->DriveForward(0.5,3);
+          Hardware::DriveSys->DriveForward(0,0.5);
           Hardware::Shooter->AutonomousShoot(this);
 
 	}
@@ -54,7 +54,6 @@ public:
 	{
 	  DriverStationLCD::GetInstance()->Clear();
 	 DriverStationLCD::GetInstance()->UpdateLCD();
-          DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line1,"Robot Enabled");
           
           bool buttonState=false;
           bool LSDMode=false;
@@ -68,16 +67,18 @@ public:
 
 		          Hardware::DriveSys->Drive();
 	                    Hardware::Collector->Collect();
-	                
-		           Hardware::Shooter->Shoot();
+
+	                    Hardware::Shooter->Shoot();
 		           
 		   float voltage=Hardware::RangeFinder->GetVoltage();
 		   float v=int(voltage*100)/100;
-		   float dist=v*8.787+0.212;
+		   float dist=v/0.108;
 		   int feet=int(dist);
 		   int inch=int(dist*12)%12;
-		  DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line4,"Distance: %i ft %i in",feet,inch);
-                  SmartDashboard::PutNumber("Dist",dist); 
+		  DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line3,"Distance: %i ft %i in",feet,inch);
+		  DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line6,"Ultrasonic: %f V",Hardware::RangeFinder->GetVoltage());
+		                    
+		  SmartDashboard::PutNumber("Dist",dist); 
 		    DriverStationLCD::GetInstance()->UpdateLCD();
 
 		    

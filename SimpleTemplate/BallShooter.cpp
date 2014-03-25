@@ -33,7 +33,6 @@ BallShooter::BallShooter(SpeedController *left, SpeedController *right,
 void BallShooter::EncoderTest()
 {
   DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line5,"Encoder Raw: %i",enc->GetRaw());
-
 }
 double BallShooter::ShootPower()
 {
@@ -41,7 +40,12 @@ double BallShooter::ShootPower()
 }
 void BallShooter::Shoot()
 {
-  DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line3,"Shooter Power: %f %%",100*ShootPower());
+  SmartDashboard::PutBoolean("Upper Switch",ls_u->Get());
+  SmartDashboard::PutBoolean("Lower Switch",ls_l->Get());  
+  SmartDashboard::PutNumber("Encoder",enc->GetRaw());  
+ 
+  
+  DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line2,"Shooter Power: %f %%",100*ShootPower());
   triggerState=triggerState||(stick->GetTrigger()&&ls_l->Get());
   if(triggerState)
   {

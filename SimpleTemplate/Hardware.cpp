@@ -33,11 +33,12 @@ SpeedController* driveBL=new Victor(4);
 //Shooter
         SpeedController* shooterLeft = new Talon(7);
         SpeedController* shooterRight = new Talon(8);
-        DigitalInput* upperLimit=new DigitalInput(1);
-        DigitalInput* lowerLimit=new DigitalInput(2);
-        uint32_t port1=3,port2=4;
+        DigitalInput* upperLimit=new DigitalInput(3);
+        DigitalInput* lowerLimit=new DigitalInput(4);
+        uint32_t port1=1,port2=2;
         Encoder* shootEncoder = new Encoder(port1, port2, false, Encoder::k4X);//Change Port numbers
         shootEncoder->Reset();
+        shootEncoder->Start();
         Shooter = new BallShooter(shooterLeft, shooterRight, upperLimit,lowerLimit,shootEncoder,ballStick);
 
         //Collector

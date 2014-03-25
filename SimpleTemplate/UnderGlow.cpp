@@ -54,5 +54,5 @@
               LSDTimer->Start();
           }
           isLSDMode=run;
-          DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line5,isLSDMode?"LSD ON":"LSD OFF");
+          DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line4,isLSDMode?"LSD ON":"LSD OFF");
         }
