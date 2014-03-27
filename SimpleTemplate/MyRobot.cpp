@@ -1,4 +1,4 @@
-#include "WPILib.h"
+#include "WPILib.h"999999**999*9999999-9*9-999-**99999999999999999-***-**9-
 #include "Hardware.h"
 
 /**
@@ -38,8 +38,9 @@ public:
 	              Hardware::RobotLights->SetUnderGlow(UnderGlow::OFF,false);        
 	                      }break;
 	            }
-	 // Hardware::Collector->AutonomousCollect(0.2,1);
-          Hardware::DriveSys->DriveForward(0.5,3);
+	  Hardware::Collector->AutonomousCollect(0.2,1);
+       //   Wait(3);
+	  Hardware::DriveSys->DriveForward(0.5,2.5);
           Hardware::DriveSys->DriveForward(0,0.5);
           Hardware::Shooter->AutonomousShoot(this);
 
@@ -49,7 +50,7 @@ public:
 	 * Runs the motors with arcade steering. 
 	 */
 	
-	
+
 	void OperatorControl()
 	{
 	  DriverStationLCD::GetInstance()->Clear();

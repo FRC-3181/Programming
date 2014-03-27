@@ -1,6 +1,6 @@
 #include "Hardware.h"
 
-#define VictorDrive
+//#define VictorDrive
 
 //Static Variable Declarations
 DriveSystem* Hardware::DriveSys = NULL;
@@ -44,7 +44,7 @@ SpeedController* driveBL=new Victor(4);
         //Collector
         SpeedController* collectorSpinLeft = new Victor(5);
        SpeedController* collectorSpinRight = new Victor(6);
-       SpeedController* collectorRaise = new Victor(10);
+       SpeedController* collectorRaise = new Victor(9);
        DigitalInput* collectLimit=new DigitalInput(5);
        Collector = new BallCollector(collectorSpinLeft, collectorSpinRight, collectorRaise,collectLimit, ballStick);
      

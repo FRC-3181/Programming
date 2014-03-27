@@ -18,7 +18,7 @@ public:
         bool OKToShoot();
 private:
         bool buttonState;
-        bool buttonEnabled;
+        double raiseTime;
         collectorState state;
         SpeedController* m_spinL,* m_spinR,* m_raise;//Motors for spinning and raising
         DigitalInput* ls;

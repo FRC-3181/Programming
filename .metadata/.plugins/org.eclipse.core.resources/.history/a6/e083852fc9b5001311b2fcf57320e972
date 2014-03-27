@@ -41,8 +41,8 @@ void DriveSystem::Drive()
         DriveSystem::RotateAxes(x,y);
         DriveSystem::ScaleComponents(x,y,r);
         //Do Some Math to determine wheel values
-        double fl = y - x - r;//front left likes to go Forward, left, and CW
-        double fr = y + x + r;//Front right likes to go forward, right, and CCW
+        double fl = -y - x - r;//front left likes to go Forward, left, and CW
+        double fr = -y + x + r;//Front right likes to go forward, right, and CCW
         double bl = y + x - r;//Back left likes to go Forward, right, and CW
         double br = y - x + r;//Back right likes to go Forward, left, and  CCW
         //Set Motor Values
@@ -74,7 +74,7 @@ bool DriveSystem::TurboMode(){
 void DriveSystem::RotateAxes(double &x,double &y){
         double rotationAngle=GyroAngle();
         double xRotation = x * cos(rotationAngle) - y * sin(rotationAngle);
-        double yRotation = y * cos(rotationAngle) + x * sin(rotationAngle);
+        double yRotation = x * sin(rotationAngle) + y * cos(rotationAngle);
         x = xRotation;
         y = yRotation;
 }
@@ -111,8 +111,8 @@ double DriveSystem::GyroAngle()//Get the angle we have turned
         if(stick->GetRawButton(11)&&!buttonState){
             gyroState=!gyroState;
         }
-        if(gyroState)DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line2,"Gyro Enabled");
-        else DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line2,"Gyro Disabled");
+        if(gyroState)DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line1,"Gyro Enabled: %f",rotateGyro->GetAngle());
+        else DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line1,"Gyro Disabled: %f",rotateGyro->GetAngle());
         buttonState=stick->GetRawButton(11);
         //Reset Gyro if desired
         if(stick->GetRawButton(12))rotateGyro->Reset();
@@ -121,4 +121,5 @@ double DriveSystem::GyroAngle()//Get the angle we have turned
      //   return rotateGyro->GetRate();
         //Convert from degrees to radians
         return rotateGyro->GetAngle()*-3.14159/180.0;
+        
 }

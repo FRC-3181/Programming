@@ -15,7 +15,7 @@ public:
         Joystick* stick;
 private:
         double ShootPower();
-        void ShootBall(bool slow,int angle);
+        void ShootBall(bool slow);
 
         void Lower();
         //Hardware

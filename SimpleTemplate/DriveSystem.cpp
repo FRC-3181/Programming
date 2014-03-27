@@ -24,8 +24,8 @@ DriveSystem::DriveSystem(SpeedController* frontLeft,SpeedController* frontRight,
 }
 void DriveSystem::DriveForward(double speed, double time){
   rotateGyro->Reset();
-  m_fl->Set(-K_FL *speed);
-  m_fr->Set(-K_FR *speed);
+  m_fl->Set(K_FL *speed);
+  m_fr->Set(K_FR *speed);
   m_bl->Set(-K_BL *speed);
   m_br->Set(-K_BR *speed);
   Wait(time);
@@ -41,8 +41,8 @@ void DriveSystem::Drive()
         DriveSystem::RotateAxes(x,y);
         DriveSystem::ScaleComponents(x,y,r);
         //Do Some Math to determine wheel values
-        double fl = y + x - r;//front left likes to go Forward, left, and CW
-        double fr = y - x + r;//Front right likes to go forward, right, and CCW
+        double fl = -y + x - r;//front left likes to go Forward, left, and CW
+        double fr = -y - x + r;//Front right likes to go forward, right, and CCW
         double bl = y - x - r;//Back left likes to go Forward, right, and CW
         double br = y + x + r;//Back right likes to go Forward, left, and  CCW
         //Set Motor Values
