@@ -98,10 +98,11 @@ void DriveSystem::ReadControls(double &x,double &y, double &r){
         //Read Values
         double hatX=stick->GetRawAxis(5);
         double hatY=stick->GetRawAxis(6);
-        x = (hatX!=0||hatY!=0)?hatX:pow(deadzone*stick->GetX(),3);
-        y = (hatX!=0||hatY!=0)?hatY:pow(deadzone*stick->GetY(),3);
-        r = stick->GetThrottle()*1.3;
-        if(fabs(r)<0.3)r=0;
+        double hatR=stick->GetRawButton(3)?-1:stick->GetRawButton(4)?1:0;
+        x  = (hatX!=0||hatY!=0||hatR!=0)?hatX:pow(deadzone*stick->GetX(),3);
+        y = (hatX!=0||hatY!=0||hatR!=0)?hatY:pow(deadzone*stick->GetY(),3);
+        r = (hatX!=0||hatY!=0||hatR!=0)?hatR:stick->GetThrottle()*1.3;
+        if(fabs(r)<0.1)r=0;
         x *= scale;
         y *= scale;
         r *= scale;

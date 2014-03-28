@@ -45,8 +45,8 @@ SpeedController* driveBL=new Victor(4);
         SpeedController* collectorSpinLeft = new Victor(5);
        SpeedController* collectorSpinRight = new Victor(6);
        SpeedController* collectorRaise = new Victor(9);
-       DigitalInput* collectLimit=new DigitalInput(5);
-       Collector = new BallCollector(collectorSpinLeft, collectorSpinRight, collectorRaise,collectLimit, ballStick);
+       //DigitalInput* collectLimit=new DigitalInput(5);
+       Collector = new BallCollector(collectorSpinLeft, collectorSpinRight, collectorRaise, ballStick);
      
        
        

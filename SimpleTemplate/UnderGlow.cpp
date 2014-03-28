@@ -49,7 +49,7 @@ const int maxLSDMillis=1500;
              do{
                    color=Color(rand()%7+1);
               }
-              while(color==currentColor);
+              while(color==currentColor&&DriverStation::GetInstance()->IsEnabled());
               SetUnderGlow(color,true);
               waitTime=(rand()%(maxLSDMillis-minLSDMillis)+minLSDMillis)/1000;
               LSDTimer->Reset();

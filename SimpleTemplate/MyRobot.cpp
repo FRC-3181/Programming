@@ -1,7 +1,9 @@
-#include "WPILib.h"999999**999*9999999-9*9-999-**99999999999999999-***-**9-
+#include "WPILib.h"
 #include "Hardware.h"
 
-/**
+
+//#define Potaoto
+/* *
  * This is a demo program showing the use of the RobotBase class.
  * The SimpleRobot class is the base of a robot application that will automatically call your
  * Autonomous and OperatorControl methods at the right time as controlled by the switches on
@@ -27,6 +29,9 @@ public:
 	 */
 	void Autonomous()
 	{
+#ifdef Potaoto
+          return;
+#endif
 	  switch(DriverStation::GetInstance()->GetAlliance()){
 	            case DriverStation::kRed:{
 	              Hardware::RobotLights->SetUnderGlow(UnderGlow::RED,false);
@@ -38,9 +43,9 @@ public:
 	              Hardware::RobotLights->SetUnderGlow(UnderGlow::OFF,false);        
 	                      }break;
 	            }
-	  Hardware::Collector->AutonomousCollect(0.2,1);
+	  Hardware::Collector->AutonomousCollect(0.2,2);
        //   Wait(3);
-	  Hardware::DriveSys->DriveForward(0.5,2.5);
+	  Hardware::DriveSys->DriveForward(0.5,2.25);
           Hardware::DriveSys->DriveForward(0,0.5);
           Hardware::Shooter->AutonomousShoot(this);
 
@@ -53,6 +58,9 @@ public:
 
 	void OperatorControl()
 	{
+#ifdef Potaoto
+	  return;
+#endif
 	  DriverStationLCD::GetInstance()->Clear();
 	 DriverStationLCD::GetInstance()->UpdateLCD();
           

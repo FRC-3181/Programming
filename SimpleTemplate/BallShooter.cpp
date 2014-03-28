@@ -10,8 +10,6 @@ const int MAX_SHOOT_ANGLE=120;
 const int MIN_SHOOT_ANGLE=55;
 const int RELEASE_ANGLE_1 = 85;
 const int RELEASE_ANGLE_2 = 68;
-const int RELEASE_ANGLE_3 = 80;
-const int RELEASE_ANGLE_4 = 90;
 const int RELEASE_ANGLE_5 = 100;
 const double DUMP_SPEED= -0.3;
 
@@ -37,12 +35,10 @@ void BallShooter::EncoderTest()
 double BallShooter::ShootPower()
 {
   if(stick->GetRawButton(6))return RELEASE_ANGLE_1;
-      else if(stick->GetRawButton(7))return RELEASE_ANGLE_2;
-      else if(stick->GetRawButton(8))return RELEASE_ANGLE_3;
-      else if(stick->GetRawButton(9))return RELEASE_ANGLE_4;
-      else if(stick->GetRawButton(10))return =RELEASE_ANGLE_5;
-      else if(stick->GetRawButton(11))return =150;
-      else return (0.5-stick->GetThrottle()/2.0)*(MAX_SHOOT_ANGLE-MIN_SHOOT_ANGLE)+MIN_SHOOT_ANGLE;
+  else if(stick->GetRawButton(7))return RELEASE_ANGLE_2;
+  else if(stick->GetRawButton(10))return RELEASE_ANGLE_5;
+  else if(stick->GetRawButton(11))return 150;
+  else return (1-stick->GetThrottle())/2.0*(MAX_SHOOT_ANGLE-MIN_SHOOT_ANGLE)+MIN_SHOOT_ANGLE;
 }
 void BallShooter::Shoot()
 {
@@ -51,8 +47,8 @@ void BallShooter::Shoot()
   SmartDashboard::PutNumber("Encoder",enc->GetRaw());  
  
   
-  DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line2,"Shooter Power: %f %%",100*ShootPower());
-  triggerState=triggerState||(stick->GetTrigger());
+  DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line2,"Shooter Power: %f",ShootPower());
+  triggerState=triggerState||(stick->GetRawButton(1));
   if(triggerState)
   {
     ShootBall(stick->GetRawButton(11));
@@ -89,7 +85,7 @@ void BallShooter::ShootBall(bool slow)
   }
     if(!previouslyShooting){
         //Deterime speed required to hit target
-        releaseAngle = ShootPower();
+        releaseAngle = DriverStation::GetInstance()->IsAutonomous()?RELEASE_ANGLE_2:ShootPower();
         slowShot=slow;
         enc->Reset();
         enc->Start(); 
