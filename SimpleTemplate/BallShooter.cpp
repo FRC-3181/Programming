@@ -9,7 +9,7 @@ const double SHOOT_SPEED = -1.0;
 const int MAX_SHOOT_ANGLE=120;
 const int MIN_SHOOT_ANGLE=55;
 const int RELEASE_ANGLE_1 = 85;
-const int RELEASE_ANGLE_2 = 68;
+const int RELEASE_ANGLE_2 = 70;
 const int RELEASE_ANGLE_5 = 100;
 const double DUMP_SPEED= -0.3;
 
@@ -48,7 +48,7 @@ void BallShooter::Shoot()
  
   
   DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line2,"Shooter Power: %f",ShootPower());
-  triggerState=triggerState||(stick->GetRawButton(1));
+  triggerState=triggerState||(stick->GetTrigger());
   if(triggerState)
   {
     ShootBall(stick->GetRawButton(11));
@@ -69,6 +69,11 @@ void BallShooter::AutonomousShoot(RobotBase* robot){
 }
 void BallShooter::Lower() //Bring the shooter back down
 {
+  DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line6,"Lowering");
+  releaseAngle=0;
+          previouslyShooting=false;
+          finishedShot=false;
+          triggerState=false;
     previouslyShooting=false;
     finishedShot=false;
     double shotSpeed = (ls_l->Get() ? 0.0 : RECOVER_SPEED);
@@ -77,13 +82,16 @@ void BallShooter::Lower() //Bring the shooter back down
 }
 void BallShooter::ShootBall(bool slow) 
 {
+  DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line6,"Shooting");
+
   if(finishedShot){
       double shotSpeed = (ls_l->Get() ? 0.0 : RECOVER_SPEED);
           m_l->Set(-shotSpeed);
           m_r->Set(shotSpeed);
+          //if(shotSpeed==0)previous
           return;
   }
-    if(!previouslyShooting){
+  else if(!previouslyShooting){
         //Deterime speed required to hit target
         releaseAngle = DriverStation::GetInstance()->IsAutonomous()?RELEASE_ANGLE_2:ShootPower();
         slowShot=slow;

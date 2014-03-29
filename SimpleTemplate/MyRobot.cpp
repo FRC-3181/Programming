@@ -45,7 +45,7 @@ public:
 	            }
 	  Hardware::Collector->AutonomousCollect(0.2,2);
        //   Wait(3);
-	  Hardware::DriveSys->DriveForward(0.5,2.25);
+	  Hardware::DriveSys->DriveForward(0.5,2.35);
           Hardware::DriveSys->DriveForward(0,0.5);
           Hardware::Shooter->AutonomousShoot(this);
 
@@ -85,7 +85,7 @@ public:
 		   int feet=int(dist);
 		   int inch=int(dist*12)%12;
 		  DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line3,"Distance: %i ft %i in",feet,inch);
-		  DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line6,"Ultrasonic: %f V",Hardware::RangeFinder->GetVoltage());
+		 // DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line6,"Ultrasonic: %f V",Hardware::RangeFinder->GetVoltage());
 		                    
 		  SmartDashboard::PutNumber("Dist",dist); 
 		    DriverStationLCD::GetInstance()->UpdateLCD();
