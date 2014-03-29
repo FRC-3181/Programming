@@ -35720,3 +35720,9 @@ java.io.FileNotFoundException
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1408)
 	at org.eclipse.equinox.launcher.Main.main(Main.java:1384)
 	at org.eclipse.equinox.launcher.WRWBMain.main(WRWBMain.java:37)
+
+!ENTRY edu.wpi.FIRSTDownloader 4 0 2014-03-29 08:21:19.401
+!MESSAGE Unable to delete the UserProgram from the robot.
+
+!ENTRY edu.wpi.FIRSTDownloader 4 0 2014-03-29 10:12:54.229
+!MESSAGE Unable to connect to robot using IP: 10.31.81.2:21

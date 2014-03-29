@@ -9,7 +9,7 @@ const double SHOOT_SPEED = -1.0;
 const int MAX_SHOOT_ANGLE=120;
 const int MIN_SHOOT_ANGLE=55;
 const int RELEASE_ANGLE_1 = 85;
-const int RELEASE_ANGLE_2 = 70;
+const int RELEASE_ANGLE_2 = 67;
 const int RELEASE_ANGLE_5 = 100;
 const double DUMP_SPEED= -0.3;
 
@@ -35,10 +35,10 @@ void BallShooter::EncoderTest()
 double BallShooter::ShootPower()
 {
   if(stick->GetRawButton(6))return RELEASE_ANGLE_1;
-  else if(stick->GetRawButton(7))return RELEASE_ANGLE_2;
+  else if(stick->GetRawButton(7))return (1-stick->GetThrottle())/2.0*(MAX_SHOOT_ANGLE-MIN_SHOOT_ANGLE)+MIN_SHOOT_ANGLE;
   else if(stick->GetRawButton(10))return RELEASE_ANGLE_5;
   else if(stick->GetRawButton(11))return 150;
-  else return (1-stick->GetThrottle())/2.0*(MAX_SHOOT_ANGLE-MIN_SHOOT_ANGLE)+MIN_SHOOT_ANGLE;
+  else return RELEASE_ANGLE_2;
 }
 void BallShooter::Shoot()
 {
@@ -48,6 +48,7 @@ void BallShooter::Shoot()
  
   
   DriverStationLCD::GetInstance()->PrintfLine(DriverStationLCD::kUser_Line2,"Shooter Power: %f",ShootPower());
+  if(m_l->Get()>=0)triggerState=false;
   triggerState=triggerState||(stick->GetTrigger());
   if(triggerState)
   {
@@ -89,6 +90,7 @@ void BallShooter::ShootBall(bool slow)
           m_l->Set(-shotSpeed);
           m_r->Set(shotSpeed);
           //if(shotSpeed==0)previous
+          triggerState=false;
           return;
   }
   else if(!previouslyShooting){
@@ -99,6 +101,7 @@ void BallShooter::ShootBall(bool slow)
         enc->Start(); 
         previouslyShooting=true;
         finishedShot=false;
+        triggerState=false;
     }        
     m_l->Set(-(slowShot?DUMP_SPEED:SHOOT_SPEED));
     m_r->Set(slowShot?DUMP_SPEED:SHOOT_SPEED);

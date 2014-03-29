@@ -41,10 +41,10 @@ void DriveSystem::Drive()
         DriveSystem::RotateAxes(x,y);
         DriveSystem::ScaleComponents(x,y,r);
         //Do Some Math to determine wheel values
-        double fl = y + x - r;//front left likes to go Forward, left, and CW
-        double fr = y - x + r;//Front right likes to go forward, right, and CCW
-        double bl = -y - x - r;//Back left likes to go Forward, right, and CW
-        double br = -y + x + r;//Back right likes to go Forward, left, and  CCW
+        double fl = y - x - r;//front left likes to go Forward, left, and CW
+        double fr = y + x + r;//Front right likes to go forward, right, and CCW
+        double bl = -y + x - r;//Back left likes to go Forward, right, and CW
+        double br = -y - x + r;//Back right likes to go Forward, left, and  CCW
         //Set Motor Values
         m_fl->Set(K_FL * fl);
         m_fr->Set(K_FR * fr);
@@ -71,6 +71,8 @@ bool DriveSystem::TurboMode(){
                       }
   return false;
 }
+
+
 void DriveSystem::RotateAxes(double &x,double &y){
         double rotationAngle=GyroAngle();
         double xRotation = x * cos(rotationAngle) - y * sin(rotationAngle);
@@ -78,8 +80,10 @@ void DriveSystem::RotateAxes(double &x,double &y){
         x = xRotation;
         y = yRotation;
 }
+
+
 void DriveSystem::ScaleComponents(double &x,double &y, double &r){
-        //Determine the scale
+  /*        //Determine the scale
         double scale = fabs(x)+ fabs(y)+ fabs(r);
         scale = (scale > 1) ? 1 / scale:1;
         if(TurboMode()){
@@ -90,7 +94,20 @@ void DriveSystem::ScaleComponents(double &x,double &y, double &r){
         x *= scale;
         y *= scale;
         r *= scale;
+//*/        
 }
+
+void DriveSystem::ReadControls(double &x, double &y, double &r)
+{
+  double scale=TurboMode()?1:((1-stick->GetTwist()) /2);
+  x=stick->GetX();
+  y=-stick->GetY();
+  r=stick->GetThrottle();
+  x*=scale;
+  y*=scale;
+  r*=scale;
+}
+/*
 void DriveSystem::ReadControls(double &x,double &y, double &r){
         //Determine the scale
         double scale = TurboMode()?1:0.75*((1-stick->GetTwist()) /2);
@@ -106,7 +123,7 @@ void DriveSystem::ReadControls(double &x,double &y, double &r){
         x *= scale;
         y *= scale;
         r *= scale;
-}
+}//*/
 double DriveSystem::GyroAngle()//Get the angle we have turned
 {
         if(stick->GetRawButton(11)&&!buttonState){
