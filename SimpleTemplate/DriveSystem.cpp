@@ -103,6 +103,12 @@ void DriveSystem::ReadControls(double &x, double &y, double &r)
   x=stick->GetX();
   y=-stick->GetY();
   r=stick->GetThrottle();
+  if(stick->GetRawAxis(5)!=0||stick->GetRawAxis(6)!=0||stick->GetRawButton(3)||stick->GetRawButton(4))
+  {
+     x=stick->GetRawAxis(5);
+     y=-stick->GetRawAxis(6);
+     r=stick->GetRawButton(3)?-1:(stick->GetRawButton(4)?1:0);
+  }
   x*=scale;
   y*=scale;
   r*=scale;
